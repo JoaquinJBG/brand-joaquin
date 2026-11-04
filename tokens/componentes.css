@@ -8,6 +8,9 @@
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
 }
+/* con nebulosa, el fondo lo pinta .jb-fondo */
+.jb-base.jb-base--nebulosa { background: transparent; }
+html:has(.jb-base--nebulosa) { background: var(--jb-nebula-base); }
 .jb-base :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 /* :where() deja la especificidad baja para que las reglas del proyecto ganen */
 .jb-base :where(a:not([class])) { color: var(--jb-link); text-underline-offset: 4px; }
@@ -28,7 +31,53 @@
 .jb-h4 { font-size: var(--text-h4); line-height: 1; letter-spacing: -.03em; }
 .jb-lead { font-size: var(--text-lead); color: var(--jb-fg-muted); max-width: 34ch; }
 .jb-muted { color: var(--jb-fg-muted); }
+.jb-neon { color: var(--jb-neon-text); text-shadow: var(--jb-glow-text); }
 
+/* fondo de landing: nebulosa (canvas de nebulosa.js) + rejilla de puntos + viñeta */
+.jb-fondo { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--jb-nebula-base); }
+.jb-fondo canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.jb-fondo::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background-image: radial-gradient(var(--jb-dots) 1px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(125% 90% at 50% 35%, #000 38%, transparent 78%);
+  mask-image: radial-gradient(125% 90% at 50% 35%, #000 38%, transparent 78%);
+}
+.jb-fondo--sin-webgl {
+  background:
+    radial-gradient(40vw 34vh at 0% 40%, rgba(42, 114, 163, .45), transparent 70%),
+    radial-gradient(30vw 26vh at 4% 60%, rgba(249, 114, 121, .30), transparent 70%),
+    radial-gradient(40vw 34vh at 100% 30%, rgba(115, 138, 154, .45), transparent 70%),
+    radial-gradient(30vw 26vh at 96% 55%, rgba(249, 114, 121, .30), transparent 70%),
+    var(--jb-nebula-base);
+}
+/* la viñeta aclara u oscurece el centro: el texto nunca va sobre la nebulosa a pelo */
+.jb-fondo::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(100% 72% at 50% 42%, color-mix(in oklab, var(--jb-nebula-base) 60%, transparent), transparent 62%);
+}
+
+/* cristal con borde de luz */
+.jb-glass {
+  position: relative;
+  background: var(--jb-glass-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--jb-glass-shadow);
+  -webkit-backdrop-filter: var(--jb-glass-blur);
+  backdrop-filter: var(--jb-glass-blur);
+}
+.jb-glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: var(--jb-glass-edge); opacity: .75;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+a.jb-glass { color: inherit; text-decoration: none; display: block; transition: transform var(--dur-base) var(--ease-out); }
+a.jb-glass:hover { transform: translateY(var(--lift)); }
+
+/* botones: cápsula; el principal es coral y brilla */
 .jb-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   min-height: 48px; padding: 0 var(--space-5);
@@ -36,20 +85,52 @@
   font: var(--weight-medium) 15px/1 var(--font-body);
   text-decoration: none; cursor: pointer;
   background: var(--jb-btn); color: var(--jb-on-btn);
-  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+  box-shadow: var(--jb-glow);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
 }
-.jb-btn:hover { transform: translateY(calc(var(--lift) / 2)); }
+.jb-btn:hover { transform: translateY(calc(var(--lift) / 2)); box-shadow: var(--jb-glow-hover); filter: brightness(1.05); }
 .jb-btn:active { transform: scale(var(--press)); }
-.jb-btn--accent { background: var(--jb-accent); color: var(--jb-on-accent); }
+.jb-btn--ghost { background: var(--jb-ghost-bg); color: var(--jb-fg); box-shadow: var(--jb-ghost-ring); }
+.jb-btn--ghost:hover { box-shadow: var(--jb-ghost-ring), var(--jb-glow); filter: none; }
 .jb-btn--outline { background: transparent; color: var(--jb-fg); box-shadow: inset 0 0 0 1.5px var(--jb-fg); }
+.jb-btn--outline:hover { box-shadow: inset 0 0 0 1.5px var(--jb-fg); filter: none; }
 .jb-btn--round { width: 64px; min-height: 64px; padding: 0; }
 .jb-btn svg { width: 20px; height: 20px; }
 
+/* número de sección: cápsula coral con brillo, dos cifras */
+.jb-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 64px; height: 40px; padding: 0 var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--jb-coral); color: var(--jb-tinta);
+  font: var(--weight-strong) 16px/1 var(--font-body);
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 24px -6px rgba(249, 114, 121, .8);
+}
+
 .jb-chip {
-  display: inline-flex; align-items: center; gap: var(--space-1);
+  display: inline-flex; align-items: center; gap: var(--space-2);
   font-size: var(--text-caption); padding: var(--space-1) 10px;
   border-radius: var(--radius-full);
-  background: var(--jb-bg); color: var(--jb-fg-muted);
+  background: var(--jb-ghost-bg); color: var(--jb-fg-muted);
+  box-shadow: var(--jb-ghost-ring);
+}
+.jb-chip--glow::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--jb-coral); box-shadow: 0 0 10px var(--jb-coral);
+}
+
+/* cifras grandes */
+.jb-stat {
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display); line-height: 1;
+  font-size: var(--text-stat); font-variant-numeric: tabular-nums;
+}
+.jb-bar { height: 8px; border-radius: var(--radius-full); background: var(--jb-line); overflow: hidden; }
+.jb-bar > i {
+  display: block; height: 100%; border-radius: inherit;
+  background: linear-gradient(90deg, var(--jb-cobalto), var(--jb-coral));
+  box-shadow: 0 0 14px rgba(249, 114, 121, .6);
 }
 
 .jb-card {
@@ -64,11 +145,11 @@ a.jb-card:hover { transform: translateY(var(--lift)); }
 .jb-input {
   width: 100%; min-height: 48px; padding: 0 var(--space-4);
   border: 0; border-radius: var(--radius-full);
-  background: var(--jb-surface); color: var(--jb-fg);
-  box-shadow: inset 0 0 0 1.5px var(--jb-line);
+  background: var(--jb-ghost-bg); color: var(--jb-fg);
+  box-shadow: var(--jb-ghost-ring);
   font: inherit;
 }
-.jb-input:focus-visible { box-shadow: inset 0 0 0 1.5px var(--jb-fg); outline: none; }
+.jb-input:focus-visible { box-shadow: inset 0 0 0 1.5px var(--jb-coral), var(--jb-glow); outline: none; }
 
 /* Logo: .jb-franja--logo > .jb-franja__logo + .jb-franja__banda > .jb-franja__clip > .jb-franja__logo (copia) */
 .jb-franja { position: relative; overflow: hidden; }

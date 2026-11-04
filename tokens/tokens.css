@@ -9,7 +9,9 @@
   --jb-salvia: #697773;
   --jb-tinta: #161D24;
   --jb-noche: #121820;
+  --jb-abismo: #0A0E13;
   --jb-coral: #F97279;
+  --jb-coral-texto: #B83A44;
   --jb-cobalto: #2A72A3;
   --jb-cobalto-texto: #23648F;
   --jb-cobalto-claro: #7FB4DA;
@@ -27,8 +29,22 @@
   --jb-support: var(--jb-salvia);
   --jb-logo: var(--jb-acero);
   --jb-logo-in-band: var(--jb-tinta);
-  --jb-btn: var(--jb-tinta);
-  --jb-on-btn: var(--jb-niebla);
+  --jb-btn: var(--jb-coral);
+  --jb-on-btn: var(--jb-tinta);
+  --jb-neon-text: var(--jb-coral-texto);
+
+  /* cristal, luz y fondo */
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .42));
+  --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 24px 50px -30px rgba(22, 29, 36, .35);
+  --jb-glass-edge: linear-gradient(140deg, var(--jb-coral), transparent 42%, transparent 60%, var(--jb-cobalto));
+  --jb-glass-blur: blur(18px) saturate(140%);
+  --jb-ghost-bg: rgba(255, 255, 255, .5);
+  --jb-ghost-ring: inset 0 0 0 1px rgba(22, 29, 36, .18);
+  --jb-glow: 0 0 30px -6px rgba(249, 114, 121, .75);
+  --jb-glow-hover: 0 0 42px -2px rgba(249, 114, 121, .95);
+  --jb-glow-text: 0 0 18px rgba(249, 114, 121, .55);
+  --jb-nebula-base: var(--jb-niebla);
+  --jb-dots: rgba(22, 29, 36, .10);
 
   --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
   --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -45,6 +61,7 @@
   --text-h2: clamp(44px, 6vw, 84px);
   --text-h3: 34px;
   --text-h4: 24px;
+  --text-stat: 56px;
   --text-lead: 18px;
   --text-body: 16px;
   --text-small: 14px;
@@ -68,8 +85,6 @@
   --radius-lg: 28px;
   --radius-full: 999px;
 
-  /* sin sombras: la profundidad sale del color de la superficie */
-  --shadow: none;
   --focus-ring: 0 0 0 2px var(--jb-bg), 0 0 0 4px var(--jb-link);
 
   --ease-out: cubic-bezier(.2, .8, .2, 1);
@@ -96,45 +111,52 @@
   --jb-surface-2: var(--jb-hielo);
   --jb-fg: var(--jb-tinta);
   --jb-fg-muted: var(--jb-pizarra);
-  --jb-fg-subtle: var(--jb-acero);
   --jb-line: rgba(22, 29, 36, .12);
-  --jb-accent: var(--jb-coral);
-  --jb-on-accent: var(--jb-tinta);
   --jb-link: var(--jb-cobalto-texto);
-  --jb-support: var(--jb-salvia);
-  --jb-logo: var(--jb-acero);
-  --jb-logo-in-band: var(--jb-tinta);
-  --jb-btn: var(--jb-tinta);
-  --jb-on-btn: var(--jb-niebla);
+  --jb-neon-text: var(--jb-coral-texto);
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .42));
+  --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 24px 50px -30px rgba(22, 29, 36, .35);
+  --jb-ghost-bg: rgba(255, 255, 255, .5);
+  --jb-ghost-ring: inset 0 0 0 1px rgba(22, 29, 36, .18);
+  --jb-nebula-base: var(--jb-niebla);
+  --jb-dots: rgba(22, 29, 36, .10);
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --jb-bg: var(--jb-noche);
-  --jb-surface: #1A222C;
-  --jb-surface-2: #243040;
+  --jb-bg: var(--jb-abismo);
+  --jb-surface: #161D26;
+  --jb-surface-2: #212B38;
   --jb-fg: var(--jb-niebla);
   --jb-fg-muted: #9DB0BD;
-  --jb-fg-subtle: var(--jb-acero);
   --jb-line: rgba(231, 238, 242, .12);
   --jb-link: var(--jb-cobalto-claro);
-  --jb-btn: var(--jb-niebla);
-  --jb-on-btn: var(--jb-tinta);
+  --jb-neon-text: var(--jb-coral);
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+  --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 50px -28px rgba(0, 0, 0, .9);
+  --jb-ghost-bg: rgba(255, 255, 255, .05);
+  --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
+  --jb-nebula-base: var(--jb-abismo);
+  --jb-dots: rgba(204, 219, 226, .12);
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --jb-bg: var(--jb-noche);
-    --jb-surface: #1A222C;
-    --jb-surface-2: #243040;
+    --jb-bg: var(--jb-abismo);
+    --jb-surface: #161D26;
+    --jb-surface-2: #212B38;
     --jb-fg: var(--jb-niebla);
     --jb-fg-muted: #9DB0BD;
-    --jb-fg-subtle: var(--jb-acero);
     --jb-line: rgba(231, 238, 242, .12);
     --jb-link: var(--jb-cobalto-claro);
-    --jb-btn: var(--jb-niebla);
-    --jb-on-btn: var(--jb-tinta);
+    --jb-neon-text: var(--jb-coral);
+    --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 50px -28px rgba(0, 0, 0, .9);
+    --jb-ghost-bg: rgba(255, 255, 255, .05);
+    --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
+    --jb-nebula-base: var(--jb-abismo);
+    --jb-dots: rgba(204, 219, 226, .12);
     color-scheme: dark;
   }
 }

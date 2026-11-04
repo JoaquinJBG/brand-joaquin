@@ -29,21 +29,23 @@ object Jb {
     val Salvia = Color(0xFF697773)
     val Tinta = Color(0xFF161D24)
     val Noche = Color(0xFF121820)
+    val Abismo = Color(0xFF0A0E13)
     val Coral = Color(0xFFF97279)
+    val CoralTexto = Color(0xFFB83A44)
     val Cobalto = Color(0xFF2A72A3)
     val CobaltoTexto = Color(0xFF23648F)
     val CobaltoClaro = Color(0xFF7FB4DA)
     val SuperficieClara = Color(0xFFF4F8FA)
-    val SuperficieOscura = Color(0xFF1A222C)
-    val SuperficieOscura2 = Color(0xFF243040)
+    val SuperficieOscura = Color(0xFF161D26)
+    val SuperficieOscura2 = Color(0xFF212B38)
 }
 
-// primary = tinta porque los botones de la marca son tinta; el coral va en secondary.
+// primary = coral: el botón principal de la marca es coral con brillo (ver brilloCoral en Luz.kt).
 private val Claro = lightColorScheme(
-    primary = Jb.Tinta,
-    onPrimary = Jb.Niebla,
-    secondary = Jb.Coral,
-    onSecondary = Jb.Tinta,
+    primary = Jb.Coral,
+    onPrimary = Jb.Tinta,
+    secondary = Jb.Tinta,
+    onSecondary = Jb.Niebla,
     tertiary = Jb.CobaltoTexto,
     onTertiary = Jb.Niebla,
     background = Jb.Niebla,
@@ -57,13 +59,13 @@ private val Claro = lightColorScheme(
 )
 
 private val Oscuro = darkColorScheme(
-    primary = Jb.Niebla,
+    primary = Jb.Coral,
     onPrimary = Jb.Tinta,
-    secondary = Jb.Coral,
+    secondary = Jb.Niebla,
     onSecondary = Jb.Tinta,
     tertiary = Jb.CobaltoClaro,
     onTertiary = Jb.Tinta,
-    background = Jb.Noche,
+    background = Jb.Abismo,
     onBackground = Jb.Niebla,
     surface = Jb.SuperficieOscura,
     onSurface = Jb.Niebla,

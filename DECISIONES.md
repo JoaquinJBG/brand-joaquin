@@ -128,9 +128,35 @@ Decisiones que tomé yo (Claude) para completar el sistema, a revisar por Joaqu�
   los laterales, rejilla de puntos, paneles de cristal con borde de luz, botones que brillan, cifras grandes.
 - Prototipo con la paleta de la marca: `exploracion/landing-v7.html`.
 
+## 2026-11-04 · Novena ronda: aprueba la v7 · versión 2 de la marca
+
+Lo que dijo: «la nebulosa te ha salido muy bien, ponerle el toque neón a los botones y números me gusta
+muchísimo, tanto el modo oscuro como el claro». «Lo de la imagen con la franja sigue también». «Vamos a hacer
+el más completo con todas las cosas para subirlo completo a GitHub».
+
+Decidido por Joaquín:
+
+- **Nebulosa** de fondo (estilo FightLab) con la paleta de la marca.
+- **Neón** (brillo coral) en botones principales y números.
+- **Modo claro y oscuro**, los dos.
+- **Foto con franja**: se queda.
+- **Secciones numeradas** en cápsula coral.
+
+Decisiones mías para que el sistema sea coherente (a revisar):
+
+- Profundidad = cristal + luz. Se permiten el brillo coral y la sombra suave del cristal; siguen prohibidas las
+  sombras grises bajo tarjetas planas.
+- Botón principal = coral con brillo (antes tinta). Secundario = cristal con borde.
+- Texto en «neón» en modo claro usa `#B83A44` (4,8:1 sobre niebla); el coral puro no llega al contraste.
+- Movimiento: la nebulosa fluye siempre en landings; la franja hace su entrada una vez. Con «reducir
+  movimiento» la nebulosa se queda quieta (pero se pinta) y la franja aparece colocada. El componente admite
+  forzar el movimiento.
+- Modo por defecto: oscuro en landings y portadas; en apps, el del sistema.
+- La nebulosa animada es solo web (WebGL). En Compose va una versión estática con degradados.
+
 ## Pendiente
 
-- Que valide el estilo FightLab con su paleta (v7) y la numeración; después, pasarlo a la guía, los tokens, el prompt y la muestra.
+- Crear el repositorio en GitHub y subirlo: falta nombre, visibilidad y correo de autor.; después, pasarlo a la guía, los tokens, el prompt y la muestra.
 - Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
 - Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
 - Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.

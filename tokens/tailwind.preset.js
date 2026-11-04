@@ -13,6 +13,7 @@ module.exports = {
           salvia: "#697773",
           tinta: "#161D24",
           noche: "#121820",
+          abismo: "#0A0E13",
           coral: "#F97279",
           cobalto: "#2A72A3",
         },
@@ -23,6 +24,7 @@ module.exports = {
         accent: { DEFAULT: "var(--jb-accent)", on: "var(--jb-on-accent)" },
         link: "var(--jb-link)",
         btn: { DEFAULT: "var(--jb-btn)", on: "var(--jb-on-btn)" },
+        neon: "var(--jb-neon-text)",
       },
       fontFamily: {
         display: ["Bricolage Grotesque", "Arial Black", "sans-serif"],
@@ -34,6 +36,7 @@ module.exports = {
         h2: ["clamp(44px, 6vw, 84px)", { lineHeight: "0.9", letterSpacing: "-0.045em", fontWeight: "800" }],
         h3: ["34px", { lineHeight: "0.95", letterSpacing: "-0.045em", fontWeight: "800" }],
         h4: ["24px", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "800" }],
+        stat: ["56px", { lineHeight: "1", letterSpacing: "-0.045em", fontWeight: "800" }],
         lead: ["18px", { lineHeight: "1.6" }],
       },
       borderRadius: {
@@ -43,9 +46,14 @@ module.exports = {
         full: "999px",
       },
       boxShadow: {
-        DEFAULT: "none",
         focus: "0 0 0 2px var(--jb-bg), 0 0 0 4px var(--jb-link)",
+        glow: "var(--jb-glow)",
+        "glow-hover": "var(--jb-glow-hover)",
+        glass: "var(--jb-glass-shadow)",
       },
+      backgroundImage: { glass: "var(--jb-glass-bg)" },
+      dropShadow: { neon: "0 0 18px rgba(249, 114, 121, .55)" },
+      backdropBlur: { glass: "18px" },
       maxWidth: { container: "1240px" },
       transitionTimingFunction: {
         out: "cubic-bezier(.2, .8, .2, 1)",

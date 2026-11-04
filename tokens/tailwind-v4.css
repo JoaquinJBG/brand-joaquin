@@ -9,6 +9,7 @@
   --color-jb-salvia: #697773;
   --color-jb-tinta: #161D24;
   --color-jb-noche: #121820;
+  --color-jb-abismo: #0A0E13;
   --color-jb-coral: #F97279;
   --color-jb-cobalto: #2A72A3;
 
@@ -24,6 +25,7 @@
   --color-link: var(--jb-link);
   --color-btn: var(--jb-btn);
   --color-on-btn: var(--jb-on-btn);
+  --color-neon: var(--jb-neon-text);
 
   --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
   --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -43,12 +45,21 @@
   --text-h4: 24px;
   --text-h4--line-height: 1;
   --text-h4--letter-spacing: -0.03em;
+  --text-stat: 56px;
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.045em;
   --text-lead: 18px;
   --text-lead--line-height: 1.6;
 
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 28px;
+
+  --shadow-glow: var(--jb-glow);
+  --shadow-glow-hover: var(--jb-glow-hover);
+  --shadow-glass: var(--jb-glass-shadow);
+  --text-shadow-neon: var(--jb-glow-text);
+  --blur-glass: 18px;
 
   --ease-out: cubic-bezier(.2, .8, .2, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
