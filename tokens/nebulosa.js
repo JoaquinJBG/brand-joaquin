@@ -1,5 +1,4 @@
-// Nebulosa de fondo de la marca (WebGL, sin dependencias).
-// Uso: <div class="jb-fondo"><canvas></canvas></div> y montarNebulosa(canvas).
+// Uso: <div class="jb-fondo"><canvas></canvas></div> y montarNebulosa(canvas, { movimiento }).
 // movimiento: "auto" respeta prefers-reduced-motion; "si" y "no" lo fuerzan.
 
 const FRAG = `precision highp float;
@@ -65,7 +64,11 @@ export function montarNebulosa(canvas, { movimiento = "auto" } = {}) {
 
   const reducir = matchMedia("(prefers-reduced-motion: reduce)");
   let modo = movimiento;
-  const anima = () => (modo === "si" ? true : modo === "no" ? false : !reducir.matches);
+  const anima = () => {
+    if (modo === "si") return true;
+    if (modo === "no") return false;
+    return !reducir.matches;
+  };
   let tiempo = 8, ultimo = performance.now(), raf = 0;
 
   const pintar = (ahora = performance.now()) => {

@@ -33,7 +33,6 @@
   --jb-on-btn: var(--jb-tinta);
   --jb-neon-text: var(--jb-coral-texto);
 
-  /* cristal, luz y fondo */
   --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(255, 255, 255, .55));
   --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 24px 50px -30px rgba(22, 29, 36, .35);
   --jb-glass-edge: linear-gradient(140deg, var(--jb-coral), transparent 42%, transparent 60%, var(--jb-cobalto));

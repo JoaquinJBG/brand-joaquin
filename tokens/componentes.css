@@ -33,7 +33,6 @@ html:has(.jb-base--nebulosa) { background: var(--jb-nebula-base); }
 .jb-muted { color: var(--jb-fg-muted); }
 .jb-neon { color: var(--jb-neon-text); text-shadow: var(--jb-glow-text); }
 
-/* fondo de landing: nebulosa (canvas de nebulosa.js) + rejilla de puntos + viñeta */
 .jb-fondo { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--jb-nebula-base); }
 .jb-fondo canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .jb-fondo::before {
@@ -51,13 +50,12 @@ html:has(.jb-base--nebulosa) { background: var(--jb-nebula-base); }
     radial-gradient(30vw 26vh at 96% 55%, rgba(249, 114, 121, .30), transparent 70%),
     var(--jb-nebula-base);
 }
-/* la viñeta aclara u oscurece el centro: el texto nunca va sobre la nebulosa a pelo */
+/* viñeta: el texto nunca va sobre la nebulosa a pelo */
 .jb-fondo::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: radial-gradient(110% 80% at 50% 45%, color-mix(in oklab, var(--jb-nebula-base) 65%, transparent), transparent 70%);
 }
 
-/* cristal con borde de luz */
 .jb-glass {
   position: relative;
   background: var(--jb-glass-bg);
@@ -77,7 +75,6 @@ html:has(.jb-base--nebulosa) { background: var(--jb-nebula-base); }
 a.jb-glass { color: inherit; text-decoration: none; display: block; transition: transform var(--dur-base) var(--ease-out); }
 a.jb-glass:hover { transform: translateY(var(--lift)); }
 
-/* botones: cápsula; el principal es coral y brilla */
 .jb-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   min-height: 48px; padding: 0 var(--space-5);
@@ -97,7 +94,6 @@ a.jb-glass:hover { transform: translateY(var(--lift)); }
 .jb-btn--round { width: 64px; min-height: 64px; padding: 0; }
 .jb-btn svg { width: 20px; height: 20px; }
 
-/* número de sección: cápsula coral con brillo, dos cifras */
 .jb-num {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 64px; height: 40px; padding: 0 var(--space-4);
@@ -120,7 +116,6 @@ a.jb-glass:hover { transform: translateY(var(--lift)); }
   background: var(--jb-coral); box-shadow: 0 0 10px var(--jb-coral);
 }
 
-/* cifras grandes */
 .jb-stat {
   font-family: var(--font-display); font-weight: var(--weight-display);
   letter-spacing: var(--tracking-display); line-height: 1;

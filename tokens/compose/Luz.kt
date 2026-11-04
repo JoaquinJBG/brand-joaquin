@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-// Brillo coral de botones y números. Las sombras de color solo se ven en Android 9 (API 28) o superior.
+// Las sombras de color solo se ven en Android 9 (API 28) o superior.
 fun Modifier.brilloCoral(forma: Shape = RoundedCornerShape(percent = 50), fuerza: Dp = 18.dp) =
     shadow(fuerza, forma, clip = false, ambientColor = Jb.Coral, spotColor = Jb.Coral)
 
@@ -39,7 +39,7 @@ fun Cristal(modifier: Modifier = Modifier, oscuro: Boolean, content: @Composable
     Box(modifier.background(fondo, forma).border(1.dp, bordeDeLuz, forma), content = content)
 }
 
-// La nebulosa animada es WebGL (web). En Android va esta versión quieta con degradados en los laterales.
+// La nebulosa animada es WebGL y solo existe en web: Compose pinta una versión quieta.
 @Composable
 fun FondoNebulosa(oscuro: Boolean, modifier: Modifier = Modifier, content: @Composable BoxScope.() -> Unit) {
     val base = if (oscuro) Jb.Abismo else Jb.Niebla
