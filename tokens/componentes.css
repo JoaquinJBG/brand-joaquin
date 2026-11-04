@@ -54,7 +54,7 @@ html:has(.jb-base--nebulosa) { background: var(--jb-nebula-base); }
 /* la viñeta aclara u oscurece el centro: el texto nunca va sobre la nebulosa a pelo */
 .jb-fondo::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: radial-gradient(100% 72% at 50% 42%, color-mix(in oklab, var(--jb-nebula-base) 60%, transparent), transparent 62%);
+  background: radial-gradient(110% 80% at 50% 45%, color-mix(in oklab, var(--jb-nebula-base) 65%, transparent), transparent 70%);
 }
 
 /* cristal con borde de luz */

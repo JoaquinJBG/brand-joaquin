@@ -34,7 +34,7 @@
   --jb-neon-text: var(--jb-coral-texto);
 
   /* cristal, luz y fondo */
-  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .42));
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(255, 255, 255, .55));
   --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 24px 50px -30px rgba(22, 29, 36, .35);
   --jb-glass-edge: linear-gradient(140deg, var(--jb-coral), transparent 42%, transparent 60%, var(--jb-cobalto));
   --jb-glass-blur: blur(18px) saturate(140%);
@@ -114,7 +114,7 @@
   --jb-line: rgba(22, 29, 36, .12);
   --jb-link: var(--jb-cobalto-texto);
   --jb-neon-text: var(--jb-coral-texto);
-  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .42));
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(255, 255, 255, .55));
   --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 24px 50px -30px rgba(22, 29, 36, .35);
   --jb-ghost-bg: rgba(255, 255, 255, .5);
   --jb-ghost-ring: inset 0 0 0 1px rgba(22, 29, 36, .18);
@@ -132,7 +132,7 @@
   --jb-line: rgba(231, 238, 242, .12);
   --jb-link: var(--jb-cobalto-claro);
   --jb-neon-text: var(--jb-coral);
-  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+  --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03)), linear-gradient(rgba(14, 19, 26, .62), rgba(14, 19, 26, .62));
   --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 50px -28px rgba(0, 0, 0, .9);
   --jb-ghost-bg: rgba(255, 255, 255, .05);
   --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
@@ -151,7 +151,7 @@
     --jb-line: rgba(231, 238, 242, .12);
     --jb-link: var(--jb-cobalto-claro);
     --jb-neon-text: var(--jb-coral);
-    --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    --jb-glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03)), linear-gradient(rgba(14, 19, 26, .62), rgba(14, 19, 26, .62));
     --jb-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 50px -28px rgba(0, 0, 0, .9);
     --jb-ghost-bg: rgba(255, 255, 255, .05);
     --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
