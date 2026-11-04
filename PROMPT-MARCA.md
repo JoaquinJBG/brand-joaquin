@@ -17,7 +17,7 @@ genere seguirán en español.
 ```markdown
 ## Personal brand (Joaquín Beltrán)
 
-This project follows Joaquín's personal brand (v2). Source of truth: C:\dev\personal\marca-personal
+This project follows Joaquín's personal brand (v2). Source of truth: https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal)
 (GUIA-MARCA.md for rules, tokens/ for values, muestra/index.html for a live reference).
 
 - Never hard-code brand colors, fonts, radii, glows or durations: use the tokens (CSS variables `--jb-*`,
@@ -50,7 +50,7 @@ Apply my personal brand (v2) to <PROJECT NAME> (<path>), a <Next.js/React | Angu
 app that <one line on what it does>.
 
 ## Context
-My personal brand lives in C:\dev\personal\marca-personal. Read these first, in this order:
+My personal brand lives in https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal). Read these first, in this order:
 1. GUIA-MARCA.md: every rule (color roles and contrast, type scale, spacing, radii, glass and light, nebula
    background, the band, section numbers, logos, photography, icons, components, motion, tone of voice,
    what we never do, checklist, per-technology notes).

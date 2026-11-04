@@ -1,5 +1,7 @@
 # marca personal · Joaquín Beltrán
 
+Repositorio: https://github.com/JoaquinJBG/brand-joaquin
+
 Identidad visual común para mis proyectos personales (FightLab PRO, NoticIA, Efectivo, Team Builder…).
 Cada proyecto tiene su propio diseño; lo que los une es esto: grises fríos, una nebulosa que fluye, cristal con
 borde de luz, un coral que brilla como un neón y una franja coral que cruza fotos y logos.
