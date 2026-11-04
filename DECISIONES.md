@@ -195,13 +195,14 @@ Decisiones mías (a revisar):
   una línea de neón que brilla. Sustituye a las rayas.
 - Prueba: `exploracion/franja-remates-v9.html`.
 
+## 2026-11-04 · Decimotercera ronda: logos
+
+- Eligió en la sesión de logos el monograma («Firma · limpia») y los logos de los cuatro proyectos (detalle en
+  `logos/README.md`). Avisado de que la Poké Ball de Team Builder es de Nintendo; la mantiene para ese proyecto.
+- Fusionado el PR #1 y el monograma pasa a las plantillas de icono de app e imagen para compartir.
+
 ## Pendiente
 
-- Logos y monograma definitivos (sesión aparte); después, pasarlos a las plantillas de icono e imagen.
-- Probar la marca en un proyecto real (empezar por FightLab).
-- Compilar `tokens/compose/` dentro de Efectivo.; después, pasarlo a la guía, los tokens, el prompt y la muestra.
-- Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
+- Aplicar la marca a un proyecto real con la skill `marca-personal` (empezar por FightLab).
 - Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
 - Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.
-- Pokédex 3D: ¿marca o solo edición especial del portfolio?
-- ¿Modo claro?

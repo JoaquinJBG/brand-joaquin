@@ -6,8 +6,8 @@ Plantillas en esta carpeta. Todas usan la paleta y la franja de la marca. Cuando
 | Plantilla | Tamaño | Qué cambiar |
 |---|---|---|
 | [`logo-franja.svg`](logo-franja.svg) | 600 × 240 (5:2) | el grupo `#marca` por el logo del proyecto |
-| [`icono-app.svg`](icono-app.svg) | 512 × 512 | el grupo `#simbolo` (y su copia recortada) por el símbolo; borra `#guia-zona-segura` al exportar |
-| [`og-1200x630.svg`](og-1200x630.svg) | 1200 × 630 | `#titulo`, `#subtitulo` y el grupo `#marca` |
+| [`icono-app.svg`](icono-app.svg) | 512 × 512 | lleva el monograma; para un proyecto, cambia el trazado `#simbolo` por su símbolo (`logos/<proyecto>/simbolo.svg`) |
+| [`og-1200x630.svg`](og-1200x630.svg) | 1200 × 630 | `#titulo` y `#subtitulo`; el grupo `#marca` ya lleva el monograma |
 | [`banner-readme.svg`](banner-readme.svg) | 1280 × 320 | `#titulo` y `#subtitulo` |
 
 ## Reglas

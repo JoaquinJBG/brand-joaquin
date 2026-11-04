@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.3.1 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.4 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -231,12 +231,23 @@ en [`tokens/compose/Franja.kt`](tokens/compose/Franja.kt) y la plantilla
 
 ## 11. Logos y monograma
 
-- **Todos los logos de sus proyectos**: en **un solo gris (acero)**, cruzados por la franja; dentro, en tinta.
-- Plantilla: [`plantillas/logo-franja.svg`](plantillas/logo-franja.svg). Se cambia el grupo `#marca` por el logo
-  (un trazado de un color) y no se toca el resto. Caja 5:2 (600 × 240).
-- Tamaños pequeños (favicon de 16 px): el logo en tinta o niebla, sin franja.
-- Logos de cada proyecto: **pendientes**, los pasará Joaquín.
-- Monograma: **provisional**, «jb» en Bricolage 800 sobre una tesela coral con brillo.
+Todos los logos están en [`logos/`](logos/) (detalle en [`logos/README.md`](logos/README.md)) y siguen la misma
+regla: **un solo gris (acero)**, cruzados por la franja con su corte de neón; dentro de la franja, en **tinta**.
+
+| Carpeta | Qué es |
+|---|---|
+| `monograma/` | **El monograma de Joaquín**: la J de su firma, redibujada con trazo de rotulador. Es su sello personal (iconos, imagen para compartir, pie de página). Mejor desde 32 px |
+| `fightlab-pro/` | «fightlab» en Bricolage 800 y «pro» en 500; favicon con la «f» |
+| `noticia/` | Onda de sonido en barras + «NoticIA» (N, I y A en mayúscula, por el juego con «IA») |
+| `efectivo/` | Pila de tres monedas + «efectivo» |
+| `team-builder/` | Poké Ball de línea + «team builder». Excepción a «sin Pokémon» solo para este proyecto; si algún día se monetiza, hay que cambiar el símbolo |
+
+En cada carpeta: `logo.svg` (un color), `logo-franja.svg` (caja 5:2 con franja), `simbolo.svg` (si tiene) y
+`favicon.svg` (sin franja; tinta en claro y niebla en oscuro). Todo son trazados: no dependen de la letra.
+
+- Logo nuevo: parte de [`plantillas/logo-franja.svg`](plantillas/logo-franja.svg) y de las medidas de
+  `logos/README.md` («Rehacerlos»).
+- Tamaños pequeños (48 px o menos): solo el símbolo, sin franja.
 - Firma en pies de página: `joaquín beltrán — hecho a mano`.
 
 ## 12. Fotografía
@@ -429,7 +440,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.4.0`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -496,7 +507,7 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1
+pnpm add github:JoaquinJBG/brand-joaquin#v2.4.0
 ```
 
 Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
@@ -550,5 +561,5 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 - Para que Claude lo haga todo solo: la skill [`skill/marca-personal`](skill/marca-personal/SKILL.md). Cópiala a
   `~/.claude/skills/marca-personal/` y di en cualquier proyecto «aplica mi branding personal».
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.3.1` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.4.0` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

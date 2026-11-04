@@ -76,7 +76,7 @@ be recognisable is the palette, the type, the nebula + glass + neon light, the b
 1. Audit the current UI: list where colors, fonts, radii, shadows and motion are defined, and which screens
    are the "key" ones (landing, home, main dashboard). Show me the list before changing anything big.
 2. Bring the tokens in:
-   - Web: install the brand with `pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1` and import
+   - Web: install the brand with `pnpm add github:JoaquinJBG/brand-joaquin#v2.4.0` and import
      brand-joaquin/fuentes.css first (or next/font/google in Next.js), then brand-joaquin/tokens.css and brand-joaquin/componentes.css once at the root. With Tailwind v4 also import
      brand-joaquin/tailwind-v4.css; with v3 use presets: [require("brand-joaquin/tailwind-preset")]. Mount the nebula with
      montarNebulosa(canvas) inside a .jb-fondo element on landing/hero screens and destroy it on unmount.

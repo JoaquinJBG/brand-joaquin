@@ -1,6 +1,13 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.3.1`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.4.0`) y la suben cuando quieren.
+
+## 2.4.0 · 2026-11-04
+
+- **Logos y monograma** en `logos/`: el monograma de su firma y los logos de FightLab PRO, NoticIA, Efectivo y
+  Team Builder, cada uno con versión de un color, con franja, símbolo y favicon.
+- Las plantillas de icono de app e imagen para compartir llevan ya el monograma en lugar del «jb» provisional.
+- La muestra enseña los logos reales.
 
 ## 2.3.1 · 2026-11-04
 
