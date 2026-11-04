@@ -154,6 +154,9 @@ Decisiones mías para que el sistema sea coherente (a revisar):
 - Modo por defecto: oscuro en landings y portadas; en apps, el del sistema.
 - La nebulosa animada es solo web (WebGL). En Compose va una versión estática con degradados.
 
+- **Fotos con fondo liso siempre que se pueda** (lo pidió viendo la muestra). Foto nueva: auriculares
+  plateados sobre gris de Ervo Rocks, licencia Unsplash.
+
 ## Pendiente
 
 - Crear el repositorio en GitHub y subirlo: falta nombre, visibilidad y correo de autor.; después, pasarlo a la guía, los tokens, el prompt y la muestra.
