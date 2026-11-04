@@ -25,6 +25,7 @@ no dependen de tener la letra instalada.
 | `noticia/` | **Onda** | Onda de sonido en barras + «NoticIA». Excepción pedida por él: N, I y A en mayúscula para que se lea el juego con «IA». |
 | `efectivo/` | **Monedas** | Pila de tres monedas + «efectivo». El símbolo vale para el widget y el icono adaptativo. |
 | `team-builder/` | **Poké Ball de línea** | Poké Ball dibujada con líneas + «team builder». Excepción pedida por él a la regla «sin Pokémon»: solo en este proyecto, que es un creador de equipos Pokémon. |
+| `percha/` | **Percha** | Una percha de líneas + «percha». El símbolo vale para el icono de la PWA. |
 
 ### Avisos
 
