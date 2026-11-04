@@ -201,6 +201,14 @@ Decisiones mías (a revisar):
   `logos/README.md`). Avisado de que la Poké Ball de Team Builder es de Nintendo; la mantiene para ese proyecto.
 - Fusionado el PR #1 y el monograma pasa a las plantillas de icono de app e imagen para compartir.
 
+## 2026-11-04 · Portfolio: Pokédex 3D como edición especial
+
+Decisión de Joaquín (llega desde la sesión del portfolio): la idea «Pokédex 3D» **no es la marca**; es una
+**edición especial del portfolio**. El portfolio aplica la marca (coral y cobalto, nebulosa, cristal,
+Bricolage y Geist, franja) pero conserva el dispositivo Pokédex 3D, el eslogan «Gotta Deploy 'Em All!», las
+estadísticas HP/ATK/DEF/SP.ATK/SPD y los iconos de bola. A la pregunta de quitar las referencias a Pokémon
+respondió: «Mantenlas». Es la segunda excepción a «sin Pokémon», junto con el logo de Team Builder.
+
 ## Pendiente
 
 - Aplicar la marca a un proyecto real con la skill `marca-personal` (empezar por FightLab).

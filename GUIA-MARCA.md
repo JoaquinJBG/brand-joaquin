@@ -425,7 +425,8 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 - Brillo en todo: solo botón principal, números, cifras y barras.
 - Texto directamente sobre la nebulosa.
 - Fotos a color o con objetos negros que la franja no tiñe.
-- Emojis como iconos. Pokémon en la marca.
+- Emojis como iconos. Pokémon en la marca (excepciones decididas por Joaquín: el logo de Team Builder y el
+  portfolio, que es una «edición especial» con su Pokédex 3D).
 
 **Cómo nos distinguimos de la referencia** (los dos usamos fondo oscuro y números de sección):
 
