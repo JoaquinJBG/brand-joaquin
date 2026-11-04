@@ -9,10 +9,10 @@ no dependen de tener la letra instalada.
 | Archivo | Qué es |
 |---|---|
 | `logo.svg` / `monograma.svg` | El logo en un solo color (acero), recortado a su tamaño. Cambia `fill` si lo necesitas en tinta o niebla. |
-| `logo-franja.svg` / `monograma-franja.svg` | Caja 5:2 (600 × 240) con la franja, según `plantillas/logo-franja.svg`. |
+| `logo-franja.svg` / `monograma-franja.svg` | Caja 5:2 (600 × 240) con la franja y su corte de neón, según `plantillas/logo-franja.svg` (v2.3). |
 | `simbolo.svg` | El símbolo solo, en un color. Para iconos y para `ic_launcher_monochrome` en Android. |
 | `favicon.svg` | Símbolo sin franja: tinta en modo claro y niebla en modo oscuro (cambia solo con `prefers-color-scheme`). |
-| `icono-app.svg` (monograma) | Icono de app de 512 px según `plantillas/icono-app.svg`: abismo con luz de nebulosa y franja sin rayas. |
+| `icono-app.svg` (monograma) | Icono de app de 512 px según `plantillas/icono-app.svg`: abismo con luz de nebulosa y franja. |
 | `monograma-16.png`, `-32.png` | Símbolo en niebla sobre abismo, sin franja. |
 | `monograma-180.png`, `-192.png`, `-512.png` | Desde `icono-app.svg` (apple-touch-icon, PWA). |
 
@@ -30,7 +30,7 @@ no dependen de tener la letra instalada.
 
 - **Team Builder**: la Poké Ball es marca registrada de Nintendo / The Pokémon Company. Para un proyecto personal sin
   ánimo de lucro suele tolerarse; si algún día se monetiza, hay que cambiar el símbolo.
-- **Descartado por el camino**: monogramas de letras («jb», «jjb», «JJB»), J geométricas (gancho, rayas, paralelas) y
+- **Descartado por el camino**: monogramas de letras («jb», «jjb», «JJB»), J geométricas (gancho, barra deshecha, paralelas) y
   las versiones geométrica y corta de la firma.
 
 ## Rehacerlos
