@@ -349,6 +349,9 @@ Checklist corta. Si se cumplen todas, el proyecto es «de Joaquín».
 | Angular | Importar `tokens.css` y `componentes.css` en `styles.css` (o `styles.scss`); si usa Angular Material, mapear `primary` a tinta y `accent` a coral |
 | Kotlin + Jetpack Compose | `tokens/compose/MarcaTheme.kt` y `Franja.kt` |
 
+Los dos archivos de Tailwind se han probado compilando con Tailwind 3.4.17 y 4.1.11 (utilidades, modo oscuro y
+animación). En v3 el texto sobre coral es `text-accent-on`; en v4, `text-on-accent`.
+
 ### Nota para Compose
 
 - En Material 3, `primary` es el color de los botones principales. Aquí el botón principal es **tinta** (niebla en

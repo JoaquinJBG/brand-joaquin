@@ -97,9 +97,26 @@ Resultado: `exploracion/direccion-v4.html`. Foto de muestra: astronauta de Adam 
   (https://unsplash.com/es/fotos/una-persona-sosteniendo-un-par-de-auriculares-en-la-mano-zJkNGKYLRU0).
 - Prueba de remates: `exploracion/franja-v5.html` (cápsula, corte o rayas).
 
+## 2026-11-04 · Sexta ronda: cierre de la v1
+
+- **Remate de la franja: C · Rayas** (se deshace en rayas que se desvanecen).
+- Con esto queda fijada la versión 1 de la marca: [GUIA-MARCA.md](GUIA-MARCA.md), tokens en `tokens/`,
+  [PROMPT-MARCA.md](PROMPT-MARCA.md) y la muestra en `muestra/index.html`.
+
+Decisiones que tomé yo (Claude) para completar el sistema, a revisar por Joaquín:
+
+- Iconos Lucide de contorno, trazo 1,75.
+- Escala de espacios en múltiplos de 4 y contenedor de 1240 px.
+- Sin sombras; la profundidad sale del color de las superficies.
+- Único movimiento automático: la entrada de la franja (900 ms).
+- Enlaces en cobalto más oscuro (`#23648F`) en modo claro para llegar al contraste AA; `#7FB4DA` en oscuro.
+- El coral es el mismo en todos los proyectos; los colores propios de un proyecto, fríos y apagados.
+- Monograma provisional «jb» en texto.
+
 ## Pendiente
 
-- Elegir remate de la franja.
-- Logos de los proyectos y monograma: los pasará él. Mientras, monograma provisional en texto.
+- Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
+- Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
+- Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.
 - Pokédex 3D: ¿marca o solo edición especial del portfolio?
 - ¿Modo claro?
