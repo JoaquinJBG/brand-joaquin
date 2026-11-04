@@ -122,9 +122,15 @@ Decisiones que tomé yo (Claude) para completar el sistema, a revisar por Joaqu�
 - Prototipo: `exploracion/landing-3d-v6.html` (metal líquido gris que la franja tiñe).
 - Su Windows tiene activado «reducir movimiento»: el prototipo trae un botón para ver el movimiento igualmente.
 
+## 2026-11-04 · Octava ronda (tras ver `exploracion/landing-3d-v6.html`)
+
+- **No le gusta el metal líquido 3D.** Quiere el diseño de FightLab PRO, no su color: nebulosa WebGL fluida en
+  los laterales, rejilla de puntos, paneles de cristal con borde de luz, botones que brillan, cifras grandes.
+- Prototipo con la paleta de la marca: `exploracion/landing-v7.html`.
+
 ## Pendiente
 
-- Que valide el prototipo 3D y la numeración; después, pasarlo a la guía, los tokens, el prompt y la muestra.
+- Que valide el estilo FightLab con su paleta (v7) y la numeración; después, pasarlo a la guía, los tokens, el prompt y la muestra.
 - Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
 - Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
 - Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.
