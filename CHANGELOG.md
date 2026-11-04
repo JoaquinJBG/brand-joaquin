@@ -1,6 +1,21 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.1.1`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.3.0`) y la suben cuando quieren.
+
+## 2.3.0 · 2026-11-04
+
+- **La franja acaba en un corte de neón** en vez de rayas: línea coral de 4 px que brilla y sobresale un 14 %.
+  Cambia en `componentes.css` (tokens `--franja-corte` y `--franja-corte-sobra`), en Compose (`FranjaJb.corte`,
+  `corteSobra`) y en las plantillas SVG de logo, imagen para compartir y banner.
+
+## 2.2.0 · 2026-11-04
+
+- **Estados en neón**: icono que brilla y texto dentro de una cápsula de cristal, sin bloques ni borde de color.
+  Error con una cara de ojos x.x y «nuevo» con una cara de ojos de estrella (`plantillas/iconos/`).
+  Nueva variante `.jb-alerta--info` y `.jb-chip--info`.
+- **Gráficas rediseñadas**: cifra grande encima, barras con degradado y la semana actual en coral con neón,
+  línea con área y brillo, anillo para ratios y barras apiladas para varias series.
+- Las etiquetas (`.jb-chip`) ya no parten el texto en varias líneas.
 
 ## 2.1.1 · 2026-11-04
 

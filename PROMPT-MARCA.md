@@ -17,7 +17,7 @@ genere seguirán en español.
 ```markdown
 ## Personal brand (Joaquín Beltrán)
 
-This project follows Joaquín's personal brand (v2.1). Source of truth: https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal)
+This project follows Joaquín's personal brand (v2.3). Source of truth: https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal)
 (GUIA-MARCA.md for rules, tokens/ for values, muestra/index.html for a live reference).
 
 - Never hard-code brand colors, fonts, radii, glows or durations: use the tokens (CSS variables `--jb-*`,
@@ -31,17 +31,18 @@ This project follows Joaquín's personal brand (v2.1). Source of truth: https://
   Big numbers: .jb-stat; neon text uses --jb-neon-text (#B83A44 in light mode for contrast).
 - Text never sits directly on the nebula: center vignette or inside glass.
 - The signature is "the band" (la franja): coral, enters from the right edge, 60% wide, at 46% from the top,
-  30% tall, inner end dissolves into fading 7px stripes. Once per key screen. Photos are black and white
+  30% tall, inner end is a hard "neon cut": a 4px glowing coral line that overhangs 14% top and bottom. Once per key screen. Photos are black and white
   (tech objects on a plain background, mid tones) with the band in multiply; logos are grey (#738A9A) with the in-band part in ink.
 - Motion: nebula flows continuously; the band slides in once (900ms ease-out); everything else only reacts to
   the user. With prefers-reduced-motion the nebula is painted still and the band appears in place.
 - Do not: grey drop shadows under flat cards, coloured dots after headings, coloured top stripes on cards,
   decorative 3D shapes or liquid metal, coral as small text on light, glow everywhere, text on bare nebula,
   orange, uppercase micro-labels, monospace decoration, hairline grids, particle spheres, emoji icons.
-- Status colors (success, warning, error, info) always come with an icon and text; error is crimson, never the
-  coral of the primary button. Use --jb-*-texto tokens for status text.
-- Charts: series colors in fixed order (--jb-serie-1..5: cobalt, coral, violet, teal, ochre), color follows the
-  series not its rank, max 5 series (fold into "Otros"), legend + hover detail + table view, one y-axis only.
+- Status: neon icon + text inside a glass pill, never coloured blocks or a coloured left edge. Error uses the
+  x.x face icon, new/info the star-eyes face (plantillas/iconos/). Error is crimson, never the button coral.
+- Charts: big stat on top; single series in cobalt gradient with the key value in coral neon; lines with a soft
+  area and glow; ring gauges; multi-series in fixed order (--jb-serie-1..5), max 5, legend + hover + table view,
+  one y-axis only.
 - App pieces: .jb-nav / .jb-tabbar, .jb-modal on <dialog>, .jb-toast inside aria-live, .jb-tabla, .jb-campo
   (visible label, help and error under the field), .jb-skeleton, .jb-vacio. In Compose use Material 3
   components with MarcaTheme and LocalColoresJb.
@@ -54,7 +55,7 @@ This project follows Joaquín's personal brand (v2.1). Source of truth: https://
 ## 2. Prompt de aplicación
 
 ```markdown
-Apply my personal brand (v2.1) to <PROJECT NAME> (<path>), a <Next.js/React | Angular | Kotlin + Jetpack Compose | other>
+Apply my personal brand (v2.3) to <PROJECT NAME> (<path>), a <Next.js/React | Angular | Kotlin + Jetpack Compose | other>
 app that <one line on what it does>.
 
 ## Context
@@ -75,7 +76,7 @@ be recognisable is the palette, the type, the nebula + glass + neon light, the b
 1. Audit the current UI: list where colors, fonts, radii, shadows and motion are defined, and which screens
    are the "key" ones (landing, home, main dashboard). Show me the list before changing anything big.
 2. Bring the tokens in:
-   - Web: install the brand with `pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1` and import
+   - Web: install the brand with `pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0` and import
      brand-joaquin/fuentes.css first (or next/font/google in Next.js), then brand-joaquin/tokens.css and brand-joaquin/componentes.css once at the root. With Tailwind v4 also import
      brand-joaquin/tailwind-v4.css; with v3 use presets: [require("brand-joaquin/tailwind-preset")]. Mount the nebula with
      montarNebulosa(canvas) inside a .jb-fondo element on landing/hero screens and destroy it on unmount.

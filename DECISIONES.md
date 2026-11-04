@@ -181,6 +181,20 @@ Decisiones mías (a revisar):
   reutilizar la marca.
 - El preset de Tailwind v3 pasa a `tailwind.preset.cjs` porque el paquete es ESM.
 
+## 2026-11-04 · Undécima ronda: estados y gráficas
+
+- Los estados con borde de color a la izquierda le parecen feos («muy Claude»). Ahora: iconos en neón, sin
+  borde; error con cara de ojos x.x y «nuevo» con cara de ojos de estrella; éxito y aviso con su icono, en neón.
+- Pidió darle una vuelta a las gráficas: cifra grande, degradado, lo importante en neón, anillo y área.
+- Referencias consultadas en Mobbin (Railway, Searchable, Origin, Lovable): el estado ocupa poco sitio.
+
+## 2026-11-04 · Duodécima ronda: remate de la franja
+
+- Probó un final en nebulosa (dos variantes) y no le gustó.
+- Entre puntos, degradado, escalones y corte de neón eligió **D · Corte de neón**: el extremo acaba en seco con
+  una línea de neón que brilla. Sustituye a las rayas.
+- Prueba: `exploracion/franja-remates-v9.html`.
+
 ## Pendiente
 
 - Logos y monograma definitivos (sesión aparte); después, pasarlos a las plantillas de icono e imagen.

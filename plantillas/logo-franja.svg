@@ -1,24 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240">
   <!-- Plantilla de logo con franja. Sustituye el contenido de #marca por el logo (en un solo color)
-       y deja todo lo demás igual: banda al 60 % desde la derecha, 46 % arriba y 30 % de alto. -->
+       y deja todo lo demás igual: banda al 60 % desde la derecha, 46 % arriba y 30 % de alto, con el corte de neón a la izquierda. -->
   <defs>
+    <filter id="neon" x="-400%" y="-20%" width="900%" height="140%"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="a"/><feGaussianBlur in="SourceGraphic" stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="a"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <g id="marca">
       <text x="300" y="150" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="104" letter-spacing="-4.7">proyecto</text>
     </g>
     <clipPath id="banda"><rect x="240" y="110.4" width="360" height="72"/></clipPath>
-    <linearGradient id="desvanece" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="1"/>
-    </linearGradient>
-    <mask id="rayas-mask" maskUnits="userSpaceOnUse" x="160.8" y="110.4" width="79.2" height="72">
-      <rect x="160.8" y="110.4" width="79.2" height="72" fill="url(#desvanece)"/>
-    </mask>
-    <pattern id="rayas" patternUnits="userSpaceOnUse" x="160.8" y="0" width="14" height="240">
-      <rect x="7" y="0" width="7" height="240" fill="#F97279"/>
-    </pattern>
   </defs>
   <use href="#marca" fill="#738A9A"/>
   <rect x="240" y="110.4" width="360" height="72" fill="#F97279"/>
-  <rect x="160.8" y="110.4" width="79.2" height="72" fill="url(#rayas)" mask="url(#rayas-mask)"/>
+  <rect x="236" y="100.3" width="4" height="92.2" rx="2.0" fill="#F97279" filter="url(#neon)"/>
   <g clip-path="url(#banda)"><use href="#marca" fill="#161D24"/></g>
 </svg>

@@ -12,8 +12,8 @@ Plantillas en esta carpeta. Todas usan la paleta y la franja de la marca. Cuando
 
 ## Reglas
 
-- El icono de app lleva el símbolo en acero con la franja; dentro de la franja, en tinta. **Sin rayas**: a
-  tamaño de icono se convierten en ruido.
+- El icono de app lleva el símbolo en acero con la franja; dentro de la franja, en tinta. **Sin corte de neón**: a
+  tamaño de icono no se aprecia.
 - En iconos de 48 px o menos no hay franja: símbolo en niebla sobre abismo (o en tinta sobre niebla).
 - Todo el texto de las plantillas se convierte a trazados antes de exportar a PNG, para no depender de que el
   ordenador tenga la letra instalada.
