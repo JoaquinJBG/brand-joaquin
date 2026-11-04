@@ -1,4 +1,4 @@
-/* Uso en globals.css: @import "tailwindcss"; @import "./marca/tokens.css"; @import "./marca/tailwind-v4.css"; */
+/* Uso en globals.css: @import "tailwindcss"; @import "brand-joaquin/tokens.css"; @import "brand-joaquin/componentes.css"; @import "brand-joaquin/tailwind-v4.css"; */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {

@@ -31,8 +31,11 @@ derecha para verla fluir.
 
 ## Usarla en un proyecto
 
+Lo más fácil: instala la skill [`skill/marca-personal`](skill/marca-personal/SKILL.md) en
+`~/.claude/skills/marca-personal/` y di en el proyecto «aplica mi branding personal». A mano:
+
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0
+pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1
 ```
 
 Cómo importarla en Tailwind v4, v3, Angular y Compose: apartado 24 de la guía. Cambios por versión en

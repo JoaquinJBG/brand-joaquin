@@ -1,6 +1,14 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.3.0`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.3.1`) y la suben cuando quieren.
+
+## 2.3.1 · 2026-11-04
+
+- Skill `marca-personal` (en `skill/`) para que cualquier sesión de Claude aplique la marca al oír «aplica mi
+  branding personal». Probada en seco sobre FightLab.
+- Guía: cómo conectar las letras con `next/font` en Next.js, qué hacer con nombres de `@theme` repetidos, caché del
+  service worker en PWA, y que las apps solo oscuras no ganan modo claro sin pedirlo.
+- Corregido el comentario de uso de `tailwind-v4.css`.
 
 ## 2.3.0 · 2026-11-04
 

@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.3 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.3.1 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -53,7 +53,8 @@ Lo que tiene que pensar quien lo vea: *qué nivel técnico*, *qué elegante* y *
 4. **Cristal, no sombra.** La profundidad la dan el cristal y el brillo coral. Nunca una sombra gris bajo una
    tarjeta plana.
 5. **Redondo para tocar.** Botones, etiquetas, campos y números de sección son cápsulas.
-6. **Claro y oscuro, los dos de primera.** Landings y portadas en oscuro por defecto; apps, como diga el sistema.
+6. **Claro y oscuro, los dos de primera.** Landings y portadas en oscuro por defecto; apps, como diga el sistema
+   si ya tienen los dos modos. Una app que solo tiene oscuro no gana modo claro sin que Joaquín lo pida.
 
 ## 3. Color
 
@@ -428,7 +429,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -495,13 +496,33 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0
+pnpm add github:JoaquinJBG/brand-joaquin#v2.3.1
 ```
 
 Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
-archivo final y el navegador lo ignora. En Next.js usa `next/font/google` (Bricolage Grotesque 800 y Geist
-400/500/600); en el resto, `@import "brand-joaquin/fuentes.css";` como **primera línea** del CSS principal, o un
-`<link>` a Google Fonts en el `<head>`.
+archivo final y el navegador lo ignora. Fuera de Next.js: `@import "brand-joaquin/fuentes.css";` como **primera
+línea** del CSS principal, o un `<link>` a Google Fonts en el `<head>`.
+
+En **Next.js** se usa `next/font/google`, que renombra la letra. Por eso hay que decirle a los tokens el nombre
+nuevo, después de importar la marca:
+
+```tsx
+// layout.tsx
+const display = Bricolage_Grotesque({ subsets: ["latin"], weight: "800", variable: "--fuente-display" });
+const body = Geist({ subsets: ["latin"], variable: "--fuente-body" });
+// <html className={`${display.variable} ${body.variable}`}>
+```
+
+```css
+/* globals.css, después de los @import de la marca */
+:root {
+  --font-display: var(--fuente-display), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--fuente-body), "Geist", system-ui, sans-serif;
+}
+```
+
+Si el proyecto ya tiene un `@theme` con nombres que trae la marca (`--color-bg`, `--color-surface`,
+`--font-display`…), se borran los suyos y sus utilidades pasan a las de la marca.
 
 ```css
 /* globals.css (Tailwind v4) */
@@ -525,6 +546,9 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 ```
 
 - Angular: los mismos `@import` en `styles.css`.
+- PWA: al cambiar iconos, `theme-color` o estilos, sube la versión de la caché del service worker.
+- Para que Claude lo haga todo solo: la skill [`skill/marca-personal`](skill/marca-personal/SKILL.md). Cópiala a
+  `~/.claude/skills/marca-personal/` y di en cualquier proyecto «aplica mi branding personal».
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.3.0` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.3.1` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.
