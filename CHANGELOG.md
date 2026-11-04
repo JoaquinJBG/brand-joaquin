@@ -1,6 +1,10 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.4.0`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.4.1`) y la suben cuando quieren.
+
+## 2.4.1 · 2026-11-04
+
+- Logo de **Percha** en `logos/percha/` (percha de línea junto a «percha»), también en la guía y la muestra.
 
 ## 2.4.0 · 2026-11-04
 

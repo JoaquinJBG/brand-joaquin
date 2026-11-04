@@ -1,6 +1,6 @@
 ---
 name: marca-personal
-description: Use when Joaquín asks to apply, bring in, update or check his personal brand in one of his personal projects (FightLab PRO, NoticIA, Efectivo, PokemonTeamBuilder / Team Builder, his portfolio or any new personal project) — "aplica mi branding personal", "aplica mi marca", "ponle mi estilo", "pásale la marca personal", "que se vea como mis proyectos", "actualiza la marca a la última versión", "¿esto cumple mi marca?". Also when designing any new screen, landing, logo, icon or README banner for one of those projects. Not for Bettergy repos (caes, miot, bettergyHub…): they have their own brand.
+description: Use when Joaquín asks to apply, bring in, update or check his personal brand in one of his personal projects (FightLab PRO, NoticIA, Efectivo, PokemonTeamBuilder / Team Builder, Percha, his portfolio or any new personal project) — "aplica mi branding personal", "aplica mi marca", "ponle mi estilo", "pásale la marca personal", "que se vea como mis proyectos", "actualiza la marca a la última versión", "¿esto cumple mi marca?". Also when designing any new screen, landing, logo, icon or README banner for one of those projects. Not for Bettergy repos (caes, miot, bettergyHub…): they have their own brand.
 ---
 
 # Aplicar la marca personal de Joaquín

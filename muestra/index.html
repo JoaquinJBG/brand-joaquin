@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guía de marca · Joaquín Beltrán</title>
-<link rel="stylesheet" href="../tokens/fuentes.css?v=2.4.0">
-<link rel="stylesheet" href="../tokens/tokens.css?v=2.4.0">
-<link rel="stylesheet" href="../tokens/componentes.css?v=2.4.0">
+<link rel="stylesheet" href="../tokens/fuentes.css?v=2.4.1">
+<link rel="stylesheet" href="../tokens/tokens.css?v=2.4.1">
+<link rel="stylesheet" href="../tokens/componentes.css?v=2.4.1">
 <style>
 body{margin:0;overflow-x:hidden}
 .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
@@ -287,8 +287,8 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
     <div class="head"><span class="jb-num">07</span><h2 class="jb-h2">logos</h2><p>Todos en gris, cruzados por la franja con su corte de neón; dentro, en tinta. Archivos en logos/.</p></div>
     <div class="grid g2" id="logos-grid"></div>
     <div style="display:flex;gap:var(--space-5);align-items:center;margin-top:var(--space-6)">
-      <figure class="logo-real" style="width:min(420px,100%);margin:0"><img src="../logos/monograma/monograma-franja.svg?v=2.4.0" alt="Monograma de Joaquín Beltrán con la franja"></figure>
-      <img src="../logos/monograma/icono-app.svg?v=2.4.0" alt="Icono de app con el monograma" style="width:96px;height:96px;border-radius:22px">
+      <figure class="logo-real" style="width:min(420px,100%);margin:0"><img src="../logos/monograma/monograma-franja.svg?v=2.4.1" alt="Monograma de Joaquín Beltrán con la franja"></figure>
+      <img src="../logos/monograma/icono-app.svg?v=2.4.1" alt="Icono de app con el monograma" style="width:96px;height:96px;border-radius:22px">
       <p class="jb-muted" style="margin:0;max-width:36ch;font-size:var(--text-small)">El monograma sale de tu firma. Firma de pie de página: «joaquín beltrán — hecho a mano».</p>
     </div>
   </section>
@@ -324,7 +324,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
       </div>
       <a class="jb-glass" href="#piezas">
         <p class="label">Tarjeta de proyecto</p>
-        <figure class="logo-real" style="margin:0 0 var(--space-5)"><img src="../logos/fightlab-pro/logo-franja.svg?v=2.4.0" alt="Logo de FightLab PRO"></figure>
+        <figure class="logo-real" style="margin:0 0 var(--space-5)"><img src="../logos/fightlab-pro/logo-franja.svg?v=2.4.1" alt="Logo de FightLab PRO"></figure>
         <h3 class="jb-h3">fightlab pro</h3>
         <p style="margin:var(--space-2) 0 var(--space-4)">Entrenamiento, nutrición y coach con IA para atletas de combate.</p>
         <div class="btns"><span class="jb-chip">PWA</span><span class="jb-chip">IA</span></div>
@@ -454,10 +454,10 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   <section id="compartir">
     <div class="head"><span class="jb-num">13</span><h2 class="jb-h2">iconos y compartir</h2><p>Plantillas en plantillas/: icono de app, imagen para compartir enlaces y banner de README. Los tamaños, en plantillas/ICONOS.md.</p></div>
     <div class="grid g3">
-      <div class="jb-glass"><p class="label">Icono de app</p><img src="../plantillas/icono-app.svg?v=2.4.0" alt="Icono de app con el monograma y la franja" style="width:160px;height:160px;display:block"></div>
-      <div class="jb-glass" style="grid-column:span 2"><p class="label">Imagen para compartir (1200 × 630)</p><img src="../plantillas/og-1200x630.svg?v=2.4.0" alt="Imagen para compartir de un proyecto" style="width:100%;border-radius:var(--radius-md);display:block"></div>
+      <div class="jb-glass"><p class="label">Icono de app</p><img src="../plantillas/icono-app.svg?v=2.4.1" alt="Icono de app con el monograma y la franja" style="width:160px;height:160px;display:block"></div>
+      <div class="jb-glass" style="grid-column:span 2"><p class="label">Imagen para compartir (1200 × 630)</p><img src="../plantillas/og-1200x630.svg?v=2.4.1" alt="Imagen para compartir de un proyecto" style="width:100%;border-radius:var(--radius-md);display:block"></div>
     </div>
-    <div class="jb-glass" style="margin-top:var(--space-4)"><p class="label">Banner de README</p><img src="../plantillas/banner-readme.svg?v=2.4.0" alt="Banner de README de un proyecto" style="width:100%;display:block"></div>
+    <div class="jb-glass" style="margin-top:var(--space-4)"><p class="label">Banner de README</p><img src="../plantillas/banner-readme.svg?v=2.4.1" alt="Banner de README de un proyecto" style="width:100%;display:block"></div>
   </section>
 
   <section id="movimiento">
@@ -521,7 +521,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
 </div>
 
 <script type="module">
-import { montarNebulosa } from "../tokens/nebulosa.js?v=2.4.0";
+import { montarNebulosa } from "../tokens/nebulosa.js?v=2.4.1";
 
 const root = document.documentElement;
 const reducir = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -560,9 +560,9 @@ const sp = [4, 8, 12, 16, 24, 32, 48, 64, 96, 128];
 document.getElementById("spaces").innerHTML = '<p class="label">Espacios</p>' +
   sp.map((v, i) => `<div class="space"><span>space-${i + 1} · ${v} px</span><i style="width:${v * 2.2}px"></i></div>`).join("");
 
-const logos = [["fightlab-pro", "FightLab PRO"], ["noticia", "NoticIA"], ["efectivo", "Efectivo"], ["team-builder", "Team Builder"]];
+const logos = [["fightlab-pro", "FightLab PRO"], ["noticia", "NoticIA"], ["efectivo", "Efectivo"], ["team-builder", "Team Builder"], ["percha", "Percha"]];
 document.getElementById("logos-grid").innerHTML = logos.map(([c, n]) =>
-  `<figure class="logo-real"><img src="../logos/${c}/logo-franja.svg?v=2.4.0" alt="Logo de ${n} con la franja"></figure>`).join("");
+  `<figure class="logo-real"><img src="../logos/${c}/logo-franja.svg?v=2.4.1" alt="Logo de ${n} con la franja"></figure>`).join("");
 
 document.getElementById("replay").addEventListener("click", () => {
   for (const el of [document.getElementById("hero-franja"), document.getElementById("bloque-franja")]) {
