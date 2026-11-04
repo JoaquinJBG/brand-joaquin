@@ -32,7 +32,7 @@ derecha para verla fluir.
 ## Usarla en un proyecto
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1
+pnpm add github:JoaquinJBG/brand-joaquin#v2.2.0
 ```
 
 Cómo importarla en Tailwind v4, v3, Angular y Compose: apartado 24 de la guía. Cambios por versión en

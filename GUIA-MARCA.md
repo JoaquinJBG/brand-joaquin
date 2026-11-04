@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.1.1 · 4 de noviembre de 2026 · Elegida por Joaquín en diez rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.2 · 4 de noviembre de 2026 · Elegida por Joaquín en once rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -276,18 +276,21 @@ Todos están en la muestra viva y en [`tokens/componentes.css`](tokens/component
 
 ## 15. Estados
 
-Para avisos, validaciones y datos con significado (zona segura, riesgo). **Siempre con icono y texto**: el
-color nunca va solo. El error es carmesí, más oscuro que el coral del botón, para no confundirlos.
+Para avisos, validaciones y datos con significado (zona segura, riesgo). **Icono en neón y texto**, dentro de una
+cápsula de cristal. Sin bloques de color ni borde de color a un lado. El color nunca va solo.
 
-| Estado | Relleno | Texto en claro | Texto en oscuro | Icono (Lucide) |
+| Estado | Icono | Relleno | Texto en claro | Texto en oscuro |
 |---|---|---|---|---|
-| Éxito | `#1E9E6A` | `#0B7550` (4,9:1) | `#3FCB8E` (9,4:1) | `circle-check` |
-| Aviso | `#E2A21B` | `#8A5A00` (5,1:1) | `#F2BC4A` (11,1:1) | `triangle-alert` |
-| Error | `#C8323F` | `#B42B37` (5,4:1) | `#FF5A6A` (6,4:1) | `circle-x` |
-| Información | cobalto | `#23648F` (5,4:1) | `#7FB4DA` (8,7:1) | `info` |
+| Éxito | círculo con ✓ | `#1E9E6A` | `#0B7550` (4,9:1) | `#3FCB8E` (9,4:1) |
+| Aviso | triángulo con ! | `#E2A21B` | `#8A5A00` (5,1:1) | `#F2BC4A` (11,1:1) |
+| Error | **cara con ojos x.x** y boca ondulada | `#C8323F` | `#B42B37` (5,4:1) | `#FF5A6A` (6,4:1) |
+| Nuevo / información | **cara con ojos de estrella** y sonrisa | cobalto | `#23648F` (5,4:1) | `#7FB4DA` (8,7:1) |
 
+- Los iconos están en [`plantillas/iconos/`](plantillas/iconos/) (`estado-exito.svg`, `estado-aviso.svg`,
+  `estado-error.svg`, `estado-info.svg`), con trazo 1,75 como el resto de iconos.
+- El icono brilla con su propio color (`drop-shadow` de 6 px) y la palabra clave en negrita lleva un halo suave.
 - Tokens: `--jb-exito`, `--jb-exito-texto`, `--jb-on-exito`… (igual para `aviso`, `error`, `info`).
-- Piezas: `.jb-alerta` (`--exito`, `--aviso`, `--error`), etiquetas `.jb-chip--exito/--aviso/--error`, y el error
+- Piezas: `.jb-alerta` (`--exito`, `--aviso`, `--error`, `--info`), etiquetas `.jb-chip--exito/--aviso/--error/--info`, y el error
   de un campo con `.jb-campo .error` y `aria-invalid="true"`.
 - Sobre un relleno de estado: tinta encima de éxito y aviso; blanco encima de error.
 - Los colores de estado no se usan para series de gráficas ni para decorar.
@@ -317,12 +320,20 @@ Validado con el método de la skill de visualización (prueba de daltonismo, lum
 
 ### Cómo se dibujan
 
-- Barras finas con las puntas redondeadas 4 px y 2 px de separación; líneas de 2 px; puntos de 8 px o más.
+- **Cifra grande encima** (`.jb-stat`) con una etiqueta de estado al lado (+12 % sobre tu media). La gráfica
+  explica la cifra, no al revés.
+- **Una sola serie**: barras en cobalto con degradado hacia abajo y **lo importante en coral con neón** (la
+  semana actual, el valor récord). Una línea discontinua marca la media.
+- **Líneas**: la serie principal en cobalto con brillo y un área degradada debajo; la de referencia
+  (objetivo) en coral discontinua. Punto brillante en el último valor y etiquetas directas al final.
+- **Indicadores**: anillo de 240° con la zona buena marcada suave en verde y el valor en coral con neón.
+- **Varias series**: barras apiladas con 2 px de separación entre segmentos, en el orden fijo de series.
+- Esquinas de 6 px arriba en las barras; líneas de 2–2,5 px; puntos de 8 px o más.
 - Rejilla y ejes muy suaves (`--jb-grid`, `--jb-axis`). Un solo eje vertical, nunca dos escalas.
-- Leyenda siempre con dos series o más, y etiquetas directas en las líneas.
-- Detalle al pasar el ratón (o al tocar): barra vertical y valores en las líneas; valor en cada barra.
+- Al pasar el ratón: la marca señalada se queda y el resto baja de opacidad; detalle con el valor. En líneas,
+  barra vertical y valores de las dos series.
 - Opción «ver como tabla» para lectores de pantalla y para quien lo prefiera.
-- Los textos de la gráfica van en los colores de texto, nunca en el color de la serie.
+- Los textos de la gráfica van en los colores de texto; solo la marca destacada usa el neón.
 
 ## 17. Piezas de app
 
@@ -415,7 +426,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.2.0`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -482,7 +493,7 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1
+pnpm add github:JoaquinJBG/brand-joaquin#v2.2.0
 ```
 
 Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
@@ -513,5 +524,5 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 
 - Angular: los mismos `@import` en `styles.css`.
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.1.1` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.2.0` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

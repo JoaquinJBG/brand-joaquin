@@ -91,6 +91,19 @@ table.t td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-top:1px
 .duo ul{margin:0;padding-left:18px;color:var(--jb-fg-muted);font-size:var(--text-small)}
 .duo li{margin-bottom:var(--space-2)}
 
+.graf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+.graf-barras{grid-column:span 2}
+.graf-lineas{grid-column:span 2}
+.graf-anillo{display:grid;gap:var(--space-3);align-content:start}
+.graf-anillo #anillo{width:100%;max-width:220px;justify-self:center}
+.graf-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-3)}
+.graf-cab .jb-stat{margin:6px 0 0}
+.chart .neon{filter:drop-shadow(0 0 6px rgba(249,114,121,.75))}
+.chart .neon-azul{filter:drop-shadow(0 0 6px rgba(63,138,196,.7))}
+.chart [data-tip]{cursor:pointer;transition:opacity var(--dur-fast) var(--ease-out)}
+.chart:hover [data-tip]:not(:hover){opacity:.55}
+@media (max-width:980px){.graf{grid-template-columns:1fr}.graf-barras,.graf-lineas{grid-column:auto}}
+
 .chart{display:block;width:100%;height:auto;overflow:visible}
 .chart text{font:12px var(--font-body);fill:var(--jb-fg-muted)}
 .leyenda{display:flex;gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-small);color:var(--jb-fg-muted);margin-bottom:var(--space-3)}
@@ -334,17 +347,17 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   </section>
 
   <section id="estados">
-    <div class="head"><span class="jb-num">10</span><h2 class="jb-h2">estados</h2><p>Éxito, aviso, error e información. Siempre con icono y texto: el color nunca va solo. El error es carmesí, más oscuro que el coral del botón.</p></div>
+    <div class="head"><span class="jb-num">10</span><h2 class="jb-h2">estados</h2><p>Iconos en neón y texto, sin cajas de color. Para los dos con más carácter, caras: «no se ha guardado» con ojos x.x y «nuevo» con ojos de estrella.</p></div>
     <div class="grid g2">
       <div class="jb-glass" style="display:grid;gap:var(--space-3)">
         <div class="jb-alerta jb-alerta--exito" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Guardado.</strong> Tu sesión de hoy ya cuenta en la carga semanal.</div></div>
         <div class="jb-alerta jb-alerta--aviso" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><strong>Carga alta.</strong> Llevas tres días por encima de tu media.</div></div>
-        <div class="jb-alerta jb-alerta--error" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><div><strong>No se ha guardado.</strong> Revisa la conexión y vuelve a probar.</div></div>
-        <div class="jb-alerta" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><strong>Nuevo.</strong> Ya puedes exportar tus datos.</div></div>
+        <div class="jb-alerta jb-alerta--error" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 8.5 3 3m0-3-3 3"/><path d="m13.5 8.5 3 3m0-3-3 3"/><path d="M8.5 16.5c1-1 2.3-1 3.5 0s2.5 1 3.5 0"/></svg><div><strong>No se ha guardado.</strong> Revisa la conexión y vuelve a probar.</div></div>
+        <div class="jb-alerta jb-alerta--info" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 7.5v4m-2-2h4"/><path d="M15 7.5v4m-2-2h4"/><path d="M8 14.5a4 4 0 0 0 8 0"/></svg><div><strong>Nuevo.</strong> Ya puedes exportar tus datos.</div></div>
       </div>
       <div class="jb-glass">
         <p class="label">Etiquetas de estado</p>
-        <div class="btns" style="margin-bottom:var(--space-5)"><span class="jb-chip jb-chip--exito"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Zona segura</span><span class="jb-chip jb-chip--aviso"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Vigilar</span><span class="jb-chip jb-chip--error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Riesgo</span></div>
+        <div class="btns" style="margin-bottom:var(--space-5)"><span class="jb-chip jb-chip--exito"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Zona segura</span><span class="jb-chip jb-chip--aviso"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Vigilar</span><span class="jb-chip jb-chip--error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 8.5 3 3m0-3-3 3"/><path d="m13.5 8.5 3 3m0-3-3 3"/><path d="M8.5 16.5c1-1 2.3-1 3.5 0s2.5 1 3.5 0"/></svg>Riesgo</span></div>
         <table class="t"><thead><tr><th>Estado</th><th>Relleno</th><th>Texto claro · oscuro</th></tr></thead><tbody>
           <tr><td>Éxito</td><td>#1E9E6A</td><td>#0B7550 · #3FCB8E</td></tr>
           <tr><td>Aviso</td><td>#E2A21B</td><td>#8A5A00 · #F2BC4A</td></tr>
@@ -356,18 +369,32 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   </section>
 
   <section id="graficas">
-    <div class="head"><span class="jb-num">11</span><h2 class="jb-h2">gráficas</h2><p>Cinco series en orden fijo, validadas para daltonismo en claro y oscuro. El color sigue a la serie, nunca a su posición. Más de cinco: «Otros» o gráficas pequeñas por separado.</p></div>
-    <div class="grid g2">
-      <div class="jb-glass">
-        <p class="label">Carga por tipo de sesión · últimas 4 semanas</p>
-        <div class="leyenda" id="leyenda-barras"></div>
-        <svg id="barras" class="chart" viewBox="0 0 520 240" role="img" aria-label="Barras agrupadas de carga por tipo de sesión"></svg>
-        <details style="margin-top:var(--space-3)"><summary class="label" style="cursor:pointer;margin:0">Ver como tabla</summary><table class="jb-tabla" id="tabla-barras" style="margin-top:var(--space-3)"></table></details>
+    <div class="head"><span class="jb-num">11</span><h2 class="jb-h2">gráficas</h2><p>Cifra grande encima, barras con degradado y lo importante en neón. Las series por tipo usan cinco colores en orden fijo, validados para daltonismo.</p></div>
+    <div class="graf">
+      <div class="jb-glass graf-barras">
+        <div class="graf-cab">
+          <div><p class="label" style="margin:0">Carga semanal</p><div class="jb-stat">1.284</div></div>
+          <span class="jb-chip jb-chip--exito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m7 14 5-5 5 5"/></svg>+12 % sobre tu media</span>
+        </div>
+        <svg id="barras" class="chart" viewBox="0 0 640 230" role="img" aria-label="Carga de las últimas 10 semanas; la semana actual destacada"></svg>
+        <details style="margin-top:var(--space-2)"><summary class="label" style="cursor:pointer;margin:0">Ver como tabla</summary><table class="jb-tabla" id="tabla-barras" style="margin-top:var(--space-3)"></table></details>
       </div>
-      <div class="jb-glass">
-        <p class="label">Peso y objetivo · 8 semanas</p>
-        <div class="leyenda" id="leyenda-lineas"></div>
-        <svg id="lineas" class="chart" viewBox="0 0 520 240" role="img" aria-label="Líneas de peso y objetivo"></svg>
+      <div class="jb-glass graf-anillo">
+        <p class="label" style="margin:0">Ratio agudo / crónico</p>
+        <svg id="anillo" viewBox="0 0 200 200" role="img" aria-label="Ratio agudo crónico 1,12, dentro de la zona segura"></svg>
+        <span class="jb-chip jb-chip--exito" style="justify-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Zona segura · 0,8 a 1,3</span>
+      </div>
+      <div class="jb-glass graf-lineas">
+        <div class="graf-cab">
+          <div><p class="label" style="margin:0">Peso y objetivo · 8 semanas</p><div class="jb-stat">72,1 kg</div></div>
+          <div class="leyenda" id="leyenda-lineas" style="margin:0"></div>
+        </div>
+        <svg id="lineas" class="chart" viewBox="0 0 900 240" role="img" aria-label="Peso real frente al objetivo en 8 semanas"></svg>
+      </div>
+      <div class="jb-glass graf-series">
+        <p class="label" style="margin:0 0 var(--space-3)">Series por tipo de sesión</p>
+        <div class="leyenda" id="leyenda-apiladas"></div>
+        <svg id="apiladas" class="chart" viewBox="0 0 420 200" role="img" aria-label="Minutos por tipo de sesión, barras apiladas por semana"></svg>
       </div>
     </div>
     <div class="grid g2" style="margin-top:var(--space-4)">
@@ -416,7 +443,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
       <form class="jb-glass" style="display:grid;gap:var(--space-4)" onsubmit="return false" novalidate>
         <p class="label" style="margin:0">Formulario</p>
         <div class="jb-campo"><label for="f-nombre">Nombre</label><input class="jb-input" id="f-nombre" value="Joaquín"><span class="ayuda">Como quieres que te llame el coach.</span></div>
-        <div class="jb-campo"><label for="f-peso">Peso (kg)</label><input class="jb-input" id="f-peso" value="7O" aria-invalid="true" aria-describedby="f-peso-error"><span class="error" id="f-peso-error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Escribe solo números, por ejemplo 72,5.</span></div>
+        <div class="jb-campo"><label for="f-peso">Peso (kg)</label><input class="jb-input" id="f-peso" value="7O" aria-invalid="true" aria-describedby="f-peso-error"><span class="error" id="f-peso-error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 8.5 3 3m0-3-3 3"/><path d="m13.5 8.5 3 3m0-3-3 3"/><path d="M8.5 16.5c1-1 2.3-1 3.5 0s2.5 1 3.5 0"/></svg>Escribe solo números, por ejemplo 72,5.</span></div>
         <div class="jb-campo"><label for="f-tipo">Tipo de sesión</label><select class="jb-input jb-select" id="f-tipo"><option>Sparring</option><option>Fuerza</option><option>Cardio</option></select></div>
         <label class="jb-check"><input type="checkbox" checked> Avisarme si la carga sube demasiado</label>
         <div class="btns"><button class="jb-btn" type="submit">Guardar</button><button class="jb-btn jb-btn--ghost" type="reset">Cancelar</button></div>
@@ -542,72 +569,108 @@ document.getElementById("replay").addEventListener("click", () => {
     el.classList.remove("jb-franja--entra"); void el.offsetWidth; el.classList.add("jb-franja--entra");
   }
 });
-const SERIES = ["Sparring", "Fuerza", "Cardio"];
-const BARRAS = [[480, 270, 180], [520, 300, 150], [430, 320, 210], [560, 280, 190]];
-const SEMANAS = ["sem 1", "sem 2", "sem 3", "sem 4"];
-const LINEAS = { "Peso": [74.2, 73.8, 73.5, 73.6, 73.0, 72.7, 72.5, 72.1], "Objetivo": [74, 73.6, 73.2, 72.8, 72.4, 72, 71.6, 71.2] };
 const tip = document.getElementById("tooltip");
 const ver = (e, html) => { tip.innerHTML = html; tip.hidden = false; tip.style.left = (e.clientX + 14) + "px"; tip.style.top = (e.clientY + 14) + "px"; };
 const ocultar = () => { tip.hidden = true; };
-const leyenda = (id, nombres) => { document.getElementById(id).innerHTML = nombres.map((n, i) => `<span><i style="background:var(--jb-serie-${i + 1})"></i>${n}</span>`).join(""); };
+const conTip = (svg) => svg.querySelectorAll("[data-tip]").forEach(el => {
+  el.addEventListener("pointermove", e => ver(e, el.dataset.tip));
+  el.addEventListener("pointerleave", ocultar);
+});
+const fmt = v => v.toLocaleString("es-ES");
 
+// una sola serie: el color destaca la semana actual, no identifica series
+const CARGA = [980, 1040, 1120, 1010, 1190, 1150, 1230, 1080, 1170, 1284];
 function barras() {
-  const svg = document.getElementById("barras"), W = 520, H = 240, L = 40, B = 210, T = 16, max = 600;
-  const y = v => B - (v / max) * (B - T), grupo = (W - L) / SEMANAS.length, bw = 22, gap = 2;
-  let out = "";
-  for (const v of [0, 200, 400, 600]) out += `<line x1="${L}" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="var(--jb-grid)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-  BARRAS.forEach((fila, g) => {
-    const x0 = L + g * grupo + (grupo - (bw * 3 + gap * 2)) / 2;
-    fila.forEach((v, i) => {
-      const x = x0 + i * (bw + gap), h = B - y(v);
-      out += `<path data-s="${i}" data-g="${g}" d="M${x} ${B} V${y(v) + 4} q0 -4 4 -4 h${bw - 8} q4 0 4 4 V${B} Z" fill="var(--jb-serie-${i + 1})"/>`;
-    });
-    out += `<text x="${L + g * grupo + grupo / 2}" y="${B + 20}" text-anchor="middle">${SEMANAS[g]}</text>`;
+  const svg = document.getElementById("barras"), W = 640, L = 8, B = 196, T = 14, max = 1400, n = CARGA.length;
+  const media = Math.round(CARGA.slice(0, -1).reduce((a, b) => a + b) / (n - 1));
+  const y = v => B - (v / max) * (B - T), paso = (W - L) / n, bw = paso * .56;
+  let out = `<defs>
+    <linearGradient id="g-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--jb-serie-1)"/><stop offset="1" stop-color="var(--jb-serie-1)" stop-opacity=".25"/></linearGradient>
+    <linearGradient id="g-act" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--jb-coral)"/><stop offset="1" stop-color="var(--jb-coral)" stop-opacity=".45"/></linearGradient></defs>`;
+  CARGA.forEach((v, i) => {
+    const x = L + i * paso + (paso - bw) / 2, actual = i === n - 1, r = 6;
+    out += `<path data-tip="<strong>${actual ? "Esta semana" : "Semana " + (i + 1)}</strong><br>${fmt(v)} de carga" class="${actual ? "neon" : ""}" d="M${x} ${B} V${y(v) + r} q0 -${r} ${r} -${r} h${bw - 2 * r} q${r} 0 ${r} ${r} V${B} Z" fill="url(#${actual ? "g-act" : "g-bar"})"/>`;
+    out += `<text x="${x + bw / 2}" y="${B + 22}" text-anchor="middle"${actual ? ' style="fill:var(--jb-neon-text)"' : ""}>${actual ? "hoy" : "s" + (i + 1)}</text>`;
   });
-  out += `<line x1="${L}" x2="${W}" y1="${B}" y2="${B}" stroke="var(--jb-axis)"/>`;
+  out += `<line x1="${L}" x2="${W}" y1="${y(media)}" y2="${y(media)}" stroke="var(--jb-fg-muted)" stroke-dasharray="4 6" opacity=".7"/>`;
+  out += `<text x="${L + 4}" y="${y(media) - 8}">media ${fmt(media)}</text>`;
   svg.innerHTML = out;
-  svg.querySelectorAll("path").forEach(p => {
-    p.addEventListener("pointermove", e => ver(e, `<strong>${SERIES[p.dataset.s]}</strong> · ${SEMANAS[p.dataset.g]}<br>${BARRAS[p.dataset.g][p.dataset.s]} de carga`));
-    p.addEventListener("pointerleave", ocultar);
-  });
-  leyenda("leyenda-barras", SERIES);
-  document.getElementById("tabla-barras").innerHTML = `<thead><tr><th>Semana</th>${SERIES.map(s => `<th class="num">${s}</th>`).join("")}</tr></thead><tbody>` +
-    BARRAS.map((f, g) => `<tr><td>${SEMANAS[g]}</td>${f.map(v => `<td class="num">${v}</td>`).join("")}</tr>`).join("") + "</tbody>";
+  conTip(svg);
+  document.getElementById("tabla-barras").innerHTML = `<thead><tr><th>Semana</th><th class="num">Carga</th></tr></thead><tbody>` +
+    CARGA.map((v, i) => `<tr><td>${i === n - 1 ? "Esta semana" : "Semana " + (i + 1)}</td><td class="num">${fmt(v)}</td></tr>`).join("") + "</tbody>";
 }
 
+function anillo() {
+  const svg = document.getElementById("anillo"), c = 100, r = 74, valor = 1.12, maxv = 2;
+  const ang = v => (-210 + (v / maxv) * 240) * Math.PI / 180;
+  const pt = a => [c + r * Math.cos(a), c + r * Math.sin(a)];
+  const arco = (v0, v1) => { const [x0, y0] = pt(ang(v0)), [x1, y1] = pt(ang(v1)); return `M${x0} ${y0} A${r} ${r} 0 ${(v1 - v0) / maxv * 240 > 180 ? 1 : 0} 1 ${x1} ${y1}`; };
+  svg.innerHTML = `
+    <path d="${arco(0, maxv)}" fill="none" stroke="var(--jb-line)" stroke-width="12" stroke-linecap="round"/>
+    <path d="${arco(.8, 1.3)}" fill="none" stroke="var(--jb-exito)" stroke-opacity=".35" stroke-width="12" stroke-linecap="round"/>
+    <path class="neon" d="${arco(0, valor)}" fill="none" stroke="var(--jb-coral)" stroke-width="12" stroke-linecap="round" data-tip="<strong>Ratio 1,12</strong><br>Zona segura: 0,8 a 1,3"/>
+    <text x="${c}" y="${c + 8}" text-anchor="middle" style="font:800 44px var(--font-display);letter-spacing:-.04em;fill:var(--jb-neon-text)">1,12</text>
+    <text x="${c}" y="${c + 32}" text-anchor="middle" style="font-size:12px;fill:var(--jb-fg-muted)">de 2,0</text>`;
+  conTip(svg);
+}
+
+const PESO = [74.2, 73.8, 73.5, 73.6, 73.0, 72.7, 72.5, 72.1], OBJ = [74, 73.6, 73.2, 72.8, 72.4, 72, 71.6, 71.2];
 function lineas() {
-  const svg = document.getElementById("lineas"), W = 520, H = 240, L = 40, B = 210, T = 16, R = 470, min = 71, max = 75;
-  const nombres = Object.keys(LINEAS), n = LINEAS.Peso.length;
+  const svg = document.getElementById("lineas"), W = 900, L = 36, B = 206, T = 16, R = 820, min = 71, max = 74.6, n = PESO.length;
   const x = i => L + (i / (n - 1)) * (R - L), y = v => B - ((v - min) / (max - min)) * (B - T);
-  let out = "";
-  for (const v of [71, 72, 73, 74, 75]) out += `<line x1="${L}" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="var(--jb-grid)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-  nombres.forEach((k, i) => {
-    const pts = LINEAS[k].map((v, j) => `${x(j)},${y(v)}`).join(" ");
-    out += `<polyline points="${pts}" fill="none" stroke="var(--jb-serie-${i + 1})" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"${i ? ' stroke-dasharray="6 5"' : ""}/>`;
-    const last = LINEAS[k][n - 1];
-    out += `<text x="${R + 8}" y="${y(last) + 4}" style="fill:var(--jb-fg)">${k}</text>`;
-  });
+  const camino = d => d.map((v, j) => `${j ? "L" : "M"}${x(j)} ${y(v)}`).join(" ");
+  let out = `<defs><linearGradient id="g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--jb-serie-1)" stop-opacity=".35"/><stop offset="1" stop-color="var(--jb-serie-1)" stop-opacity="0"/></linearGradient></defs>`;
+  for (const v of [72, 73, 74]) out += `<line x1="${L}" x2="${R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--jb-grid)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  out += `<path d="${camino(PESO)} L${x(n - 1)} ${B} L${x(0)} ${B} Z" fill="url(#g-area)"/>`;
+  out += `<path d="${camino(OBJ)}" fill="none" stroke="var(--jb-serie-2)" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>`;
+  out += `<path class="neon-azul" d="${camino(PESO)}" fill="none" stroke="var(--jb-serie-1)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+  out += `<circle class="neon-azul" cx="${x(n - 1)}" cy="${y(PESO[n - 1])}" r="6" fill="var(--jb-serie-1)" stroke="var(--jb-bg)" stroke-width="2"/>`;
+  out += `<text x="${R + 12}" y="${y(PESO[n - 1]) + 4}" style="fill:var(--jb-fg)">Peso</text><text x="${R + 12}" y="${y(OBJ[n - 1]) + 4}" style="fill:var(--jb-fg)">Objetivo</text>`;
   out += `<line id="cruz" x1="0" x2="0" y1="${T}" y2="${B}" stroke="var(--jb-axis)" visibility="hidden"/>`;
-  nombres.forEach((k, i) => { out += `<circle data-i="${i}" r="5" fill="var(--jb-serie-${i + 1})" stroke="var(--jb-bg)" stroke-width="2" visibility="hidden"/>`; });
-  out += `<rect x="${L}" y="${T}" width="${R - L}" height="${B - T}" fill="transparent" id="zona"/>`;
+  out += `<circle id="p0" r="5" fill="var(--jb-serie-1)" stroke="var(--jb-bg)" stroke-width="2" visibility="hidden"/><circle id="p1" r="5" fill="var(--jb-serie-2)" stroke="var(--jb-bg)" stroke-width="2" visibility="hidden"/>`;
+  out += `<rect id="zona" x="${L}" y="${T}" width="${R - L}" height="${B - T}" fill="transparent"/>`;
   svg.innerHTML = out;
-  const zona = svg.querySelector("#zona"), cruz = svg.querySelector("#cruz"), puntos = svg.querySelectorAll("circle");
+  const zona = svg.querySelector("#zona"), cruz = svg.querySelector("#cruz"), p0 = svg.querySelector("#p0"), p1 = svg.querySelector("#p1");
   zona.addEventListener("pointermove", e => {
     const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
     const j = Math.max(0, Math.min(n - 1, Math.round((px - L) / (R - L) * (n - 1))));
-    cruz.setAttribute("x1", x(j)); cruz.setAttribute("x2", x(j)); cruz.setAttribute("visibility", "visible");
-    puntos.forEach((c, i) => { c.setAttribute("cx", x(j)); c.setAttribute("cy", y(LINEAS[nombres[i]][j])); c.setAttribute("visibility", "visible"); });
-    ver(e, `<strong>Semana ${j + 1}</strong><br>` + nombres.map(k => `${k}: ${LINEAS[k][j].toLocaleString("es-ES")} kg`).join("<br>"));
+    for (const el of [cruz]) { el.setAttribute("x1", x(j)); el.setAttribute("x2", x(j)); }
+    p0.setAttribute("cx", x(j)); p0.setAttribute("cy", y(PESO[j])); p1.setAttribute("cx", x(j)); p1.setAttribute("cy", y(OBJ[j]));
+    [cruz, p0, p1].forEach(el => el.setAttribute("visibility", "visible"));
+    ver(e, `<strong>Semana ${j + 1}</strong><br>Peso: ${fmt(PESO[j])} kg<br>Objetivo: ${fmt(OBJ[j])} kg`);
   });
-  zona.addEventListener("pointerleave", () => { ocultar(); cruz.setAttribute("visibility", "hidden"); puntos.forEach(c => c.setAttribute("visibility", "hidden")); });
-  leyenda("leyenda-lineas", nombres);
+  zona.addEventListener("pointerleave", () => { ocultar(); [cruz, p0, p1].forEach(el => el.setAttribute("visibility", "hidden")); });
+  document.getElementById("leyenda-lineas").innerHTML = `<span><i style="background:var(--jb-serie-1)"></i>Peso</span><span><i style="background:var(--jb-serie-2)"></i>Objetivo</span>`;
+}
+
+const TIPOS = ["Sparring", "Fuerza", "Cardio", "Grappling"];
+const MINUTOS = [[120, 90, 60, 75], [150, 80, 45, 90], [110, 100, 70, 60], [140, 95, 50, 105]];
+function apiladas() {
+  const svg = document.getElementById("apiladas"), W = 420, L = 8, B = 170, T = 10, max = 420, n = MINUTOS.length;
+  const paso = (W - L) / n, bw = paso * .5, esc = v => (v / max) * (B - T);
+  let out = "";
+  MINUTOS.forEach((fila, g) => {
+    const x = L + g * paso + (paso - bw) / 2;
+    let base = B;
+    fila.forEach((v, i) => {
+      const h = esc(v) - 2, top = base - h, ult = i === fila.length - 1, r = ult ? 6 : 0;
+      out += `<path data-tip="<strong>${TIPOS[i]}</strong> · semana ${g + 1}<br>${v} min" d="M${x} ${base} V${top + r} ${r ? `q0 -${r} ${r} -${r} h${bw - 2 * r} q${r} 0 ${r} ${r}` : `H${x + bw}`} V${base} Z" fill="var(--jb-serie-${i + 1})"/>`;
+      base = top - 2;
+    });
+    out += `<text x="${x + bw / 2}" y="${B + 20}" text-anchor="middle">s${g + 1}</text>`;
+  });
+  svg.innerHTML = out;
+  conTip(svg);
+  document.getElementById("leyenda-apiladas").innerHTML = TIPOS.map((t, i) => `<span><i style="background:var(--jb-serie-${i + 1})"></i>${t}</span>`).join("");
 }
 
 document.getElementById("series").innerHTML = ["cobalto", "coral", "violeta", "verde azulado", "ocre"].map((n, i) => `<div><b style="background:var(--jb-serie-${i + 1})"></b>${i + 1} · ${n}</div>`).join("");
 document.getElementById("rampa-seq").innerHTML = [100, 200, 300, 400, 500, 600, 700].map(v => `<span style="background:var(--jb-seq-${v})"></span>`).join("");
 document.getElementById("rampa-div").innerHTML = ["--jb-seq-600", "--jb-seq-400", "--jb-seq-200", "--jb-div-mid", "#FCD2D4", "#F9A0A5", "--jb-coral"].map(c => `<span style="background:${c.startsWith("--") ? `var(${c})` : c}"></span>`).join("");
 barras();
+anillo();
 lineas();
+apiladas();
 
 const modal = document.getElementById("modal");
 document.getElementById("abrir-modal").addEventListener("click", () => modal.showModal());
