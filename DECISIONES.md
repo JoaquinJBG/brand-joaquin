@@ -84,10 +84,22 @@ parte que cruza**. Se resuelve con la foto en escala de grises y una franja cora
 Resultado: `exploracion/direccion-v4.html`. Foto de muestra: astronauta de Adam Miller, licencia Unsplash
 (https://unsplash.com/es/fotos/astronauta-con-fondo-blanco-dBaz0xhCkPY).
 
+## 2026-11-04 · Quinta ronda (tras ver `exploracion/direccion-v4.html`)
+
+- **Alcance aclarado**: el portfolio lo hace él en otro sitio. Aquí solo va la marca: tipografía,
+  colores, estilo, reglas y un prompt detallado para aplicarla en sus proyectos. La idea «Pokédex 3D»
+  queda fuera de la marca.
+- **Regla de logos**: todos los logos en gris, con la franja que les da color en la parte que cruza.
+- **Fotos**: de tecnología, no de astronautas.
+- **La franja**: ocupa 3/5 del ancho, no todo; el extremo que no llega al borde lleva un remate.
+- Las fotos con objetos negros no sirven: el coral no tiñe el negro. Hacen falta tonos medios.
+  Foto de muestra nueva: auriculares claros de Inka Kapturewska, licencia Unsplash
+  (https://unsplash.com/es/fotos/una-persona-sosteniendo-un-par-de-auriculares-en-la-mano-zJkNGKYLRU0).
+- Prueba de remates: `exploracion/franja-v5.html` (cápsula, corte o rayas).
+
 ## Pendiente
 
-- Qué más le falta a la marca (él quiere seguir revisando).
-- Logos de los proyectos y monograma: los pasará él.
-- ¿Foto propia para el hero en lugar del astronauta?
+- Elegir remate de la franja.
+- Logos de los proyectos y monograma: los pasará él. Mientras, monograma provisional en texto.
 - Pokédex 3D: ¿marca o solo edición especial del portfolio?
 - ¿Modo claro?
