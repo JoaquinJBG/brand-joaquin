@@ -55,7 +55,7 @@ My personal brand lives in https://github.com/JoaquinJBG/brand-joaquin (local co
    background, the band, section numbers, logos, photography, icons, components, motion, tone of voice,
    what we never do, checklist, per-technology notes).
 2. tokens/: tokens.css (CSS variables, light and dark), componentes.css (jb-* classes, glass, glow, numbers,
-   stats, the band), nebulosa.js (WebGL nebula, no dependencies), tailwind.preset.js (v3), tailwind-v4.css (v4),
+   stats, the band), nebulosa.js (WebGL nebula, no dependencies), tailwind.preset.cjs (v3), tailwind-v4.css (v4),
    compose/MarcaTheme.kt, compose/Luz.kt and compose/Franja.kt (Android).
 3. muestra/index.html: the live reference. Serve the folder (python -m http.server 4173) and open /muestra/.
 4. plantillas/logo-franja.svg: template for project logos.

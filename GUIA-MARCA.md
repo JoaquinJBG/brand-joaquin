@@ -331,7 +331,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 ## 18. Cómo aplicarla a un proyecto nuevo
 
 - [ ] Copiar `tokens/` al proyecto (por ejemplo `src/styles/marca/`) e importar `tokens.css` y `componentes.css`.
-- [ ] Tailwind: preset v3 (`tailwind.preset.js`) o import v4 (`tailwind-v4.css`).
+- [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
 - [ ] Landing o portada: `.jb-fondo` con `montarNebulosa`, `body.jb-base.jb-base--nebulosa`, modo oscuro por defecto.
@@ -353,7 +353,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 |---|---|
 | HTML / CSS | `tokens.css` + `componentes.css` (clases `jb-*`) + `nebulosa.js` (módulo ES) |
 | Next.js / React + Tailwind v4 | `@import` de `tokens.css`, `componentes.css` y `tailwind-v4.css` en `globals.css`. Utilidades: `bg-bg`, `text-fg`, `bg-btn`, `text-neon`, `shadow-glow`, `text-stat`, `font-display`… |
-| Next.js / React + Tailwind v3 | `presets: [require("./marca/tailwind.preset.js")]` + importar `tokens.css` y `componentes.css` |
+| Next.js / React + Tailwind v3 | `presets: [require("./marca/tailwind.preset.cjs")]` + importar `tokens.css` y `componentes.css` |
 | Angular | Importar `tokens.css` y `componentes.css` en `styles.css`; nebulosa en un componente con `@ViewChild` del canvas. Con Angular Material: `primary` = coral |
 | Kotlin + Jetpack Compose | `tokens/compose/`: `MarcaTheme.kt`, `Luz.kt` (brillo, cristal, fondo) y `Franja.kt` |
 

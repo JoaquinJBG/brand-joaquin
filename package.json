@@ -1,0 +1,22 @@
+{
+  "name": "brand-joaquin",
+  "version": "2.1.0",
+  "description": "Marca personal de Joaquín Beltrán: tokens, piezas CSS, nebulosa WebGL, Tailwind v3/v4 y Compose.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "private": true,
+  "author": "Joaquín Beltrán",
+  "repository": { "type": "git", "url": "git+https://github.com/JoaquinJBG/brand-joaquin.git" },
+  "files": ["tokens", "plantillas", "logos", "GUIA-MARCA.md", "PROMPT-MARCA.md", "CHANGELOG.md"],
+  "exports": {
+    "./tokens.css": "./tokens/tokens.css",
+    "./componentes.css": "./tokens/componentes.css",
+    "./nebulosa": "./tokens/nebulosa.js",
+    "./tailwind-preset": "./tokens/tailwind.preset.cjs",
+    "./tailwind-v4.css": "./tokens/tailwind-v4.css",
+    "./plantillas/*": "./plantillas/*",
+    "./logos/*": "./logos/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": ["*.css"]
+}
