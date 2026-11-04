@@ -157,9 +157,35 @@ Decisiones mías para que el sistema sea coherente (a revisar):
 - **Fotos con fondo liso siempre que se pueda** (lo pidió viendo la muestra). Foto nueva: auriculares
   plateados sobre gris de Ervo Rocks, licencia Unsplash.
 
+- **Publicado** en https://github.com/JoaquinJBG/brand-joaquin (público, commits con su Gmail). La referencia
+  aparece sin nombre ni enlaces.
+
+## 2026-11-04 · Décima ronda: versión 2.1, lista para los proyectos
+
+Lo que dijo: «vamos allá con todo lo que falta. Debe estar todo completo para empezar a pasárselo a los
+proyectos». Propuso abrir una sesión aparte para los logos.
+
+Añadido:
+
+- Colores de estado (éxito, aviso, error, información) y colores de gráficas validados para daltonismo.
+- Piezas de app: navegación, barra inferior, ventana emergente, aviso flotante, tabla, formulario, carga, vacío.
+- Plantillas de icono de app, imagen para compartir y banner de README, con la guía de tamaños.
+- Paquete instalable desde GitHub con versiones (`v2.1.0`) y CHANGELOG.
+- Logos y monograma: en una sesión aparte que trabaja en su propia rama y abrirá un PR.
+
+Decisiones mías (a revisar):
+
+- El error es carmesí `#C8323F` (texto `#B42B37` / `#FF5A6A`), distinto del coral del botón.
+- Series de gráficas: cobalto, coral, violeta, verde azulado y ocre, en ese orden; máximo 5.
+- El paquete es `private` y `UNLICENSED`: se instala desde GitHub pero no se publica en npm ni da permiso para
+  reutilizar la marca.
+- El preset de Tailwind v3 pasa a `tailwind.preset.cjs` porque el paquete es ESM.
+
 ## Pendiente
 
-- Crear el repositorio en GitHub y subirlo: falta nombre, visibilidad y correo de autor.; después, pasarlo a la guía, los tokens, el prompt y la muestra.
+- Logos y monograma definitivos (sesión aparte); después, pasarlos a las plantillas de icono e imagen.
+- Probar la marca en un proyecto real (empezar por FightLab).
+- Compilar `tokens/compose/` dentro de Efectivo.; después, pasarlo a la guía, los tokens, el prompt y la muestra.
 - Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
 - Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
 - Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.

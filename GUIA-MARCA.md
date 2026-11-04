@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.0 · 4 de noviembre de 2026 · Elegida por Joaquín en nueve rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.1 · 4 de noviembre de 2026 · Elegida por Joaquín en nueve rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -26,11 +26,16 @@ misma forma de hablar. Cada proyecto tiene su propia estructura; lo que no cambi
 12. [Fotografía](#12-fotografía)
 13. [Iconos](#13-iconos)
 14. [Componentes](#14-componentes)
-15. [Movimiento](#15-movimiento)
-16. [Tono de voz](#16-tono-de-voz)
-17. [Qué no hacemos](#17-qué-no-hacemos)
-18. [Cómo aplicarla a un proyecto nuevo](#18-cómo-aplicarla-a-un-proyecto-nuevo)
-19. [Llevarla a cada tecnología](#19-llevarla-a-cada-tecnología)
+15. [Estados](#15-estados)
+16. [Gráficas](#16-gráficas)
+17. [Piezas de app](#17-piezas-de-app)
+18. [Iconos, imagen para compartir y banner](#18-iconos-imagen-para-compartir-y-banner)
+19. [Movimiento](#19-movimiento)
+20. [Tono de voz](#20-tono-de-voz)
+21. [Qué no hacemos](#21-qué-no-hacemos)
+22. [Cómo aplicarla a un proyecto nuevo](#22-cómo-aplicarla-a-un-proyecto-nuevo)
+23. [Llevarla a cada tecnología](#23-llevarla-a-cada-tecnología)
+24. [Instalar y actualizar](#24-instalar-y-actualizar)
 
 ## 1. La idea en una frase
 
@@ -269,7 +274,87 @@ Todos están en la muestra viva y en [`tokens/componentes.css`](tokens/component
 | Franja | `.jb-franja…` | Ver sección 9 |
 | Bloque manifiesto | — | Mitad tinta con titular, mitad coral con texto y acción |
 
-## 15. Movimiento
+## 15. Estados
+
+Para avisos, validaciones y datos con significado (zona segura, riesgo). **Siempre con icono y texto**: el
+color nunca va solo. El error es carmesí, más oscuro que el coral del botón, para no confundirlos.
+
+| Estado | Relleno | Texto en claro | Texto en oscuro | Icono (Lucide) |
+|---|---|---|---|---|
+| Éxito | `#1E9E6A` | `#0B7550` (4,9:1) | `#3FCB8E` (9,4:1) | `circle-check` |
+| Aviso | `#E2A21B` | `#8A5A00` (5,1:1) | `#F2BC4A` (11,1:1) | `triangle-alert` |
+| Error | `#C8323F` | `#B42B37` (5,4:1) | `#FF5A6A` (6,4:1) | `circle-x` |
+| Información | cobalto | `#23648F` (5,4:1) | `#7FB4DA` (8,7:1) | `info` |
+
+- Tokens: `--jb-exito`, `--jb-exito-texto`, `--jb-on-exito`… (igual para `aviso`, `error`, `info`).
+- Piezas: `.jb-alerta` (`--exito`, `--aviso`, `--error`), etiquetas `.jb-chip--exito/--aviso/--error`, y el error
+  de un campo con `.jb-campo .error` y `aria-invalid="true"`.
+- Sobre un relleno de estado: tinta encima de éxito y aviso; blanco encima de error.
+- Los colores de estado no se usan para series de gráficas ni para decorar.
+
+## 16. Gráficas
+
+Validado con el método de la skill de visualización (prueba de daltonismo, luminosidad y contraste) en claro
+(sobre `#F4F8FA`) y en oscuro (sobre `#161D26`).
+
+### Series (orden fijo)
+
+| Orden | Color | Claro | Oscuro |
+|---|---|---|---|
+| 1 | cobalto | `#2A72A3` | `#3F8AC4` |
+| 2 | coral | `#F97279` | `#EA5F69` |
+| 3 | violeta | `#7465D8` | `#8578E2` |
+| 4 | verde azulado | `#0A9C86` | `#149A85` |
+| 5 | ocre | `#C9962B` | `#B98A2C` |
+
+- El color sigue a la serie, nunca a su posición: si un filtro quita series, las demás no cambian de color.
+- Más de cinco series: agrupar en «Otros» o hacer gráficas pequeñas por separado. Nunca un sexto color.
+- Dispersión y mapas (todas las parejas a la vista): como mucho dos series, cobalto y coral.
+- En claro, coral y ocre no llegan a 3:1 sobre la superficie: esas gráficas llevan etiquetas directas o la
+  tabla alternativa.
+- Magnitud (mapas de calor): escala de cobalto `--jb-seq-100` … `--jb-seq-700`.
+- Por debajo / por encima de un valor: divergente cobalto ↔ coral con el centro en `--jb-div-mid`.
+
+### Cómo se dibujan
+
+- Barras finas con las puntas redondeadas 4 px y 2 px de separación; líneas de 2 px; puntos de 8 px o más.
+- Rejilla y ejes muy suaves (`--jb-grid`, `--jb-axis`). Un solo eje vertical, nunca dos escalas.
+- Leyenda siempre con dos series o más, y etiquetas directas en las líneas.
+- Detalle al pasar el ratón (o al tocar): barra vertical y valores en las líneas; valor en cada barra.
+- Opción «ver como tabla» para lectores de pantalla y para quien lo prefiera.
+- Los textos de la gráfica van en los colores de texto, nunca en el color de la serie.
+
+## 17. Piezas de app
+
+| Pieza | Clase | Cómo es |
+|---|---|---|
+| Navegación de escritorio | `.jb-nav` | Cápsula de cristal con enlaces en cápsula; la página actual (`aria-current="page"`) en tinta o niebla |
+| Barra inferior móvil | `.jb-tabbar` | Hasta 5 destinos con icono y texto; el actual en neón con un halo suave en el icono |
+| Ventana emergente | `.jb-modal` sobre `<dialog>` | Cristal sobre el fondo, esquinas de 28 px, fondo de detrás oscurecido y desenfocado; sube 12 px al abrir |
+| Aviso flotante | `.jb-toast` | Cápsula en tinta (niebla en oscuro) con icono coral; dentro de un contenedor `aria-live="polite"`; se va solo a los 4 s |
+| Alerta | `.jb-alerta` | Ver sección 15 |
+| Tabla | `.jb-tabla` | Filas separadas por una línea, cifras alineadas a la derecha (`.num`), fila resaltada al pasar |
+| Formulario | `.jb-campo` + `.jb-input` | Etiqueta visible encima, ayuda debajo, error debajo del campo con icono |
+| Desplegable | `.jb-input.jb-select` | Cápsula como el campo, con flecha propia |
+| Casilla | `.jb-check` | Casilla nativa en coral |
+| Carga | `.jb-skeleton` | Bloques que respiran; quietos si se reduce el movimiento |
+| Vacío | `.jb-vacio` | Título corto, una frase y un botón para actuar |
+
+En Compose se usan los componentes de Material 3 (`NavigationBar`, `AlertDialog`, `Snackbar`, `OutlinedTextField`…)
+con el tema de la marca; no hace falta reimplementarlos.
+
+## 18. Iconos, imagen para compartir y banner
+
+Plantillas en [`plantillas/`](plantillas/) y tamaños en [`plantillas/ICONOS.md`](plantillas/ICONOS.md).
+
+- **Icono de app** (`icono-app.svg`): fondo abismo con luz de nebulosa, símbolo en acero con la franja y la parte
+  de dentro en tinta. Sin rayas. Zona segura de Android: el círculo central de 332 px (66/108).
+- **Iconos pequeños** (48 px o menos, favicon): solo el símbolo, sin franja.
+- **Imagen para compartir** (`og-1200x630.svg`): nebulosa, franja, monograma, título del proyecto y una frase.
+- **Banner de README** (`banner-readme.svg`): igual, en 1280 × 320.
+- `theme-color` del navegador: `#0A0E13` en oscuro y `#E7EEF2` en claro.
+
+## 19. Movimiento
 
 | Qué | Cómo | Duración |
 |---|---|---|
@@ -285,7 +370,7 @@ Todos están en la muestra viva y en [`tokens/componentes.css`](tokens/component
 - **Reducir movimiento**: si el sistema lo pide, la nebulosa se pinta quieta y la franja aparece colocada.
   `montarNebulosa(canvas, { movimiento: "si" })` permite forzarla (por ejemplo, con un interruptor visible).
 
-## 16. Tono de voz
+## 20. Tono de voz
 
 Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarlo.
 
@@ -303,7 +388,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 | Un podcast de noticias que se escribe, se graba y se monta solo. | Revolucionando la forma de consumir noticias con IA. |
 | Ver proyecto | Haz clic aquí para descubrir más |
 
-## 17. Qué no hacemos
+## 21. Qué no hacemos
 
 **Nunca:**
 
@@ -328,9 +413,9 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 | Número en cápsula de neón | Número entre paréntesis con letra de máquina |
 | Etiquetas en frase normal | Etiquetas pequeñas en mayúsculas |
 
-## 18. Cómo aplicarla a un proyecto nuevo
+## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Copiar `tokens/` al proyecto (por ejemplo `src/styles/marca/`) e importar `tokens.css` y `componentes.css`.
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.1.0`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -342,12 +427,16 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 - [ ] **La franja una vez** en la pieza principal (foto o logo).
 - [ ] Logo del proyecto en gris con la franja (plantilla SVG).
 - [ ] Iconos Lucide de contorno, trazo 1,75.
+- [ ] Estados con `.jb-alerta` y su icono; errores de campo debajo del campo.
+- [ ] Gráficas con las series en su orden fijo, leyenda, detalle al pasar y tabla alternativa.
+- [ ] Navegación con `.jb-nav` (escritorio) y `.jb-tabbar` (móvil); avisos con `.jb-toast` en `aria-live`.
+- [ ] Icono de app, favicon, imagen para compartir y banner del README desde las plantillas.
 - [ ] Probar claro y oscuro, y con «reducir movimiento» activado.
-- [ ] Textos revisados con el tono de voz (sección 16) y repaso de «Qué no hacemos» (sección 17).
+- [ ] Textos revisados con el tono de voz (sección 20) y repaso de «Qué no hacemos» (sección 21).
 - [ ] Pie con la firma `joaquín beltrán — hecho a mano`.
 - [ ] Pegar el bloque de [`PROMPT-MARCA.md`](PROMPT-MARCA.md) en el `CLAUDE.md` del proyecto.
 
-## 19. Llevarla a cada tecnología
+## 23. Llevarla a cada tecnología
 
 | Tecnología | Qué usar |
 |---|---|
@@ -384,3 +473,34 @@ ngOnDestroy() { this.neb?.destruir(); }
 
 Los archivos de Tailwind se prueban compilando con Tailwind 3.4.17 y 4.1.11. En v3 el texto sobre coral es
 `text-accent-on`; en v4, `text-on-accent`.
+
+## 24. Instalar y actualizar
+
+La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fija una versión y la sube cuando
+quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
+
+```bash
+pnpm add github:JoaquinJBG/brand-joaquin#v2.1.0
+```
+
+```css
+/* globals.css (Tailwind v4) */
+@import "tailwindcss";
+@import "brand-joaquin/tokens.css";
+@import "brand-joaquin/componentes.css";
+@import "brand-joaquin/tailwind-v4.css";
+```
+
+```js
+// tailwind.config.js (Tailwind v3)
+module.exports = { presets: [require("brand-joaquin/tailwind-preset")], content: ["./src/**/*.{ts,tsx}"] };
+```
+
+```ts
+import { montarNebulosa } from "brand-joaquin/nebulosa";
+```
+
+- Angular: los mismos `@import` en `styles.css`.
+- Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
+- Para actualizar: cambiar `#v2.1.0` por la versión nueva y repasar el CHANGELOG.
+- Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

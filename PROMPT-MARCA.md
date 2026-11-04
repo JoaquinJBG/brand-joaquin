@@ -17,7 +17,7 @@ genere seguirán en español.
 ```markdown
 ## Personal brand (Joaquín Beltrán)
 
-This project follows Joaquín's personal brand (v2). Source of truth: https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal)
+This project follows Joaquín's personal brand (v2.1). Source of truth: https://github.com/JoaquinJBG/brand-joaquin (local copy: C:\dev\personal\marca-personal)
 (GUIA-MARCA.md for rules, tokens/ for values, muestra/index.html for a live reference).
 
 - Never hard-code brand colors, fonts, radii, glows or durations: use the tokens (CSS variables `--jb-*`,
@@ -38,6 +38,14 @@ This project follows Joaquín's personal brand (v2). Source of truth: https://gi
 - Do not: grey drop shadows under flat cards, coloured dots after headings, coloured top stripes on cards,
   decorative 3D shapes or liquid metal, coral as small text on light, glow everywhere, text on bare nebula,
   orange, uppercase micro-labels, monospace decoration, hairline grids, particle spheres, emoji icons.
+- Status colors (success, warning, error, info) always come with an icon and text; error is crimson, never the
+  coral of the primary button. Use --jb-*-texto tokens for status text.
+- Charts: series colors in fixed order (--jb-serie-1..5: cobalt, coral, violet, teal, ochre), color follows the
+  series not its rank, max 5 series (fold into "Otros"), legend + hover detail + table view, one y-axis only.
+- App pieces: .jb-nav / .jb-tabbar, .jb-modal on <dialog>, .jb-toast inside aria-live, .jb-tabla, .jb-campo
+  (visible label, help and error under the field), .jb-skeleton, .jb-vacio. In Compose use Material 3
+  components with MarcaTheme and LocalColoresJb.
+- Icons, favicon, share image and README banner come from the brand templates (plantillas/, ICONOS.md).
 - UI copy in Spanish (Spain), "tú", short and direct, verbs on buttons, no exclamation marks.
 ```
 
@@ -46,7 +54,7 @@ This project follows Joaquín's personal brand (v2). Source of truth: https://gi
 ## 2. Prompt de aplicación
 
 ```markdown
-Apply my personal brand (v2) to <PROJECT NAME> (<path>), a <Next.js/React | Angular | Kotlin + Jetpack Compose | other>
+Apply my personal brand (v2.1) to <PROJECT NAME> (<path>), a <Next.js/React | Angular | Kotlin + Jetpack Compose | other>
 app that <one line on what it does>.
 
 ## Context
@@ -67,8 +75,9 @@ be recognisable is the palette, the type, the nebula + glass + neon light, the b
 1. Audit the current UI: list where colors, fonts, radii, shadows and motion are defined, and which screens
    are the "key" ones (landing, home, main dashboard). Show me the list before changing anything big.
 2. Bring the tokens in:
-   - Web: copy tokens/ to <src/styles/marca/>, import tokens.css and componentes.css once at the root. With
-     Tailwind v4 also import tailwind-v4.css; with v3 add the preset. Mount the nebula with
+   - Web: install the brand with `pnpm add github:JoaquinJBG/brand-joaquin#v2.1.0` and import
+     brand-joaquin/tokens.css and brand-joaquin/componentes.css once at the root. With Tailwind v4 also import
+     brand-joaquin/tailwind-v4.css; with v3 use presets: [require("brand-joaquin/tailwind-preset")]. Mount the nebula with
      montarNebulosa(canvas) inside a .jb-fondo element on landing/hero screens and destroy it on unmount.
    - Android: copy compose/ into the UI module, fix the package, add ui-text-google-fonts and font_certs.xml,
      wrap the app in MarcaTheme, use FondoNebulosa on the welcome screen, Cristal for panels and
@@ -87,8 +96,10 @@ be recognisable is the palette, the type, the nebula + glass + neon light, the b
 6. Make both light and dark mode work (data-theme on <html> on web; isSystemInDarkTheme on Android), dark by
    default on landings, and check contrast with the table in the guide.
 7. Check prefers-reduced-motion: the nebula must still be painted (static) and the band must appear in place.
-8. Rewrite UI copy that breaks the tone of voice (section 16 of the guide). Keep meaning; do not invent features.
-9. Go through "Qué no hacemos" (section 17) and remove anything on that list.
+8. Rewrite UI copy that breaks the tone of voice (section 20 of the guide). Keep meaning; do not invent features.
+9. Apply states (section 15), charts (section 16) and app pieces (section 17) wherever the product has them,
+   and generate the favicon, app icons, share image and README banner from the templates (section 18).
+10. Go through "Qué no hacemos" (section 21) and remove anything on that list.
 
 ## Constraints
 - Do not change behavior, data or routes. This is a visual and copy change only.
@@ -100,7 +111,7 @@ be recognisable is the palette, the type, the nebula + glass + neon light, the b
   WCAG AA contrast.
 
 ## Done when
-- The checklist in GUIA-MARCA.md section 18 passes, item by item (report each one).
+- The checklist in GUIA-MARCA.md section 22 passes, item by item (report each one).
 - Both themes checked in the running app (screenshots of the key screens, light and dark, desktop and mobile),
   plus one check with reduced motion on.
 - No hard-coded brand values left (grep for the hex values and font names outside the token files).
