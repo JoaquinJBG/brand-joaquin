@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remates de la franja · v9</title>
+<link rel="stylesheet" href="../tokens/fuentes.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../tokens/componentes.css">
+<style>
+body{margin:0}
+.wrap{max-width:var(--container);margin:0 auto;padding:var(--space-7) var(--gutter) var(--space-9)}
+.ctrl{position:fixed;top:14px;right:14px;z-index:30;display:flex;gap:2px;padding:4px;border-radius:var(--radius-full)}
+.ctrl button{all:unset;cursor:pointer;padding:6px 12px;border-radius:var(--radius-full);font-size:13px;color:var(--jb-fg-muted)}
+.ctrl button[aria-pressed="true"]{background:var(--jb-fg);color:var(--jb-bg)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-6)}
+.col h2{margin:0 0 var(--space-2)}
+.col > p{margin:0 0 var(--space-4);color:var(--jb-fg-muted);font-size:var(--text-small)}
+.pieza{margin-bottom:var(--space-4)}
+.bloque{height:200px;padding:0}
+.foto{height:280px}
+.foto img{position:absolute;inset:0}
+.logo-box{aspect-ratio:5/2;border-radius:var(--radius-lg);background:var(--jb-ghost-bg);box-shadow:var(--jb-ghost-ring)}
+.logo-box .jb-franja__logo{font-family:var(--font-display);font-weight:800;letter-spacing:-.045em;font-size:clamp(28px,3.2vw,44px)}
+
+/* remates alternativos (sustituyen a las rayas) */
+.r-puntos .jb-franja__banda::before{
+  width:30%; right:100%;
+  background: radial-gradient(circle, var(--jb-coral) 0 2.6px, transparent 3.2px) right center / 10px 10px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000); mask-image: linear-gradient(90deg, transparent, #000);
+}
+.r-degradado .jb-franja__banda::before{
+  width:34%; right:100%;
+  background: linear-gradient(90deg, transparent, var(--jb-coral));
+  -webkit-mask-image:none; mask-image:none;
+}
+.r-escalones .jb-franja__banda::before{
+  width:24%; right:100%;
+  background:
+    linear-gradient(var(--jb-coral),var(--jb-coral)) 100% 50% / 18% 84% no-repeat,
+    linear-gradient(var(--jb-coral),var(--jb-coral)) 72% 50% / 18% 62% no-repeat,
+    linear-gradient(var(--jb-coral),var(--jb-coral)) 44% 50% / 18% 40% no-repeat,
+    linear-gradient(var(--jb-coral),var(--jb-coral)) 16% 50% / 18% 18% no-repeat;
+  -webkit-mask-image:none; mask-image:none;
+}
+.r-neon .jb-franja__banda::before{
+  width:4px; right:100%; left:auto; top:-14%; bottom:-14%;
+  background: var(--jb-coral); border-radius:4px;
+  box-shadow: 0 0 10px 1px rgba(249,114,121,.9), 0 0 28px 4px rgba(249,114,121,.5);
+  -webkit-mask-image:none; mask-image:none;
+}
+.r-neon .jb-franja__banda{ box-shadow: -18px 0 30px -14px rgba(249,114,121,.8); }
+.cols .jb-franja--logo .jb-franja__banda{overflow:visible}
+.cols{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+@media (max-width:1100px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:640px){.cols{grid-template-columns:1fr!important}}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="jb-base">
+<div class="ctrl jb-glass" role="group" aria-label="Modo"><button data-v="dark" aria-pressed="true">Oscuro</button><button data-v="light" aria-pressed="false">Claro</button></div>
+<div class="wrap">
+  <h1 class="jb-h2">cómo acaba la franja</h1>
+  <p class="jb-lead" style="max-width:60ch">El extremo que no llega al borde. A la izquierda, las rayas de ahora; después, cuatro maneras nuevas.</p>
+  <div class="cols">
+    <div class="col">
+      <h2 class="jb-h4">ahora · rayas</h2><p>Se deshace en líneas, como una señal.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col r-puntos">
+      <h2 class="jb-h4">A · puntos</h2><p>Se deshace en puntos, como la rejilla del fondo o la letra de Nothing.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col r-degradado">
+      <h2 class="jb-h4">B · degradado</h2><p>Se funde poco a poco, limpio y sin adornos.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col r-escalones">
+      <h2 class="jb-h4">C · escalones</h2><p>Cuatro bloques que bajan, como una señal o una barra de cobertura.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col r-neon">
+      <h2 class="jb-h4">D · corte de neón</h2><p>Acaba en seco con una línea de neón que brilla, como el resto de la marca.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+  </div>
+</div>
+<script>
+document.querySelector('.ctrl').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.documentElement.dataset.theme = b.dataset.v;
+  document.querySelectorAll('.ctrl button').forEach(x => x.setAttribute('aria-pressed', x === b));
+});
+</script>
+</body>
+</html>
