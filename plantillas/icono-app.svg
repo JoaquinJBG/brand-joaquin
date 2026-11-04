@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Icono de app y PWA (512 px). El símbolo va dentro del círculo seguro de 332 px (zona segura del icono adaptativo de Android: 66/108). -->
+  <defs>
+    <radialGradient id="luz" cx="0.15" cy="0.2" r="0.9"><stop offset="0" stop-color="#2A72A3" stop-opacity=".55"/><stop offset="1" stop-color="#2A72A3" stop-opacity="0"/></radialGradient>
+    <radialGradient id="luz2" cx="0.95" cy="0.9" r="0.6"><stop offset="0" stop-color="#F97279" stop-opacity=".45"/><stop offset="1" stop-color="#F97279" stop-opacity="0"/></radialGradient>
+    <clipPath id="banda"><rect x="205" y="236" width="307" height="154"/></clipPath>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#0A0E13"/>
+  <rect width="512" height="512" rx="112" fill="url(#luz)"/>
+  <rect width="512" height="512" rx="112" fill="url(#luz2)"/>
+  <circle id="guia-zona-segura" cx="256" cy="256" r="166" fill="none" stroke="#E7EEF2" stroke-opacity=".08" stroke-dasharray="4 8"><title>Guía: bórrala al exportar</title></circle>
+  <rect x="205" y="236" width="307" height="154" fill="#F97279"/>
+  <g id="simbolo">
+    <text x="256" y="322" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="230" letter-spacing="-10" fill="#738A9A">jb</text>
+  </g>
+  <g clip-path="url(#banda)">
+    <text x="256" y="322" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="230" letter-spacing="-10" fill="#161D24">jb</text>
+  </g>
+</svg>

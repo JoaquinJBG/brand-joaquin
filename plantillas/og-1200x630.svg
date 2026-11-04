@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Imagen para compartir (Open Graph). Cambia #titulo y #subtitulo; #marca es el hueco del logo del proyecto. -->
+  <defs>
+    <radialGradient id="neb-izq" cx="0" cy="0.45" r="0.6"><stop offset="0" stop-color="#2A72A3" stop-opacity=".55"/><stop offset="1" stop-color="#2A72A3" stop-opacity="0"/></radialGradient>
+    <radialGradient id="neb-izq2" cx="0.05" cy="0.75" r="0.4"><stop offset="0" stop-color="#F97279" stop-opacity=".35"/><stop offset="1" stop-color="#F97279" stop-opacity="0"/></radialGradient>
+    <radialGradient id="neb-der" cx="1" cy="0.3" r="0.6"><stop offset="0" stop-color="#738A9A" stop-opacity=".5"/><stop offset="1" stop-color="#738A9A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="neb-der2" cx="0.95" cy="0.7" r="0.4"><stop offset="0" stop-color="#F97279" stop-opacity=".35"/><stop offset="1" stop-color="#F97279" stop-opacity="0"/></radialGradient>
+    <pattern id="puntos" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#CCDBE2" fill-opacity=".12"/></pattern>
+    <linearGradient id="desvanece" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    <mask id="rayas-mask" maskUnits="userSpaceOnUse" x="322" y="290" width="158" height="189"><rect x="322" y="290" width="158" height="189" fill="url(#desvanece)"/></mask>
+    <pattern id="rayas" patternUnits="userSpaceOnUse" x="322" y="0" width="14" height="630"><rect x="7" width="7" height="630" fill="#F97279"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0E13"/>
+  <rect width="1200" height="630" fill="url(#neb-izq)"/>
+  <rect width="1200" height="630" fill="url(#neb-izq2)"/>
+  <rect width="1200" height="630" fill="url(#neb-der)"/>
+  <rect width="1200" height="630" fill="url(#neb-der2)"/>
+  <rect width="1200" height="630" fill="url(#puntos)"/>
+
+  <!-- la franja: 60 % del ancho desde la derecha, 46 % arriba, 30 % de alto -->
+  <rect x="480" y="290" width="720" height="189" fill="#F97279"/>
+  <rect x="322" y="290" width="158" height="189" fill="url(#rayas)" mask="url(#rayas-mask)"/>
+
+  <g id="marca" transform="translate(72 72)">
+    <rect width="64" height="64" rx="18" fill="#F97279"/>
+    <text x="32" y="44" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="30" letter-spacing="-1.4" fill="#161D24">jb</text>
+  </g>
+  <text id="titulo" x="72" y="255" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="120" letter-spacing="-5.4" fill="#E7EEF2">fightlab pro</text>
+  <text id="subtitulo" x="72" y="560" font-family="Geist, system-ui, sans-serif" font-size="32" fill="#9DB0BD">Entrenamiento, nutrición y coach con IA</text>
+</svg>
