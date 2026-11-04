@@ -102,7 +102,26 @@
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
+[data-theme="light"] {
+  --jb-bg: var(--jb-niebla);
+  --jb-surface: #F4F8FA;
+  --jb-surface-2: var(--jb-hielo);
+  --jb-fg: var(--jb-tinta);
+  --jb-fg-muted: var(--jb-pizarra);
+  --jb-fg-subtle: var(--jb-acero);
+  --jb-line: rgba(22, 29, 36, .12);
+  --jb-accent: var(--jb-coral);
+  --jb-on-accent: var(--jb-tinta);
+  --jb-link: var(--jb-cobalto-texto);
+  --jb-support: var(--jb-salvia);
+  --jb-logo: var(--jb-acero);
+  --jb-logo-in-band: var(--jb-tinta);
+  --jb-btn: var(--jb-tinta);
+  --jb-on-btn: var(--jb-niebla);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
   --jb-bg: var(--jb-noche);
   --jb-surface: #1A222C;
   --jb-surface-2: #243040;

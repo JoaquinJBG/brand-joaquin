@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de marca · Joaquín Beltrán</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../tokens/componentes.css">
+<style>
+body{margin:0}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:var(--space-5) 0;gap:var(--space-4)}
+.top nav{display:flex;gap:var(--space-5);flex-wrap:wrap;font-size:var(--text-small)}
+.top nav a{color:var(--jb-fg-muted)!important;text-decoration:none}
+.top nav a:hover{color:var(--jb-fg)}
+.mode{display:inline-flex;background:var(--jb-surface);border-radius:var(--radius-full);padding:4px}
+.mode button{all:unset;cursor:pointer;padding:6px 14px;border-radius:var(--radius-full);font-size:var(--text-small);color:var(--jb-fg-muted)}
+.mode button[aria-pressed="true"]{background:var(--jb-btn);color:var(--jb-on-btn)}
+.mode button:focus-visible{box-shadow:var(--focus-ring)}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);align-items:end;padding-top:var(--space-6)}
+.hero .jb-franja{height:min(640px,calc(100vh - 140px));min-height:420px}
+.hero .jb-franja img{position:absolute;inset:0}
+.hero .txt{display:flex;flex-direction:column;gap:var(--space-6);padding-bottom:var(--space-6)}
+.credit{position:absolute;left:14px;bottom:10px;font-size:11px;color:rgba(255,255,255,.85);text-decoration:none;z-index:2}
+
+section{padding-top:var(--space-10)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-5);flex-wrap:wrap;margin-bottom:var(--space-6)}
+.head p{margin:0;max-width:44ch;color:var(--jb-fg-muted)}
+.grid{display:grid;gap:var(--space-4)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.label{font-size:var(--text-small);color:var(--jb-fg-muted);margin:0 0 var(--space-3)}
+.jb-card h3{margin:0 0 var(--space-2)}
+.jb-card p{margin:0;color:var(--jb-fg-muted);font-size:var(--text-small)}
+
+.swatch{border-radius:var(--radius-lg);aspect-ratio:4/3;padding:var(--space-4);display:flex;flex-direction:column;justify-content:end;font-size:var(--text-small);line-height:1.35}
+.swatch b{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;font-size:22px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.panel{background:var(--jb-bg);color:var(--jb-fg);border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:inset 0 0 0 1px var(--jb-line)}
+.panel .row{display:flex;justify-content:space-between;gap:var(--space-3);padding:10px 0;border-top:1px solid var(--jb-line);font-size:var(--text-small)}
+.panel .row:first-of-type{border-top:0}
+.panel .dot{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:8px;box-shadow:inset 0 0 0 1px var(--jb-line)}
+
+.type-row{display:grid;grid-template-columns:160px 1fr;gap:var(--space-5);align-items:baseline;padding:var(--space-4) 0;border-top:1px solid var(--jb-line)}
+.type-row .meta{font-size:var(--text-small);color:var(--jb-fg-muted)}
+.type-row > div:last-child{min-width:0;overflow-wrap:anywhere}
+
+.space{display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-small);color:var(--jb-fg-muted);padding:6px 0}
+.space i{display:block;height:16px;background:var(--jb-accent);border-radius:var(--radius-full)}
+.space span{width:120px}
+.radii{display:flex;gap:var(--space-4);flex-wrap:wrap;align-items:end}
+.radii div{width:120px;height:96px;background:var(--jb-surface-2);display:grid;place-items:center;font-size:var(--text-small);color:var(--jb-fg-muted)}
+
+.block{position:relative;height:260px;background:var(--jb-surface);border-radius:var(--radius-lg)}
+.geo{position:relative;height:260px;background:var(--jb-surface);border-radius:var(--radius-lg);font-size:var(--text-caption);color:var(--jb-fg-muted)}
+.geo .m{position:absolute;white-space:nowrap}
+
+.logo-box{aspect-ratio:5/2;background:var(--jb-surface);border-radius:var(--radius-lg)}
+.logo-box .jb-franja__logo{font-family:var(--font-display);font-weight:800;letter-spacing:-.045em;font-size:clamp(32px,4.4vw,56px);line-height:1}
+.mono{width:96px;height:96px;border-radius:var(--radius-lg);background:var(--jb-btn);color:var(--jb-on-btn);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:44px;letter-spacing:-.05em}
+
+.icons{display:flex;gap:var(--space-5);flex-wrap:wrap}
+.icons figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:var(--space-2);font-size:var(--text-caption);color:var(--jb-fg-muted)}
+.icons svg{width:24px;height:24px;stroke:var(--jb-fg);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+.btns{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+.stat .n{font-family:var(--font-display);font-weight:800;letter-spacing:-.045em;font-size:40px;line-height:1;margin:6px 0 var(--space-4)}
+.stat .r{display:flex;justify-content:space-between;font-size:var(--text-small);padding:10px 0;border-top:1px solid var(--jb-line)}
+.manif{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--radius-lg);overflow:hidden}
+.manif > div{padding:var(--space-7)}
+.manif .l{background:var(--jb-fg);color:var(--jb-bg)}
+.manif .r{background:var(--jb-accent);color:var(--jb-on-accent);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-5);align-items:flex-start}
+.manif .r p{margin:0;max-width:36ch}
+.manif .r .jb-btn{background:var(--jb-tinta);color:var(--jb-niebla)}
+
+.voice{width:100%;border-collapse:collapse;font-size:var(--text-small)}
+.voice th{text-align:left;font-weight:500;color:var(--jb-fg-muted);padding:0 0 var(--space-2)}
+.voice td{padding:var(--space-3) var(--space-4) var(--space-3) 0;border-top:1px solid var(--jb-line);vertical-align:top}
+.voice td:last-child{color:var(--jb-fg-muted);text-decoration:line-through;text-decoration-color:var(--jb-accent)}
+.nope{columns:2;column-gap:var(--space-7);padding-left:18px;margin:0;color:var(--jb-fg-muted)}
+.nope li{margin-bottom:var(--space-2);break-inside:avoid}
+
+footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:var(--space-5) 0 var(--space-7);display:flex;justify-content:space-between;gap:var(--space-5);flex-wrap:wrap;color:var(--jb-fg-muted);font-size:var(--text-small)}
+
+@media (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr}}
+@media (max-width:720px){
+  .hero,.g2,.modes,.manif{grid-template-columns:1fr}
+  .g4{grid-template-columns:1fr}
+  .hero .txt{order:2;padding-bottom:0}
+  .hero .jb-franja{height:60vh;min-height:360px}
+  .top nav{display:none}
+  .type-row{grid-template-columns:1fr;gap:var(--space-2)}
+  .nope{columns:1}
+  .manif > div{padding:var(--space-5)}
+  section{padding-top:var(--space-9)}
+}
+</style>
+</head>
+<body class="jb-base">
+<div class="wrap">
+
+  <header class="top">
+    <strong>joaquín beltrán</strong>
+    <nav aria-label="Secciones"><a href="#color">Color</a><a href="#letra">Letra</a><a href="#franja">Franja</a><a href="#logos">Logos</a><a href="#piezas">Piezas</a><a href="#tono">Tono</a></nav>
+    <div class="mode" role="group" aria-label="Modo"><button data-v="light" aria-pressed="true">Claro</button><button data-v="dark" aria-pressed="false">Oscuro</button></div>
+  </header>
+
+  <div class="hero">
+    <div class="txt">
+      <p class="jb-lead">Guía de marca para todos mis proyectos. Versión 1, noviembre de 2026.</p>
+      <h1 class="jb-display">joaquín<br>beltrán</h1>
+      <div class="btns"><a class="jb-btn" href="#color">Ver la guía</a><a class="jb-btn jb-btn--outline" href="#piezas">Ir a las piezas</a></div>
+    </div>
+    <figure class="jb-franja jb-franja--foto jb-franja--entra" id="hero-franja">
+      <img src="https://images.unsplash.com/photo-1675795921263-0781cdbedb64?w=1100&q=75" alt="Una mano sujeta unos auriculares, en blanco y negro con la franja coral">
+      <span class="jb-franja__banda"></span>
+      <a class="credit" href="https://unsplash.com/es/fotos/una-persona-sosteniendo-un-par-de-auriculares-en-la-mano-zJkNGKYLRU0">Foto: Inka Kapturewska · Unsplash</a>
+    </figure>
+  </div>
+
+  <section id="principios">
+    <div class="head"><h2 class="jb-h2">principios</h2><p>Laboratorio frío: todo en grises, como un objeto fotografiado en un estudio, y una franja coral que lo cruza.</p></div>
+    <div class="grid g3">
+      <div class="jb-card"><h3 class="jb-h4">gris primero</h3><p>La pantalla es fría y neutra. El coral aparece poco y en grande.</p></div>
+      <div class="jb-card"><h3 class="jb-h4">un objeto, una franja</h3><p>Cada pantalla importante tiene un solo momento protagonista.</p></div>
+      <div class="jb-card"><h3 class="jb-h4">letra gruesa, texto corto</h3><p>Títulos enormes que dicen poco. Texto claro y breve.</p></div>
+      <div class="jb-card"><h3 class="jb-h4">sin sombras</h3><p>Las tarjetas se separan por su color, no por bordes ni sombras.</p></div>
+      <div class="jb-card"><h3 class="jb-h4">redondo para tocar</h3><p>Botones, etiquetas y campos son cápsulas.</p></div>
+      <div class="jb-card"><h3 class="jb-h4">claro y oscuro</h3><p>Las dos versiones son de primera. Ninguna es un apaño.</p></div>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="head"><h2 class="jb-h2">color</h2><p>Grises fríos del astronauta, coral y cobalto de la flor. El coral es igual en todos los proyectos.</p></div>
+    <div class="grid g4">
+      <div class="swatch" style="background:#E7EEF2;color:#161D24;box-shadow:inset 0 0 0 1px rgba(22,29,36,.12)"><b>niebla</b>#E7EEF2</div>
+      <div class="swatch" style="background:#CCDBE2;color:#161D24"><b>hielo</b>#CCDBE2</div>
+      <div class="swatch" style="background:#738A9A;color:#161D24"><b>acero</b>#738A9A</div>
+      <div class="swatch" style="background:#435565;color:#E7EEF2"><b>pizarra</b>#435565</div>
+      <div class="swatch" style="background:#697773;color:#E7EEF2"><b>salvia</b>#697773</div>
+      <div class="swatch" style="background:#161D24;color:#E7EEF2"><b>tinta</b>#161D24</div>
+      <div class="swatch" style="background:#F97279;color:#161D24"><b>coral</b>#F97279</div>
+      <div class="swatch" style="background:#2A72A3;color:#F4F8FA"><b>cobalto</b>#2A72A3</div>
+    </div>
+    <p class="label" style="margin-top:var(--space-6)">Los mismos roles en los dos modos</p>
+    <div class="modes">
+      <div class="panel" data-theme="light" id="roles-claro"></div>
+      <div class="panel" data-theme="dark" id="roles-oscuro"></div>
+    </div>
+  </section>
+
+  <section id="letra">
+    <div class="head"><h2 class="jb-h2">letra</h2><p>Bricolage Grotesque 800 para títulos y cifras, en minúsculas y sin punto final. Geist para todo lo demás.</p></div>
+    <div class="type-row"><div class="meta">hero · 164 px</div><div class="jb-display" style="font-size:clamp(56px,8vw,120px)">laboratorio</div></div>
+    <div class="type-row"><div class="meta">h1 · 112 px</div><div class="jb-h1" style="font-size:clamp(44px,6vw,88px)">nada de plantillas</div></div>
+    <div class="type-row"><div class="meta">h2 · 84 px</div><div class="jb-h2" style="font-size:clamp(36px,5vw,64px)">proyectos</div></div>
+    <div class="type-row"><div class="meta">h3 · 34 px</div><div class="jb-h3">fightlab pro</div></div>
+    <div class="type-row"><div class="meta">h4 · 24 px</div><div class="jb-h4">de la base de datos al último píxel</div></div>
+    <div class="type-row"><div class="meta">lead · Geist 18 px</div><div class="jb-lead" style="max-width:60ch">Un podcast de noticias que se escribe, se graba y se monta solo.</div></div>
+    <div class="type-row"><div class="meta">body · Geist 16 px</div><div style="max-width:65ch">Trabajo en energía y eficiencia con Next.js, Django y Odoo. En mis ratos libres construyo apps enteras, de punta a punta, para aprender haciéndolo bien.</div></div>
+    <div class="type-row"><div class="meta">small · 14 px</div><div style="font-size:var(--text-small);color:var(--jb-fg-muted)">App Android para llevar la cuenta del dinero en mano.</div></div>
+  </section>
+
+  <section id="espacio">
+    <div class="head"><h2 class="jb-h2">espacio</h2><p>Todo en múltiplos de 4. Mucho aire entre secciones: el vacío también es estilo.</p></div>
+    <div class="grid g2">
+      <div id="spaces"></div>
+      <div>
+        <p class="label">Esquinas</p>
+        <div class="radii"><div style="border-radius:12px">12 px</div><div style="border-radius:16px">16 px</div><div style="border-radius:28px">28 px</div><div style="border-radius:999px">cápsula</div></div>
+        <p class="label" style="margin-top:var(--space-6)">Sombras: ninguna. La superficie separa.</p>
+        <div style="background:var(--jb-surface-2);border-radius:var(--radius-lg);padding:var(--space-5)"><div class="jb-card" style="max-width:280px"><h3 class="jb-h4">tarjeta</h3><p>Surface sobre surface-2, sin borde ni sombra.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="franja">
+    <div class="head"><h2 class="jb-h2">la franja</h2><p>El sello. Entra desde la derecha, ocupa 3/5 del ancho y se deshace en rayas. Donde cruza, tiñe.</p></div>
+    <div class="grid g2">
+      <div>
+        <p class="label">Geometría</p>
+        <div class="geo jb-franja">
+          <span class="jb-franja__banda"></span>
+          <span class="m" style="right:4px;top:calc(46% - 22px)">46 % desde arriba</span>
+          <span class="m" style="right:4px;top:calc(76% + 6px)">30 % de alto</span>
+          <span class="m" style="left:40%;top:calc(46% - 22px)">60 % del ancho</span>
+          <span class="m" style="left:calc(40% - 13.2%);top:calc(76% + 6px)">rayas: 22 %</span>
+        </div>
+      </div>
+      <div>
+        <p class="label">Sola, como bloque</p>
+        <div class="block jb-franja jb-franja--entra" id="bloque-franja"><span class="jb-franja__banda"></span></div>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:var(--space-5)"><button class="jb-btn jb-btn--outline" id="replay" type="button">Repetir la entrada</button><span class="jb-muted" style="font-size:var(--text-small)">Es lo único que se mueve solo, una vez al cargar.</span></div>
+  </section>
+
+  <section id="logos">
+    <div class="head"><h2 class="jb-h2">logos</h2><p>Todos en gris, cruzados por la franja. Dentro, en tinta. Estos son de prueba hasta que lleguen los de verdad.</p></div>
+    <div class="grid g2" id="logos-grid"></div>
+    <div style="display:flex;gap:var(--space-5);align-items:center;margin-top:var(--space-6)">
+      <div class="mono" aria-label="Monograma provisional">jb</div>
+      <p class="jb-muted" style="margin:0;max-width:40ch;font-size:var(--text-small)">Monograma provisional, hasta que tengas el tuyo. Firma de pie de página: «joaquín beltrán — hecho a mano».</p>
+    </div>
+  </section>
+
+  <section id="iconos">
+    <div class="head"><h2 class="jb-h2">iconos</h2><p>Lucide de contorno, trazo 1,75, del color del texto. Solo los que ayudan a entender o a pulsar.</p></div>
+    <div class="icons">
+      <figure><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>flecha</figure>
+      <figure><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>correo</figure>
+      <figure><svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>enlace</figure>
+      <figure><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>descargar</figure>
+      <figure><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>buscar</figure>
+      <figure><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>código</figure>
+    </div>
+  </section>
+
+  <section id="piezas">
+    <div class="head"><h2 class="jb-h2">piezas</h2><p>Lo que se repite en cualquier proyecto. Clases jb-* en componentes.css.</p></div>
+    <div class="grid g3">
+      <div class="jb-card">
+        <p class="label">Botones</p>
+        <div class="btns">
+          <a class="jb-btn" href="#piezas">Ver proyecto</a>
+          <a class="jb-btn jb-btn--accent" href="#piezas">Probar la app</a>
+          <a class="jb-btn jb-btn--outline" href="#piezas">Código</a>
+          <a class="jb-btn jb-btn--round" href="#piezas" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a href="#piezas">Leer más</a>
+        </div>
+        <p class="label" style="margin-top:var(--space-6)">Etiquetas y campo</p>
+        <div class="btns" style="margin-bottom:var(--space-4)"><span class="jb-chip">Kotlin</span><span class="jb-chip">Compose</span><span class="jb-chip">IA</span></div>
+        <label for="correo" class="label" style="display:block;margin-bottom:var(--space-2)">Tu correo</label>
+        <input id="correo" class="jb-input" type="email" placeholder="tu@correo.com">
+      </div>
+      <a class="jb-card" href="#piezas" style="background:var(--jb-surface)">
+        <p class="label">Tarjeta de proyecto</p>
+        <div class="logo-box jb-franja jb-franja--logo" style="margin-bottom:var(--space-5);background:var(--jb-bg)">
+          <span class="jb-franja__logo">fightlab</span>
+          <span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span>
+        </div>
+        <h3 class="jb-h3">fightlab pro</h3>
+        <p style="margin:var(--space-2) 0 var(--space-4)">Entrenamiento, nutrición y coach con IA para atletas de combate.</p>
+        <div class="btns"><span class="jb-chip">PWA</span><span class="jb-chip">IA</span></div>
+      </a>
+      <div class="jb-card stat">
+        <p class="label">Cifra en una app (Efectivo)</p>
+        <div style="background:var(--jb-bg);border-radius:22px;padding:18px">
+          <div style="font-size:13px;color:var(--jb-fg-muted)">Saldo en mano</div>
+          <div class="n">1.240,50 €</div>
+          <div class="r"><span>Mercado</span><span>−32,10</span></div>
+          <div class="r"><span>Nómina</span><span>+1.100,00</span></div>
+        </div>
+        <p class="label" style="margin-top:var(--space-5)">Vacío</p>
+        <p style="margin:0;font-size:var(--text-small)">Aún no hay movimientos. <a href="#piezas">Añade el primero</a></p>
+      </div>
+    </div>
+    <div class="manif" style="margin-top:var(--space-4)">
+      <div class="l"><p class="jb-h1" style="font-size:clamp(44px,6vw,88px)">nada de plantillas</p></div>
+      <div class="r"><p>Bloque manifiesto: una mitad en tinta con un titular, la otra en coral con el texto y una acción.</p><a class="jb-btn" href="#piezas">Escríbeme</a></div>
+    </div>
+  </section>
+
+  <section id="tono">
+    <div class="head"><h2 class="jb-h2">tono</h2><p>Como un desarrollador que sabe lo que hace y no necesita adornarlo. Tú, frases cortas, verbos en los botones.</p></div>
+    <table class="voice">
+      <thead><tr><th>Sí</th><th>No</th></tr></thead>
+      <tbody>
+        <tr><td>nada de plantillas</td><td>¡Soluciones innovadoras a medida!</td></tr>
+        <tr><td>De la base de datos al último píxel.</td><td>Apasionado por crear experiencias digitales únicas.</td></tr>
+        <tr><td>Un podcast de noticias que se escribe, se graba y se monta solo.</td><td>Revolucionando la forma de consumir noticias con IA.</td></tr>
+        <tr><td>No se ha guardado. Revisa la conexión y vuelve a probar.</td><td>Error: algo salió mal.</td></tr>
+        <tr><td>Ver proyecto</td><td>Haz clic aquí para descubrir más</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="no">
+    <div class="head"><h2 class="jb-h2">qué no hacemos</h2><p>Lo que lo haría parecer de otro, o una plantilla.</p></div>
+    <ul class="nope">
+      <li>Fondo casi negro por defecto con un solo naranja (es lo de la referencia).</li>
+      <li>Etiquetas pequeñas en mayúsculas con letra de máquina.</li>
+      <li>Secciones numeradas 01, 02, 03.</li>
+      <li>Cuadrícula de líneas finas y esferas de partículas.</li>
+      <li>Un punto de color al final de los títulos.</li>
+      <li>Una franja de color encima de cada tarjeta.</li>
+      <li>Figuras geométricas 3D de adorno.</li>
+      <li>Sombras grises bajo las tarjetas y degradados de decoración.</li>
+      <li>Coral en texto pequeño sobre fondo claro.</li>
+      <li>Fotos a color o con objetos negros que la franja no tiñe.</li>
+      <li>Emojis como iconos.</li>
+      <li>Pokémon en la marca: es un gusto, no la identidad.</li>
+    </ul>
+  </section>
+
+  <footer><span>joaquín beltrán — hecho a mano</span><span>Guía de marca v1 · 4 de noviembre de 2026</span></footer>
+</div>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  document.querySelector('.mode').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    root.dataset.theme = b.dataset.v;
+    document.querySelectorAll('.mode button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  });
+
+  const roles = [['bg','fondo'],['surface','tarjetas'],['surface-2','superficie 2'],['fg','texto'],['fg-muted','texto secundario'],['line','líneas'],['accent','acento'],['link','enlace'],['btn','botón principal']];
+  for (const id of ['roles-claro','roles-oscuro']) {
+    const p = document.getElementById(id);
+    p.innerHTML = `<p class="label">${id.endsWith('claro') ? 'Modo claro' : 'Modo oscuro'}</p>` +
+      roles.map(([k,n]) => `<div class="row"><span><i class="dot" style="background:var(--jb-${k})"></i>${n}</span><code data-var="--jb-${k}"></code></div>`).join('');
+    p.querySelectorAll('code').forEach(c => c.textContent = getComputedStyle(p).getPropertyValue(c.dataset.var).trim());
+  }
+
+  const sp = [4,8,12,16,24,32,48,64,96,128];
+  document.getElementById('spaces').innerHTML = '<p class="label">Espacios</p>' +
+    sp.map((v,i) => `<div class="space"><span>space-${i+1} · ${v} px</span><i style="width:${v * 2.4}px"></i></div>`).join('');
+
+  const nombres = ['fightlab','noticia','efectivo','team builder'];
+  document.getElementById('logos-grid').innerHTML = nombres.map(n =>
+    `<div class="logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">${n}</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">${n}</span></span></span></div>`).join('');
+
+  document.getElementById('replay').addEventListener('click', () => {
+    for (const el of [document.getElementById('hero-franja'), document.getElementById('bloque-franja')]) {
+      el.classList.remove('jb-franja--entra'); void el.offsetWidth; el.classList.add('jb-franja--entra');
+    }
+  });
+})();
+</script>
+</body>
+</html>
