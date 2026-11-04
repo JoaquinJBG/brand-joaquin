@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direcciones de marca · v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@400;500;600&family=Unbounded:wght@400;600;800&family=Doto:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#FF2E93;--on-acc:#0A0A0F;--chrome-fg:#d9d9de;--chrome-mute:#8a8a94;--chrome-line:#1c1c22}
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:var(--chrome-fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--chrome-line)}
+.bar-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.bar p{margin:0;font-size:14px;color:var(--chrome-mute)}
+.bar strong{color:var(--chrome-fg)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--chrome-line);background:#0b0b0f;color:var(--chrome-fg);border-radius:999px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer;min-height:36px}
+.pill i{width:20px;height:20px;border-radius:50%;display:block;margin-left:-6px}
+.pill[aria-pressed="true"]{border-color:var(--chrome-fg);background:#1a1a20}
+.intro,.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.intro{padding-top:36px}
+.intro h1{font-size:28px;line-height:1.2;margin:0 0 8px;color:#fff;font-weight:600}
+.intro p{margin:0 0 8px;max-width:70ch;color:var(--chrome-mute)}
+.meta{padding:48px 0 14px;border-top:1px solid var(--chrome-line);margin-top:40px}
+.meta h2{margin:0;font-size:24px;color:#fff;font-weight:600}
+.meta h2 span{color:var(--chrome-mute);font-weight:400}
+.meta p{margin:4px 0 12px;color:var(--chrome-mute);max-width:66ch}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px;color:var(--chrome-mute)}
+.ctrls .grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;font-size:14px}
+.notes div{border:1px solid var(--chrome-line);border-radius:10px;padding:12px 14px;color:var(--chrome-mute)}
+.notes strong{display:block;color:var(--chrome-fg);margin-bottom:2px}
+@media (max-width:760px){.notes{grid-template-columns:1fr}}
+
+/* lienzo común */
+.dir{position:relative;overflow:hidden;color:var(--fg);background:var(--bg);font-family:"Geist",system-ui,sans-serif;transition:background .35s ease,color .35s ease}
+.dir .lbl{font-size:13px;color:var(--mute);margin:0 0 10px}
+.dir .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;text-decoration:none;font-weight:500;font-size:15px;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.dir .btn:active{transform:scale(.97)}
+canvas.obj{display:block;width:100%;aspect-ratio:1}
+.flat{display:flex;align-items:end;gap:18px}
+.flat svg{display:block}
+.app .r{display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-top:1px solid var(--line)}
+
+/* E1 · Obsidiana orbital */
+.e1{--bg:#060609;--fg:#EEEDF3;--mute:#9a98a6;--line:rgba(255,255,255,.08);--glass:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));--gborder:rgba(255,255,255,.09);--display:"Unbounded",sans-serif;border-radius:32px}
+.e1[data-mode="light"]{--bg:#ECEBF0;--fg:#121218;--mute:#5e5c6a;--line:rgba(0,0,0,.08);--glass:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.55));--gborder:rgba(0,0,0,.06)}
+.e1[data-font="serif"]{--display:"Instrument Serif",serif}
+.e1::before{content:"";position:absolute;inset:-25% -15% auto 35%;height:95%;background:radial-gradient(closest-side,color-mix(in oklab,var(--acc) 32%,transparent),transparent);filter:blur(30px);pointer-events:none}
+.e1[data-mode="light"]::before{opacity:.55}
+.e1 .stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 72% 12%,#fff6,transparent),radial-gradient(1.5px 1.5px at 88% 64%,#fff7,transparent),radial-gradient(1px 1px at 34% 82%,#fff5,transparent),radial-gradient(1px 1px at 6% 66%,#fff6,transparent),radial-gradient(1px 1px at 94% 30%,#fff5,transparent),radial-gradient(1.5px 1.5px at 46% 8%,#fff6,transparent);transition:opacity .35s}
+.e1[data-mode="light"] .stars{opacity:0}
+.e1 .hero{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:24px;padding:56px 48px 36px;position:relative}
+.e1 .name{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(56px,8.4vw,116px);line-height:.95;letter-spacing:-.03em}
+.e1[data-font="serif"] .name{font-weight:400;font-size:clamp(84px,12vw,168px);letter-spacing:-.02em;line-height:.9}
+.e1 .tag{max-width:34ch;margin:18px 0 26px;color:var(--mute);font-size:18px}
+.e1 .glass{background:var(--glass);border:1px solid var(--gborder);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 30px 60px -30px rgba(0,0,0,.6);backdrop-filter:blur(14px);border-radius:24px;padding:22px}
+.e1 .btn{border-radius:999px}
+.e1 .btn.pri{background:var(--acc);color:var(--on-acc);box-shadow:0 10px 40px -10px var(--acc)}
+.e1 .btn.sec{background:var(--glass);border:1px solid var(--gborder);color:var(--fg)}
+.e1 .parts{display:grid;grid-template-columns:1.2fr 1fr .9fr;gap:20px;padding:0 48px 48px;position:relative}
+.e1 h4{margin:0 0 6px;font-family:var(--display);font-weight:600;font-size:21px}
+.e1[data-font="serif"] h4{font-weight:400;font-size:32px}
+.e1 .card p{margin:0 0 14px;color:var(--mute);font-size:15px}
+.e1 .chip{display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--acc) 55%,transparent);color:var(--acc);margin-right:6px}
+.e1[data-mode="light"] .chip{color:color-mix(in oklab,var(--acc) 70%,#000)}
+.e1 .amt{font-family:var(--display);font-weight:600;font-size:26px;margin:4px 0 12px}
+.e1[data-font="serif"] .amt{font-weight:400;font-size:34px}
+
+/* E2 · Laboratorio */
+.e2{--bg:#E9E9EC;--fg:#0E0E10;--mute:#5d5d66;--line:rgba(0,0,0,.09);--card:#F7F7F9;--display:"Unbounded",sans-serif;border-radius:20px}
+.e2[data-mode="dark"]{--bg:#0A0A0C;--fg:#F2F2F4;--mute:#8d8d97;--line:rgba(255,255,255,.08);--card:#141417}
+.e2[data-font="dots"]{--display:"Doto",monospace}
+.e2 .stage{display:grid;grid-template-columns:1fr 1fr;min-height:520px;position:relative}
+.e2 .left{padding:48px 48px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;position:relative;z-index:2}
+.e2 .tag{max-width:30ch;margin:0;color:var(--mute);font-size:18px}
+.e2 .word{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(64px,9vw,128px);line-height:.9;letter-spacing:-.04em}
+.e2[data-font="dots"] .word{font-weight:900;letter-spacing:-.02em}
+.e2 .dot{color:var(--acc)}
+.e2 .block{position:absolute;right:0;top:22%;bottom:0;width:58%;background:var(--acc)}
+.e2 .right{position:relative;display:flex;align-items:center;justify-content:center;padding:24px}
+.e2 .right canvas{max-width:430px;position:relative;z-index:1}
+.e2 .vert{position:absolute;right:20px;top:24px;writing-mode:vertical-rl;font-size:14px;color:var(--fg);z-index:2}
+.e2 .btn{border-radius:999px}
+.e2 .btn.pri{background:var(--fg);color:var(--bg)}
+.e2 .btn.sec{border:1px solid var(--line);color:var(--fg);background:transparent}
+.e2 .btns{display:flex;gap:12px;flex-wrap:wrap}
+.e2 .parts{display:grid;grid-template-columns:1.2fr 1fr .9fr;gap:20px;padding:40px 48px 48px}
+.e2 .tile{background:var(--card);border-radius:18px;padding:22px}
+.e2 h4{margin:0 0 6px;font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.03em}
+.e2[data-font="dots"] h4{font-weight:900;letter-spacing:0}
+.e2 .card p{margin:0;color:var(--mute);font-size:15px}
+.e2 .amt{font-family:var(--display);font-weight:800;font-size:30px;margin:4px 0 12px;letter-spacing:-.02em}
+.e2 .family{display:flex;flex-wrap:wrap;gap:10px 28px;padding:0 48px 48px}
+.e2 .family span{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-.03em}
+.e2[data-font="dots"] .family span{font-weight:900;letter-spacing:0}
+
+@media (max-width:860px){
+  .e1 .hero{grid-template-columns:1fr;padding:36px 20px 20px}
+  .e1 .hero canvas{max-width:300px;justify-self:center;grid-row:1}
+  .e1 .parts,.e2 .parts{grid-template-columns:1fr;padding:24px 20px 32px}
+  .e2 .stage{grid-template-columns:1fr}
+  .e2 .left{padding:32px 20px 24px}
+  .e2 .right{min-height:320px}
+  .e2 .block{top:auto;height:62%;width:100%}
+  .e2 .family{padding:0 20px 32px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <p><strong>Color de prueba</strong> (cada proyecto tendrá el suyo):</p>
+    <div class="row" id="sw">
+      <button class="pill" data-c="#FF2E93" aria-pressed="true"><i style="background:#FF2E93"></i>Fucsia</button>
+      <button class="pill" data-c="#2EC5FF" aria-pressed="false"><i style="background:#2EC5FF"></i>Azul cielo</button>
+      <button class="pill" data-c="#2EF2B4" aria-pressed="false"><i style="background:#2EF2B4"></i>Menta</button>
+      <button class="pill" data-c="#FFB224" aria-pressed="false"><i style="background:#FFB224"></i>Ámbar</button>
+    </div>
+  </div>
+</div>
+
+<header class="intro">
+  <h1>Versión 2: dos caminos</h1>
+  <p>E1 junta lo que elegiste (Obsidiana + Órbita, en fucsia). E2 mete ese mismo color y ese mismo sello en la forma de colocar las cosas que se repite en tus pines y en Nothing.</p>
+  <p>Cada una tiene botones para probar claro u oscuro y otras opciones. Juega con ellos.</p>
+</header>
+
+<!-- E1 -->
+<div class="wrap">
+  <div class="meta">
+    <h2>E1 · Obsidiana orbital <span>— lo que elegiste, junto</span></h2>
+    <p>Cristal oscuro con luz de color, todo redondo, y un objeto 3D que flota.</p>
+    <div class="ctrls" data-target="e1">
+      <div class="grp">Modo <button class="pill" data-k="mode" data-v="dark" aria-pressed="true">Oscuro</button><button class="pill" data-k="mode" data-v="light" aria-pressed="false">Claro</button></div>
+      <div class="grp">Letra <button class="pill" data-k="font" data-v="wide" aria-pressed="true">Ancha (Órbita)</button><button class="pill" data-k="font" data-v="serif" aria-pressed="false">Fina (Obsidiana)</button></div>
+      <div class="grp">Sello <button class="pill" data-k="shape" data-v="planet" aria-pressed="true">Planeta</button><button class="pill" data-k="shape" data-v="gem" aria-pressed="false">Gema</button></div>
+    </div>
+  </div>
+  <section class="dir e1" id="e1" data-mode="dark" data-font="wide" data-shape="planet" aria-label="Muestra E1">
+    <div class="stars"></div>
+    <div class="hero">
+      <div>
+        <h3 class="name">Joaquín<br>Beltrán</h3>
+        <p class="tag">Webs y apps que parecen venir de otro planeta.</p>
+        <div class="btns" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn pri" href="#e1">Ver proyectos</a><a class="btn sec" href="#e1">Escríbeme</a></div>
+      </div>
+      <canvas class="obj" data-for="e1" role="img" aria-label="Sello 3D girando"></canvas>
+    </div>
+    <div class="parts">
+      <div><p class="lbl">Tarjeta de proyecto</p>
+        <article class="card glass"><h4>FightLab PRO</h4><p>Entrenamiento, nutrición y un coach con IA para atletas de combate.</p><span class="chip">PWA</span><span class="chip">IA</span></article></div>
+      <div><p class="lbl">Tamaño app (Efectivo)</p>
+        <div class="app glass"><div style="font-size:13px;color:var(--mute)">Saldo en mano</div><div class="amt">1.240,50 €</div>
+          <div class="r"><span>Mercado</span><span>−32,10</span></div><div class="r"><span>Nómina</span><span style="color:var(--acc)">+1.100,00</span></div></div></div>
+      <div><p class="lbl">Sello plano (64, 32 y 16 px)</p><div class="flat glass" data-flat="e1"></div></div>
+    </div>
+  </section>
+  <div class="notes">
+    <div><strong>Siempre igual</strong>Cristal, cápsulas, brillo suave, el planeta (o la gema) y la letra que elijas.</div>
+    <div><strong>Cambia por proyecto</strong>El color de la luz, del planeta y del botón.</div>
+    <div><strong>¿Se parece a la referencia?</strong>0 de 5. Nada en común salvo el fondo oscuro.</div>
+  </div>
+</div>
+
+<!-- E2 -->
+<div class="wrap">
+  <div class="meta">
+    <h2>E2 · Laboratorio <span>— tu color y tu sello, con la estructura de tus pines</span></h2>
+    <p>De «lab.» y de Nothing cojo cuatro cosas: el nombre gigante en minúsculas con punto, el objeto tratado como foto de producto, un solo bloque macizo de color y el modo claro gris. Tu sello vive en el punto final: cada proyecto lo lleva en su color.</p>
+    <div class="ctrls" data-target="e2">
+      <div class="grp">Modo <button class="pill" data-k="mode" data-v="light" aria-pressed="true">Claro</button><button class="pill" data-k="mode" data-v="dark" aria-pressed="false">Oscuro</button></div>
+      <div class="grp">Letra <button class="pill" data-k="font" data-v="wide" aria-pressed="true">Ancha</button><button class="pill" data-k="font" data-v="dots" aria-pressed="false">De puntos (como Nothing)</button></div>
+      <div class="grp">Objeto <button class="pill" data-k="shape" data-v="gem" aria-pressed="true">Gema</button><button class="pill" data-k="shape" data-v="planet" aria-pressed="false">Planeta</button></div>
+    </div>
+  </div>
+  <section class="dir e2" id="e2" data-mode="light" data-font="wide" data-shape="gem" aria-label="Muestra E2">
+    <div class="stage">
+      <div class="left">
+        <p class="tag">Joaquín Beltrán. Desarrollo web y apps, de la base de datos al último píxel.</p>
+        <h3 class="word">joaquín<span class="dot">.</span></h3>
+        <div class="btns"><a class="btn pri" href="#e2">Ver proyectos</a><a class="btn sec" href="#e2">Escríbeme</a></div>
+      </div>
+      <div class="right">
+        <div class="block"></div>
+        <span class="vert">desarrollo web</span>
+        <canvas class="obj" data-for="e2" role="img" aria-label="Objeto 3D como foto de producto"></canvas>
+      </div>
+    </div>
+    <div class="parts">
+      <div><p class="lbl">Tarjeta de proyecto</p>
+        <article class="card tile"><h4>fightlab<span class="dot">.</span></h4><p>Entrenamiento, nutrición y un coach con IA para atletas de combate.</p></article></div>
+      <div><p class="lbl">Tamaño app</p>
+        <div class="app tile"><div style="font-size:13px;color:var(--mute)">efectivo<span class="dot">.</span> · saldo en mano</div><div class="amt">1.240,50 €</div>
+          <div class="r"><span>Mercado</span><span>−32,10</span></div><div class="r"><span>Nómina</span><span>+1.100,00</span></div></div></div>
+      <div><p class="lbl">Sello plano (64, 32 y 16 px)</p><div class="flat tile" data-flat="e2"></div></div>
+    </div>
+    <div class="family" aria-label="Ejemplo: cada proyecto con su color">
+      <span>fightlab<span style="color:#FF2E93">.</span></span>
+      <span>noticia<span style="color:#2EC5FF">.</span></span>
+      <span>efectivo<span style="color:#2EF2B4">.</span></span>
+      <span>teambuilder<span style="color:#FFB224">.</span></span>
+    </div>
+  </section>
+  <div class="notes">
+    <div><strong>Siempre igual</strong>Nombre en minúsculas con punto, un bloque de color, objeto negro como producto, botones negros en cápsula.</div>
+    <div><strong>Cambia por proyecto</strong>El color del punto y del bloque. Abajo ves cuatro proyectos de la misma familia.</div>
+    <div><strong>¿Se parece a la referencia?</strong>1 de 5 (bloque de color). Dejo fuera a propósito los números 001, las etiquetas diminutas, la cuadrícula de líneas y las mayúsculas en letra de máquina: eso es lo suyo.</div>
+  </div>
+</div>
+
+<div style="height:80px"></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ACC = '#FF2E93';
+  const rgb = h => [1,3,5].map(i => parseInt(h.slice(i,i+2),16));
+  const mix = (a,b,t) => a.map((x,i)=>Math.round(x+(b[i]-x)*t));
+
+  document.getElementById('sw').addEventListener('click', e => {
+    const b = e.target.closest('.pill'); if(!b) return;
+    document.querySelectorAll('#sw .pill').forEach(x => x.setAttribute('aria-pressed', x===b));
+    ACC = b.dataset.c; document.documentElement.style.setProperty('--acc', ACC); drawFlats();
+  });
+  document.querySelectorAll('.ctrls').forEach(c => c.addEventListener('click', e => {
+    const b = e.target.closest('.pill'); if(!b) return;
+    const sec = document.getElementById(c.dataset.target);
+    sec.dataset[b.dataset.k] = b.dataset.v;
+    c.querySelectorAll(`[data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute('aria-pressed', x===b));
+    drawFlats();
+  }));
+
+  const FLAT = {
+    planet: (s,fg) => `<svg width="${s}" height="${s}" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="15" fill="var(--acc)"/><ellipse cx="32" cy="32" rx="29" ry="9" transform="rotate(-18 32 32)" stroke="${fg}" stroke-width="2.5"/><path d="M17 28a15 15 0 0 1 30 0" fill="var(--acc)"/><circle cx="56" cy="16" r="3.5" fill="${fg}"/></svg>`,
+    gem: (s,fg) => `<svg width="${s}" height="${s}" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M20 8h24l14 16-26 32L6 24z" fill="#14141a" stroke="${fg}" stroke-width="2.5" stroke-linejoin="round"/><path d="M6 24h52M20 8l-4 16 16 32 16-32-4-16" stroke="${fg}" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round"/><path d="M16 24h32L32 56z" fill="var(--acc)" fill-opacity=".85"/></svg>`,
+    jdot: (s,fg) => `<svg width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="${fg}"/><path d="M30 16v22a8 8 0 0 1-14 5" stroke="var(--bg)" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="44" cy="42" r="6" fill="var(--acc)"/></svg>`
+  };
+  function drawFlats(){
+    document.querySelectorAll('[data-flat]').forEach(el => {
+      const sec = document.getElementById(el.dataset.flat), fg = 'var(--fg)';
+      const f = el.dataset.flat === 'e2' ? FLAT.jdot : FLAT[sec.dataset.shape];
+      el.innerHTML = f(64,fg) + f(32,fg) + f(16,fg);
+    });
+  }
+
+  const rot = ([x,y,z], ax, ay) => { const cy=Math.cos(ay), sy=Math.sin(ay), cx=Math.cos(ax), sx=Math.sin(ax);
+    const x1=x*cy+z*sy, z1=-x*sy+z*cy; return [x1, y*cx-z1*sx, y*sx+z1*cx]; };
+  const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]], cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2], norm=a=>{const l=Math.hypot(...a)||1;return a.map(v=>v/l)};
+  const LIGHT = norm([-.5,.8,-.7]);
+  const GEM = (() => { const n=8, v=[], f=[];
+    for(let i=0;i<n;i++){const a=i/n*Math.PI*2+Math.PI/n; v.push([Math.cos(a)*.48,.52,Math.sin(a)*.48]);}
+    for(let i=0;i<n;i++){const a=i/n*Math.PI*2; v.push([Math.cos(a),.14,Math.sin(a)]);}
+    v.push([0,-1.1,0]); f.push([...Array(n).keys()]);
+    for(let i=0;i<n;i++){const j=(i+1)%n; f.push([i,j,n+j]); f.push([i,n+j,n+i]);}
+    for(let i=0;i<n;i++){const j=(i+1)%n; f.push([n+i,n+j,2*n]);}
+    return {v,f}; })();
+
+  function setup(cv){
+    const ctx=cv.getContext('2d'), sec=document.getElementById(cv.dataset.for);
+    let W=0,H=0,tx=0,ty=0,mx=0,my=0;
+    const size=()=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);};
+    size(); addEventListener('resize', size);
+    sec.addEventListener('pointermove', e => {const r=cv.getBoundingClientRect(); tx=(e.clientX-r.left)/r.width-.5; ty=(e.clientY-r.top)/r.height-.5;});
+    const proj=(p,s)=>{const k=3.2/(3.2+p[2]); return [W/2+p[0]*s*k, H/2-p[1]*s*k];};
+
+    function gem(t, product){
+      const s=Math.min(W,H)*.34, ay=t*.45+mx*1.2, ax=-.35+Math.sin(t*.3)*.12+my*.8, acc=rgb(ACC);
+      const V=GEM.v.map(p=>rot(p,ax,ay));
+      if(product){ ctx.fillStyle='rgba(0,0,0,.28)'; ctx.beginPath(); ctx.ellipse(W/2,H/2+s*1.25,s*.75,s*.12,0,0,Math.PI*2); ctx.fill(); }
+      GEM.f.map(idx=>{const pts=idx.map(i=>V[i]); let n=norm(cross(sub(pts[1],pts[0]),sub(pts[2],pts[0])));
+        const c=pts.reduce((a,p)=>[a[0]+p[0],a[1]+p[1],a[2]+p[2]],[0,0,0]).map(x=>x/pts.length); if(dot(n,c)<0) n=n.map(x=>-x); return {pts,n,z:c[2]};})
+      .sort((a,b)=>b.z-a.z).forEach(fc=>{
+        if(fc.n[2]>=0) return;
+        const li=Math.max(0,dot(fc.n,LIGHT)), spec=Math.pow(li,12);
+        let col = product ? mix([8,8,10],[70,70,78],Math.pow(li,1.5)) : mix([10,10,16],acc,Math.pow(li,2.2)*.85);
+        col = mix(col,[255,255,255],spec*(product?.75:.55));
+        ctx.beginPath(); fc.pts.forEach((p,i)=>{const q=proj(p,s); i?ctx.lineTo(...q):ctx.moveTo(...q)}); ctx.closePath();
+        ctx.fillStyle=`rgb(${col})`; ctx.fill(); ctx.strokeStyle=product?'rgba(255,255,255,.12)':`rgba(${acc},.35)`; ctx.lineWidth=1; ctx.stroke();
+      });
+    }
+    function planet(t, product){
+      const fg=getComputedStyle(sec).getPropertyValue('--fg').trim()||'#fff';
+      const R=Math.min(W,H)*.22, cx=W/2+mx*10, cy=H/2+my*10, tilt=-.32+Math.sin(t*.25)*.05, sq=.26+my*.08;
+      const base = product ? [12,12,14] : rgb(ACC);
+      const ring=front=>{for(let k=0;k<3;k++){const rx=R*(1.55+k*.2); ctx.globalAlpha=.75-k*.2; ctx.strokeStyle=product?'#111':fg; ctx.lineWidth=k?1.2:2;
+        ctx.beginPath(); ctx.ellipse(cx,cy,rx,rx*sq,tilt,front?0:Math.PI,front?Math.PI:Math.PI*2); ctx.stroke();} ctx.globalAlpha=1;};
+      const ma=t*.7, mr=R*2.35, mxp=Math.cos(ma)*mr, myp=Math.sin(ma)*mr*sq, c=Math.cos(tilt), sn=Math.sin(tilt);
+      const moon=[cx+mxp*c-myp*sn, cy+mxp*sn+myp*c], behind=Math.sin(ma)<0;
+      const drawMoon=()=>{ctx.fillStyle=product?ACC:fg; ctx.beginPath(); ctx.arc(...moon,behind?R*.08:R*.11,0,Math.PI*2); ctx.fill();};
+      if(behind) drawMoon(); ring(false);
+      const g=ctx.createRadialGradient(cx-R*.45,cy-R*.5,R*.1,cx,cy,R*1.05);
+      g.addColorStop(0,`rgb(${mix(base,[255,255,255],product?.45:.35)})`); g.addColorStop(.45,`rgb(${product?[30,30,34]:base})`); g.addColorStop(1,`rgb(${mix(base,[0,0,0],.9)})`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.fill();
+      ring(true); if(!behind) drawMoon();
+    }
+    const t0=performance.now();
+    function frame(now){
+      const t=reduce?2.2:(now-t0)/1000; mx+=(tx-mx)*.05; my+=(ty-my)*.05;
+      ctx.clearRect(0,0,W,H);
+      const product = sec.id==='e2';
+      (sec.dataset.shape==='gem'?gem:planet)(t, product);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  drawFlats();
+  document.querySelectorAll('canvas.obj').forEach(setup);
+})();
+</script>
+</body>
+</html>

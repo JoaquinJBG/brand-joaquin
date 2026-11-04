@@ -27,9 +27,34 @@ Consecuencias para el diseño:
 - Sin referencias a Pokémon en la marca.
 - Hace falta un sello que exista en dos formas: 3D para webs grandes y plano para apps y webs pequeñas.
 
+## 2026-11-04 · Segunda ronda (tras ver `exploracion/direcciones-v1.html`)
+
+- Le gustan más **Órbita** y **Obsidiana**, en **fucsia**. Descarta, por ahora, Señal y Holo.
+- Comparte su tablero de Pinterest «Diseño web»: https://pin.it/7JV3fueJe
+- Su pin favorito, «lab.»: https://es.pinterest.com/pin/662803270213212234/ . Le recuerda a la marca de
+  teléfonos **Nothing**, que le encanta.
+- Comparte también una captura con más diseños que le gustan (estilo industrial, producto, gris claro +
+  naranja, letra gruesa).
+
+Lo que se repite en lo que guarda: fondos gris claro o blanco (7 de 10 pines), **un solo color caliente
+como bloque macizo**, letra gruesa o editorial muy grande, fotos de objetos o personas en blanco y negro,
+etiquetas técnicas diminutas y texto en vertical.
+
+Choques a resolver con él:
+
+- Dijo «negro predominante», pero casi todo lo que guarda es claro.
+- Eligió direcciones suaves y redondas, pero guarda diseños duros e industriales.
+- Varias cosas de los pines (números 001, etiquetas diminutas, cuadrícula de líneas, naranja) son justo
+  las que identifican a la referencia.
+
+Nombre que sale en su tablero: **Joaquín Beltrán** (se usa como nombre de trabajo hasta que lo confirme).
+
 ## Pendiente
 
 - Elegir dirección estética.
-- Nombre completo y letras del monograma.
+- ¿Claro, oscuro o los dos?
+- ¿Cerca o lejos del estilo de sus pines (y de la referencia)?
+- Qué le gusta exactamente de Nothing.
+- Letras del monograma.
 - Pokédex 3D: ¿marca o solo edición especial del portfolio?
 - ¿Modo claro?
