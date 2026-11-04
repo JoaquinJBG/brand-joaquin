@@ -1,11 +1,4 @@
-/**
- * Marca personal de Joaquín Beltrán · preset de Tailwind CSS v3
- * Uso (tailwind.config.js):
- *   module.exports = { presets: [require("./marca/tailwind.preset.js")], content: [...] }
- * Importa también tokens.css: los colores apuntan a sus variables, así el modo oscuro
- * cambia solo con data-theme="dark" en <html>.
- * Para Tailwind v4 usa tailwind-v4.css.
- */
+// Tailwind v3: presets: [require("./marca/tailwind.preset.js")], e importa tokens.css (los colores de rol son sus variables).
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["selector", '[data-theme="dark"]'],

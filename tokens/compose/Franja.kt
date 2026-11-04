@@ -1,4 +1,3 @@
-// La franja en Compose: foto en blanco y negro teñida, y logo gris con su parte en tinta.
 package es.joaquinbeltran.marca
 
 import androidx.compose.foundation.Canvas
@@ -33,7 +32,6 @@ fun DrawScope.dibujarFranja(f: FranjaJb, blend: BlendMode = BlendMode.SrcOver) {
     val alto = size.height * f.alto
     drawRect(f.color, Offset(izquierda, arriba), Size(ancho, alto), blendMode = blend)
 
-    // rayas que se desvanecen hacia la izquierda: hueco, raya, hueco, raya…
     val raya = f.raya.dp.toPx()
     val zona = ancho * f.rayasAncho
     val inicio = izquierda - zona
@@ -57,7 +55,7 @@ private val escalaDeGrises = ColorFilter.colorMatrix(ColorMatrix().apply { setTo
 
 @Composable
 fun FotoConFranja(foto: Painter, descripcion: String?, modifier: Modifier = Modifier, f: FranjaJb = LocalFranjaJb.current) {
-    // Offscreen para que el multiply se mezcle solo con la foto y no con lo que haya detrás.
+    // Offscreen para que el multiply se mezcle solo con la foto y no con lo de detrás.
     Box(modifier.graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)) {
         Image(foto, descripcion, Modifier.matchParentSize(), contentScale = ContentScale.Crop, colorFilter = escalaDeGrises)
         Canvas(Modifier.matchParentSize()) { dibujarFranja(f, BlendMode.Multiply) }

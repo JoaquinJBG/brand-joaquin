@@ -1,7 +1,4 @@
-// Marca personal de Joaquín Beltrán · tema para Jetpack Compose (Material 3)
-// Punto de partida: copia este archivo al módulo de UI y cambia el package.
-// Fuentes: res/values/font_certs.xml del ejemplo oficial de "Downloadable Fonts"
-// y la dependencia androidx.compose.ui:ui-text-google-fonts.
+// Requiere androidx.compose.ui:ui-text-google-fonts y res/values/font_certs.xml del ejemplo oficial "Downloadable Fonts".
 package es.joaquinbeltran.marca
 
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -41,8 +38,7 @@ object Jb {
     val SuperficieOscura2 = Color(0xFF243040)
 }
 
-// En Material 3 "primary" pinta los botones principales. En esta marca el botón principal
-// es tinta (o niebla en oscuro); el coral es la franja y el botón de acento (secondary).
+// primary = tinta porque los botones de la marca son tinta; el coral va en secondary.
 private val Claro = lightColorScheme(
     primary = Jb.Tinta,
     onPrimary = Jb.Niebla,
@@ -118,7 +114,7 @@ val TipografiaJb = Typography(
     labelSmall = TextStyle(fontFamily = Geist, fontSize = 12.sp, lineHeight = 16.sp),
 )
 
-// Botones y chips usan "full" (cápsula); tarjetas "large" (28 dp).
+// extraLarge es la cápsula de botones y chips; las tarjetas usan large.
 val FormasJb = Shapes(
     extraSmall = RoundedCornerShape(12.dp),
     small = RoundedCornerShape(16.dp),

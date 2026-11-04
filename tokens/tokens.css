@@ -1,13 +1,7 @@
-/*
- * Marca personal de Joaquín Beltrán · tokens
- * Fuente de verdad de colores, letra, espacios, radios y movimiento.
- * Uso: importa este archivo una vez en la raíz de la app. Modo oscuro con
- * data-theme="dark" en <html>, o automático con prefers-color-scheme.
- */
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap");
 
 :root {
-  /* paleta base (no usar directamente en componentes: usar los roles de abajo) */
+  /* paleta base: los componentes usan los roles, no estos colores */
   --jb-niebla: #E7EEF2;
   --jb-hielo: #CCDBE2;
   --jb-acero: #738A9A;
@@ -20,7 +14,6 @@
   --jb-cobalto-texto: #23648F;
   --jb-cobalto-claro: #7FB4DA;
 
-  /* roles · modo claro */
   --jb-bg: var(--jb-niebla);
   --jb-surface: #F4F8FA;
   --jb-surface-2: var(--jb-hielo);
@@ -37,7 +30,6 @@
   --jb-btn: var(--jb-tinta);
   --jb-on-btn: var(--jb-niebla);
 
-  /* letra */
   --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
   --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --weight-display: 800;
@@ -58,7 +50,6 @@
   --text-small: 14px;
   --text-caption: 12px;
 
-  /* espacios (múltiplos de 4) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -72,17 +63,15 @@
   --container: 1240px;
   --gutter: 24px;
 
-  /* esquinas */
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 28px;
   --radius-full: 999px;
 
-  /* sombras: no hay. La profundidad sale del color de la superficie. */
+  /* sin sombras: la profundidad sale del color de la superficie */
   --shadow: none;
   --focus-ring: 0 0 0 2px var(--jb-bg), 0 0 0 4px var(--jb-link);
 
-  /* movimiento */
   --ease-out: cubic-bezier(.2, .8, .2, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
   --dur-fast: 150ms;
@@ -92,7 +81,6 @@
   --lift: -4px;
   --press: .97;
 
-  /* la franja */
   --franja-ancho: 60%;
   --franja-arriba: 46%;
   --franja-alto: 30%;
