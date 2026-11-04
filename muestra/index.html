@@ -90,6 +90,19 @@ table.t td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-top:1px
 .duo ul{margin:0;padding-left:18px;color:var(--jb-fg-muted);font-size:var(--text-small)}
 .duo li{margin-bottom:var(--space-2)}
 
+.chart{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font:12px var(--font-body);fill:var(--jb-fg-muted)}
+.leyenda{display:flex;gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-small);color:var(--jb-fg-muted);margin-bottom:var(--space-3)}
+.leyenda i,.series i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+.series{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-2);font-size:var(--text-caption);color:var(--jb-fg-muted)}
+.series div{display:grid;gap:6px}
+.series b{display:block;height:40px;border-radius:var(--radius-sm)}
+.rampa{display:flex;height:28px;border-radius:var(--radius-sm);overflow:hidden}
+.rampa span{flex:1}
+.jb-tooltip{position:fixed;z-index:50;pointer-events:none;padding:8px 12px;border-radius:var(--radius-sm);font-size:13px;background:var(--jb-fg);color:var(--jb-bg);box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.toasts{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:60;display:grid;gap:8px}
+@media (max-width:760px){.g3 > [style*="span 2"]{grid-column:auto!important}}
+
 footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:var(--space-5) 0 var(--space-7);display:flex;justify-content:space-between;gap:var(--space-5);flex-wrap:wrap;color:var(--jb-fg-muted);font-size:var(--text-small)}
 
 @media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr}.top nav{display:none}}
@@ -123,7 +136,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
 <div class="wrap">
   <header class="top">
     <strong>joaquín beltrán</strong>
-    <nav aria-label="Secciones"><a href="#color">Color</a><a href="#letra">Letra</a><a href="#luz">Luz</a><a href="#franja">Franja</a><a href="#logos">Logos</a><a href="#piezas">Piezas</a><a href="#tono">Tono</a></nav>
+    <nav aria-label="Secciones"><a href="#color">Color</a><a href="#letra">Letra</a><a href="#luz">Luz</a><a href="#franja">Franja</a><a href="#piezas">Piezas</a><a href="#graficas">Gráficas</a><a href="#app">App</a><a href="#tono">Tono</a></nav>
   </header>
 
   <div class="hero">
@@ -319,8 +332,108 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
     </div>
   </section>
 
+  <section id="estados">
+    <div class="head"><span class="jb-num">10</span><h2 class="jb-h2">estados</h2><p>Éxito, aviso, error e información. Siempre con icono y texto: el color nunca va solo. El error es carmesí, más oscuro que el coral del botón.</p></div>
+    <div class="grid g2">
+      <div class="jb-glass" style="display:grid;gap:var(--space-3)">
+        <div class="jb-alerta jb-alerta--exito" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Guardado.</strong> Tu sesión de hoy ya cuenta en la carga semanal.</div></div>
+        <div class="jb-alerta jb-alerta--aviso" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><strong>Carga alta.</strong> Llevas tres días por encima de tu media.</div></div>
+        <div class="jb-alerta jb-alerta--error" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><div><strong>No se ha guardado.</strong> Revisa la conexión y vuelve a probar.</div></div>
+        <div class="jb-alerta" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><strong>Nuevo.</strong> Ya puedes exportar tus datos.</div></div>
+      </div>
+      <div class="jb-glass">
+        <p class="label">Etiquetas de estado</p>
+        <div class="btns" style="margin-bottom:var(--space-5)"><span class="jb-chip jb-chip--exito"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Zona segura</span><span class="jb-chip jb-chip--aviso"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Vigilar</span><span class="jb-chip jb-chip--error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Riesgo</span></div>
+        <table class="t"><thead><tr><th>Estado</th><th>Relleno</th><th>Texto claro · oscuro</th></tr></thead><tbody>
+          <tr><td>Éxito</td><td>#1E9E6A</td><td>#0B7550 · #3FCB8E</td></tr>
+          <tr><td>Aviso</td><td>#E2A21B</td><td>#8A5A00 · #F2BC4A</td></tr>
+          <tr><td>Error</td><td>#C8323F</td><td>#B42B37 · #FF5A6A</td></tr>
+          <tr><td>Información</td><td>cobalto</td><td>#23648F · #7FB4DA</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="graficas">
+    <div class="head"><span class="jb-num">11</span><h2 class="jb-h2">gráficas</h2><p>Cinco series en orden fijo, validadas para daltonismo en claro y oscuro. El color sigue a la serie, nunca a su posición. Más de cinco: «Otros» o gráficas pequeñas por separado.</p></div>
+    <div class="grid g2">
+      <div class="jb-glass">
+        <p class="label">Carga por tipo de sesión · últimas 4 semanas</p>
+        <div class="leyenda" id="leyenda-barras"></div>
+        <svg id="barras" class="chart" viewBox="0 0 520 240" role="img" aria-label="Barras agrupadas de carga por tipo de sesión"></svg>
+        <details style="margin-top:var(--space-3)"><summary class="label" style="cursor:pointer;margin:0">Ver como tabla</summary><table class="jb-tabla" id="tabla-barras" style="margin-top:var(--space-3)"></table></details>
+      </div>
+      <div class="jb-glass">
+        <p class="label">Peso y objetivo · 8 semanas</p>
+        <div class="leyenda" id="leyenda-lineas"></div>
+        <svg id="lineas" class="chart" viewBox="0 0 520 240" role="img" aria-label="Líneas de peso y objetivo"></svg>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:var(--space-4)">
+      <div class="jb-glass"><p class="label">Orden de series</p><div class="series" id="series"></div></div>
+      <div class="jb-glass"><p class="label">Escala de cobalto (magnitud) y divergente (por debajo y por encima)</p><div class="rampa" id="rampa-seq"></div><div class="rampa" id="rampa-div" style="margin-top:var(--space-3)"></div></div>
+    </div>
+    <div class="jb-tooltip" id="tooltip" hidden></div>
+  </section>
+
+  <section id="app">
+    <div class="head"><span class="jb-num">12</span><h2 class="jb-h2">piezas de app</h2><p>Lo que necesita una app de verdad: navegación, ventanas, avisos, tablas, formularios, carga y vacío.</p></div>
+    <div class="grid g2">
+      <div class="jb-glass">
+        <p class="label">Navegación en escritorio</p>
+        <nav class="jb-nav" aria-label="Ejemplo de navegación"><a href="#app" aria-current="page">Panel</a><a href="#app">Entrenos</a><a href="#app">Nutrición</a><a href="#app">Coach</a></nav>
+        <p class="label" style="margin-top:var(--space-6)">Barra inferior en móvil</p>
+        <nav class="jb-tabbar" aria-label="Ejemplo de barra inferior" style="max-width:380px"><a href="#app" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a><a href="#app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>Datos</a><a href="#app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Añadir</a><a href="#app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Perfil</a></nav>
+      </div>
+      <div class="jb-glass">
+        <p class="label">Ventana emergente y aviso flotante</p>
+        <div class="btns"><button class="jb-btn jb-btn--ghost" id="abrir-modal" type="button">Abrir ventana</button><button class="jb-btn jb-btn--ghost" id="lanzar-toast" type="button">Lanzar aviso</button></div>
+        <dialog class="jb-modal" id="modal" aria-labelledby="modal-titulo">
+          <h3 class="jb-h3" id="modal-titulo" style="margin:0 0 var(--space-3)">borrar sesión</h3>
+          <p class="jb-muted" style="margin:0 0 var(--space-5)">Se borrará la sesión del martes y se recalculará tu carga. No se puede deshacer.</p>
+          <form method="dialog" class="btns"><button class="jb-btn" value="ok">Borrar sesión</button><button class="jb-btn jb-btn--ghost" value="no">Cancelar</button></form>
+        </dialog>
+        <div aria-live="polite" class="toasts" id="toasts"></div>
+        <p class="label" style="margin-top:var(--space-6)">Cargando</p>
+        <div style="display:grid;gap:10px"><div class="jb-skeleton" style="height:18px;width:60%"></div><div class="jb-skeleton" style="height:12px"></div><div class="jb-skeleton" style="height:12px;width:80%"></div></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:var(--space-4)">
+      <div class="jb-glass">
+        <p class="label">Tabla</p>
+        <table class="jb-tabla"><thead><tr><th>Fecha</th><th>Sesión</th><th class="num">Minutos</th><th class="num">Carga</th></tr></thead><tbody>
+          <tr><td>lun 2</td><td>Sparring</td><td class="num">60</td><td class="num">480</td></tr>
+          <tr><td>mar 3</td><td>Fuerza</td><td class="num">45</td><td class="num">270</td></tr>
+          <tr><td>jue 5</td><td>Grappling</td><td class="num">75</td><td class="num">525</td></tr>
+        </tbody></table>
+        <div class="jb-vacio" style="padding-inline:0">
+          <h3 class="jb-h4">aún no hay sesiones esta semana</h3>
+          <p class="jb-muted" style="margin:0;font-size:var(--text-small)">Registra la primera y verás tu carga aquí.</p>
+          <a class="jb-btn" href="#app">Añadir sesión</a>
+        </div>
+      </div>
+      <form class="jb-glass" style="display:grid;gap:var(--space-4)" onsubmit="return false" novalidate>
+        <p class="label" style="margin:0">Formulario</p>
+        <div class="jb-campo"><label for="f-nombre">Nombre</label><input class="jb-input" id="f-nombre" value="Joaquín"><span class="ayuda">Como quieres que te llame el coach.</span></div>
+        <div class="jb-campo"><label for="f-peso">Peso (kg)</label><input class="jb-input" id="f-peso" value="7O" aria-invalid="true" aria-describedby="f-peso-error"><span class="error" id="f-peso-error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Escribe solo números, por ejemplo 72,5.</span></div>
+        <div class="jb-campo"><label for="f-tipo">Tipo de sesión</label><select class="jb-input jb-select" id="f-tipo"><option>Sparring</option><option>Fuerza</option><option>Cardio</option></select></div>
+        <label class="jb-check"><input type="checkbox" checked> Avisarme si la carga sube demasiado</label>
+        <div class="btns"><button class="jb-btn" type="submit">Guardar</button><button class="jb-btn jb-btn--ghost" type="reset">Cancelar</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="compartir">
+    <div class="head"><span class="jb-num">13</span><h2 class="jb-h2">iconos y compartir</h2><p>Plantillas en plantillas/: icono de app, imagen para compartir enlaces y banner de README. Los tamaños, en plantillas/ICONOS.md.</p></div>
+    <div class="grid g3">
+      <div class="jb-glass"><p class="label">Icono de app</p><img src="../plantillas/icono-app.svg" alt="Icono de app con el monograma provisional y la franja" style="width:160px;height:160px;display:block"></div>
+      <div class="jb-glass" style="grid-column:span 2"><p class="label">Imagen para compartir (1200 × 630)</p><img src="../plantillas/og-1200x630.svg" alt="Imagen para compartir de un proyecto" style="width:100%;border-radius:var(--radius-md);display:block"></div>
+    </div>
+    <div class="jb-glass" style="margin-top:var(--space-4)"><p class="label">Banner de README</p><img src="../plantillas/banner-readme.svg" alt="Banner de README de un proyecto" style="width:100%;display:block"></div>
+  </section>
+
   <section id="movimiento">
-    <div class="head"><span class="jb-num">10</span><h2 class="jb-h2">movimiento</h2><p>La nebulosa fluye siempre en landings; la franja entra una vez. Todo lo demás se mueve solo cuando tú haces algo.</p></div>
+    <div class="head"><span class="jb-num">14</span><h2 class="jb-h2">movimiento</h2><p>La nebulosa fluye siempre en landings; la franja entra una vez. Todo lo demás se mueve solo cuando tú haces algo.</p></div>
     <div class="jb-glass">
       <table class="t">
         <thead><tr><th>Qué</th><th>Cómo</th><th>Duración</th></tr></thead>
@@ -337,7 +450,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   </section>
 
   <section id="tono">
-    <div class="head"><span class="jb-num">11</span><h2 class="jb-h2">tono</h2><p>Como un desarrollador que sabe lo que hace y no necesita adornarlo. Tú, frases cortas, verbos en los botones.</p></div>
+    <div class="head"><span class="jb-num">15</span><h2 class="jb-h2">tono</h2><p>Como un desarrollador que sabe lo que hace y no necesita adornarlo. Tú, frases cortas, verbos en los botones.</p></div>
     <div class="jb-glass">
       <table class="t voice">
         <thead><tr><th>Sí</th><th>No</th></tr></thead>
@@ -353,7 +466,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   </section>
 
   <section id="no">
-    <div class="head"><span class="jb-num">12</span><h2 class="jb-h2">qué no hacemos</h2><p>Lo que lo haría parecer una plantilla, y cómo nos distinguimos de la referencia aunque los dos usemos fondo oscuro y números.</p></div>
+    <div class="head"><span class="jb-num">16</span><h2 class="jb-h2">qué no hacemos</h2><p>Lo que lo haría parecer una plantilla, y cómo nos distinguimos de la referencia aunque los dos usemos fondo oscuro y números.</p></div>
     <div class="duo">
       <div class="jb-glass"><p class="label">Nunca</p><ul>
         <li>Sombras grises bajo tarjetas planas.</li>
@@ -427,6 +540,82 @@ document.getElementById("replay").addEventListener("click", () => {
   for (const el of [document.getElementById("hero-franja"), document.getElementById("bloque-franja")]) {
     el.classList.remove("jb-franja--entra"); void el.offsetWidth; el.classList.add("jb-franja--entra");
   }
+});
+const SERIES = ["Sparring", "Fuerza", "Cardio"];
+const BARRAS = [[480, 270, 180], [520, 300, 150], [430, 320, 210], [560, 280, 190]];
+const SEMANAS = ["sem 1", "sem 2", "sem 3", "sem 4"];
+const LINEAS = { "Peso": [74.2, 73.8, 73.5, 73.6, 73.0, 72.7, 72.5, 72.1], "Objetivo": [74, 73.6, 73.2, 72.8, 72.4, 72, 71.6, 71.2] };
+const tip = document.getElementById("tooltip");
+const ver = (e, html) => { tip.innerHTML = html; tip.hidden = false; tip.style.left = (e.clientX + 14) + "px"; tip.style.top = (e.clientY + 14) + "px"; };
+const ocultar = () => { tip.hidden = true; };
+const leyenda = (id, nombres) => { document.getElementById(id).innerHTML = nombres.map((n, i) => `<span><i style="background:var(--jb-serie-${i + 1})"></i>${n}</span>`).join(""); };
+
+function barras() {
+  const svg = document.getElementById("barras"), W = 520, H = 240, L = 40, B = 210, T = 16, max = 600;
+  const y = v => B - (v / max) * (B - T), grupo = (W - L) / SEMANAS.length, bw = 22, gap = 2;
+  let out = "";
+  for (const v of [0, 200, 400, 600]) out += `<line x1="${L}" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="var(--jb-grid)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  BARRAS.forEach((fila, g) => {
+    const x0 = L + g * grupo + (grupo - (bw * 3 + gap * 2)) / 2;
+    fila.forEach((v, i) => {
+      const x = x0 + i * (bw + gap), h = B - y(v);
+      out += `<path data-s="${i}" data-g="${g}" d="M${x} ${B} V${y(v) + 4} q0 -4 4 -4 h${bw - 8} q4 0 4 4 V${B} Z" fill="var(--jb-serie-${i + 1})"/>`;
+    });
+    out += `<text x="${L + g * grupo + grupo / 2}" y="${B + 20}" text-anchor="middle">${SEMANAS[g]}</text>`;
+  });
+  out += `<line x1="${L}" x2="${W}" y1="${B}" y2="${B}" stroke="var(--jb-axis)"/>`;
+  svg.innerHTML = out;
+  svg.querySelectorAll("path").forEach(p => {
+    p.addEventListener("pointermove", e => ver(e, `<strong>${SERIES[p.dataset.s]}</strong> · ${SEMANAS[p.dataset.g]}<br>${BARRAS[p.dataset.g][p.dataset.s]} de carga`));
+    p.addEventListener("pointerleave", ocultar);
+  });
+  leyenda("leyenda-barras", SERIES);
+  document.getElementById("tabla-barras").innerHTML = `<thead><tr><th>Semana</th>${SERIES.map(s => `<th class="num">${s}</th>`).join("")}</tr></thead><tbody>` +
+    BARRAS.map((f, g) => `<tr><td>${SEMANAS[g]}</td>${f.map(v => `<td class="num">${v}</td>`).join("")}</tr>`).join("") + "</tbody>";
+}
+
+function lineas() {
+  const svg = document.getElementById("lineas"), W = 520, H = 240, L = 40, B = 210, T = 16, R = 470, min = 71, max = 75;
+  const nombres = Object.keys(LINEAS), n = LINEAS.Peso.length;
+  const x = i => L + (i / (n - 1)) * (R - L), y = v => B - ((v - min) / (max - min)) * (B - T);
+  let out = "";
+  for (const v of [71, 72, 73, 74, 75]) out += `<line x1="${L}" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="var(--jb-grid)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  nombres.forEach((k, i) => {
+    const pts = LINEAS[k].map((v, j) => `${x(j)},${y(v)}`).join(" ");
+    out += `<polyline points="${pts}" fill="none" stroke="var(--jb-serie-${i + 1})" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"${i ? ' stroke-dasharray="6 5"' : ""}/>`;
+    const last = LINEAS[k][n - 1];
+    out += `<text x="${R + 8}" y="${y(last) + 4}" style="fill:var(--jb-fg)">${k}</text>`;
+  });
+  out += `<line id="cruz" x1="0" x2="0" y1="${T}" y2="${B}" stroke="var(--jb-axis)" visibility="hidden"/>`;
+  nombres.forEach((k, i) => { out += `<circle data-i="${i}" r="5" fill="var(--jb-serie-${i + 1})" stroke="var(--jb-bg)" stroke-width="2" visibility="hidden"/>`; });
+  out += `<rect x="${L}" y="${T}" width="${R - L}" height="${B - T}" fill="transparent" id="zona"/>`;
+  svg.innerHTML = out;
+  const zona = svg.querySelector("#zona"), cruz = svg.querySelector("#cruz"), puntos = svg.querySelectorAll("circle");
+  zona.addEventListener("pointermove", e => {
+    const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
+    const j = Math.max(0, Math.min(n - 1, Math.round((px - L) / (R - L) * (n - 1))));
+    cruz.setAttribute("x1", x(j)); cruz.setAttribute("x2", x(j)); cruz.setAttribute("visibility", "visible");
+    puntos.forEach((c, i) => { c.setAttribute("cx", x(j)); c.setAttribute("cy", y(LINEAS[nombres[i]][j])); c.setAttribute("visibility", "visible"); });
+    ver(e, `<strong>Semana ${j + 1}</strong><br>` + nombres.map(k => `${k}: ${LINEAS[k][j].toLocaleString("es-ES")} kg`).join("<br>"));
+  });
+  zona.addEventListener("pointerleave", () => { ocultar(); cruz.setAttribute("visibility", "hidden"); puntos.forEach(c => c.setAttribute("visibility", "hidden")); });
+  leyenda("leyenda-lineas", nombres);
+}
+
+document.getElementById("series").innerHTML = ["cobalto", "coral", "violeta", "verde azulado", "ocre"].map((n, i) => `<div><b style="background:var(--jb-serie-${i + 1})"></b>${i + 1} · ${n}</div>`).join("");
+document.getElementById("rampa-seq").innerHTML = [100, 200, 300, 400, 500, 600, 700].map(v => `<span style="background:var(--jb-seq-${v})"></span>`).join("");
+document.getElementById("rampa-div").innerHTML = ["--jb-seq-600", "--jb-seq-400", "--jb-seq-200", "--jb-div-mid", "#FCD2D4", "#F9A0A5", "--jb-coral"].map(c => `<span style="background:${c.startsWith("--") ? `var(${c})` : c}"></span>`).join("");
+barras();
+lineas();
+
+const modal = document.getElementById("modal");
+document.getElementById("abrir-modal").addEventListener("click", () => modal.showModal());
+document.getElementById("lanzar-toast").addEventListener("click", () => {
+  const t = document.createElement("div");
+  t.className = "jb-toast";
+  t.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Sesión guardada';
+  document.getElementById("toasts").append(t);
+  setTimeout(() => t.remove(), 4000);
 });
 </script>
 </body>
