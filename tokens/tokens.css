@@ -45,6 +45,39 @@
   --jb-nebula-base: var(--jb-niebla);
   --jb-dots: rgba(22, 29, 36, .10);
 
+  /* estados: el relleno lleva icono y texto; el color nunca va solo */
+  --jb-exito: #1E9E6A;
+  --jb-aviso: #E2A21B;
+  --jb-error: #C8323F;
+  --jb-info: var(--jb-cobalto);
+  --jb-on-exito: var(--jb-tinta);
+  --jb-on-aviso: var(--jb-tinta);
+  --jb-on-error: #FFFFFF;
+  --jb-on-info: #FFFFFF;
+  --jb-exito-texto: #0B7550;
+  --jb-aviso-texto: #8A5A00;
+  --jb-error-texto: #B42B37;
+  --jb-info-texto: var(--jb-cobalto-texto);
+
+  /* gráficas: orden fijo de series; nunca se recicla un color */
+  --jb-serie-1: #2A72A3;
+  --jb-serie-2: #F97279;
+  --jb-serie-3: #7465D8;
+  --jb-serie-4: #0A9C86;
+  --jb-serie-5: #C9962B;
+  --jb-seq-100: #D7E7F3;
+  --jb-seq-200: #ADCDE6;
+  --jb-seq-300: #7FB0D6;
+  --jb-seq-400: #4C8FC2;
+  --jb-seq-500: #2A72A3;
+  --jb-seq-600: #1F5880;
+  --jb-seq-700: #143E5C;
+  --jb-div-neg: var(--jb-cobalto);
+  --jb-div-mid: #DCE4E9;
+  --jb-div-pos: var(--jb-coral);
+  --jb-grid: rgba(22, 29, 36, .08);
+  --jb-axis: rgba(22, 29, 36, .28);
+
   --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
   --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --weight-display: 800;
@@ -119,6 +152,20 @@
   --jb-ghost-ring: inset 0 0 0 1px rgba(22, 29, 36, .18);
   --jb-nebula-base: var(--jb-niebla);
   --jb-dots: rgba(22, 29, 36, .10);
+  --jb-exito-texto: #0B7550;
+  --jb-aviso-texto: #8A5A00;
+  --jb-error-texto: #B42B37;
+  --jb-info: var(--jb-cobalto);
+  --jb-info-texto: var(--jb-cobalto-texto);
+  --jb-on-info: #FFFFFF;
+  --jb-serie-1: #2A72A3;
+  --jb-serie-2: #F97279;
+  --jb-serie-3: #7465D8;
+  --jb-serie-4: #0A9C86;
+  --jb-serie-5: #C9962B;
+  --jb-div-mid: #DCE4E9;
+  --jb-grid: rgba(22, 29, 36, .08);
+  --jb-axis: rgba(22, 29, 36, .28);
   color-scheme: light;
 }
 
@@ -137,6 +184,20 @@
   --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
   --jb-nebula-base: var(--jb-abismo);
   --jb-dots: rgba(204, 219, 226, .12);
+  --jb-exito-texto: #3FCB8E;
+  --jb-aviso-texto: #F2BC4A;
+  --jb-error-texto: #FF5A6A;
+  --jb-info: var(--jb-cobalto-claro);
+  --jb-info-texto: var(--jb-cobalto-claro);
+  --jb-on-info: var(--jb-tinta);
+  --jb-serie-1: #3F8AC4;
+  --jb-serie-2: #EA5F69;
+  --jb-serie-3: #8578E2;
+  --jb-serie-4: #149A85;
+  --jb-serie-5: #B98A2C;
+  --jb-div-mid: #2A333E;
+  --jb-grid: rgba(231, 238, 242, .08);
+  --jb-axis: rgba(231, 238, 242, .28);
   color-scheme: dark;
 }
 
@@ -156,6 +217,20 @@
     --jb-ghost-ring: inset 0 0 0 1px rgba(204, 219, 226, .25);
     --jb-nebula-base: var(--jb-abismo);
     --jb-dots: rgba(204, 219, 226, .12);
+    --jb-exito-texto: #3FCB8E;
+    --jb-aviso-texto: #F2BC4A;
+    --jb-error-texto: #FF5A6A;
+    --jb-info: var(--jb-cobalto-claro);
+    --jb-info-texto: var(--jb-cobalto-claro);
+    --jb-on-info: var(--jb-tinta);
+    --jb-serie-1: #3F8AC4;
+    --jb-serie-2: #EA5F69;
+    --jb-serie-3: #8578E2;
+    --jb-serie-4: #149A85;
+    --jb-serie-5: #B98A2C;
+    --jb-div-mid: #2A333E;
+    --jb-grid: rgba(231, 238, 242, .08);
+    --jb-axis: rgba(231, 238, 242, .28);
     color-scheme: dark;
   }
 }

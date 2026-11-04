@@ -9,6 +9,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
@@ -36,6 +37,7 @@ object Jb {
     val CobaltoTexto = Color(0xFF23648F)
     val CobaltoClaro = Color(0xFF7FB4DA)
     val SuperficieClara = Color(0xFFF4F8FA)
+    val Error = Color(0xFFC8323F)
     val SuperficieOscura = Color(0xFF161D26)
     val SuperficieOscura2 = Color(0xFF212B38)
 }
@@ -56,6 +58,8 @@ private val Claro = lightColorScheme(
     onSurfaceVariant = Jb.Pizarra,
     outline = Jb.Acero,
     outlineVariant = Jb.Hielo,
+    error = Color(0xFFB42B37),
+    onError = Color.White,
 )
 
 private val Oscuro = darkColorScheme(
@@ -73,7 +77,37 @@ private val Oscuro = darkColorScheme(
     onSurfaceVariant = Color(0xFF9DB0BD),
     outline = Jb.Acero,
     outlineVariant = Jb.SuperficieOscura2,
+    error = Color(0xFFFF5A6A),
+    onError = Jb.Tinta,
 )
+
+// Estados y series de gráficas: Material solo trae «error», así que el resto va aparte.
+@Immutable
+data class ColoresJb(
+    val exito: Color, val exitoTexto: Color,
+    val aviso: Color, val avisoTexto: Color,
+    val error: Color, val errorTexto: Color,
+    val info: Color, val infoTexto: Color,
+    val series: List<Color>,
+)
+
+val ColoresClaro = ColoresJb(
+    exito = Color(0xFF1E9E6A), exitoTexto = Color(0xFF0B7550),
+    aviso = Color(0xFFE2A21B), avisoTexto = Color(0xFF8A5A00),
+    error = Jb.Error, errorTexto = Color(0xFFB42B37),
+    info = Jb.Cobalto, infoTexto = Jb.CobaltoTexto,
+    series = listOf(Color(0xFF2A72A3), Color(0xFFF97279), Color(0xFF7465D8), Color(0xFF0A9C86), Color(0xFFC9962B)),
+)
+
+val ColoresOscuro = ColoresJb(
+    exito = Color(0xFF1E9E6A), exitoTexto = Color(0xFF3FCB8E),
+    aviso = Color(0xFFE2A21B), avisoTexto = Color(0xFFF2BC4A),
+    error = Jb.Error, errorTexto = Color(0xFFFF5A6A),
+    info = Jb.CobaltoClaro, infoTexto = Jb.CobaltoClaro,
+    series = listOf(Color(0xFF3F8AC4), Color(0xFFEA5F69), Color(0xFF8578E2), Color(0xFF149A85), Color(0xFFB98A2C)),
+)
+
+val LocalColoresJb = staticCompositionLocalOf { ColoresClaro }
 
 private val proveedor = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -148,10 +182,12 @@ val LocalFranjaJb = staticCompositionLocalOf { FranjaJb() }
 
 @Composable
 fun MarcaTheme(oscuro: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = if (oscuro) Oscuro else Claro,
-        typography = TipografiaJb,
-        shapes = FormasJb,
-        content = content,
-    )
+    CompositionLocalProvider(LocalColoresJb provides if (oscuro) ColoresOscuro else ColoresClaro) {
+        MaterialTheme(
+            colorScheme = if (oscuro) Oscuro else Claro,
+            typography = TipografiaJb,
+            shapes = FormasJb,
+            content = content,
+        )
+    }
 }

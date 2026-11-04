@@ -25,6 +25,12 @@ module.exports = {
         link: "var(--jb-link)",
         btn: { DEFAULT: "var(--jb-btn)", on: "var(--jb-on-btn)" },
         neon: "var(--jb-neon-text)",
+        exito: { DEFAULT: "var(--jb-exito)", texto: "var(--jb-exito-texto)" },
+        aviso: { DEFAULT: "var(--jb-aviso)", texto: "var(--jb-aviso-texto)" },
+        error: { DEFAULT: "var(--jb-error)", texto: "var(--jb-error-texto)" },
+        info: { DEFAULT: "var(--jb-info)", texto: "var(--jb-info-texto)" },
+        serie: { 1: "var(--jb-serie-1)", 2: "var(--jb-serie-2)", 3: "var(--jb-serie-3)", 4: "var(--jb-serie-4)", 5: "var(--jb-serie-5)" },
+        seq: { 100: "#D7E7F3", 200: "#ADCDE6", 300: "#7FB0D6", 400: "#4C8FC2", 500: "#2A72A3", 600: "#1F5880", 700: "#143E5C" },
       },
       fontFamily: {
         display: ["Bricolage Grotesque", "Arial Black", "sans-serif"],
