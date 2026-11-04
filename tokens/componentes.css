@@ -13,7 +13,7 @@
   -webkit-font-smoothing: antialiased;
 }
 .jb-base :focus-visible { outline: none; box-shadow: var(--focus-ring); }
-.jb-base a:not([class]) { color: var(--jb-link); text-underline-offset: 4px; }
+.jb-base :where(a:not([class])) { color: var(--jb-link); text-underline-offset: 4px; }
 
 /* títulos: gruesos, en minúsculas, sin punto final */
 .jb-display, .jb-h1, .jb-h2, .jb-h3, .jb-h4 {
