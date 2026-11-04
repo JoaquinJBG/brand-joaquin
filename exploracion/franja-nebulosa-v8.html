@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Franja con nebulosa · v8</title>
+<link rel="stylesheet" href="../tokens/fuentes.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../tokens/componentes.css">
+<style>
+body{margin:0}
+.wrap{max-width:var(--container);margin:0 auto;padding:var(--space-7) var(--gutter) var(--space-9)}
+.ctrl{position:fixed;top:14px;right:14px;z-index:30;display:flex;gap:2px;padding:4px;border-radius:var(--radius-full)}
+.ctrl button{all:unset;cursor:pointer;padding:6px 12px;border-radius:var(--radius-full);font-size:13px;color:var(--jb-fg-muted)}
+.ctrl button[aria-pressed="true"]{background:var(--jb-fg);color:var(--jb-bg)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-6)}
+.col h2{margin:0 0 var(--space-2)}
+.col > p{margin:0 0 var(--space-4);color:var(--jb-fg-muted);font-size:var(--text-small)}
+.pieza{margin-bottom:var(--space-4)}
+.bloque{height:200px;padding:0}
+.foto{height:280px}
+.foto img{position:absolute;inset:0}
+.logo-box{aspect-ratio:5/2;border-radius:var(--radius-lg);background:var(--jb-ghost-bg);box-shadow:var(--jb-ghost-ring)}
+.logo-box .jb-franja__logo{font-family:var(--font-display);font-weight:800;letter-spacing:-.045em;font-size:clamp(28px,3.2vw,44px)}
+
+/* A · nebulosa suave: manchas de color desenfocadas */
+.neb-suave .jb-franja__banda::before{
+  right:calc(100% - 24px); top:-45%; bottom:-45%; width:58%;
+  background:
+    radial-gradient(42% 34% at 92% 50%, var(--jb-coral) 0%, transparent 70%),
+    radial-gradient(34% 30% at 70% 34%, rgba(249,114,121,.8) 0%, transparent 70%),
+    radial-gradient(30% 28% at 66% 70%, rgba(42,114,163,.75) 0%, transparent 70%),
+    radial-gradient(28% 26% at 44% 46%, rgba(249,114,121,.5) 0%, transparent 70%),
+    radial-gradient(24% 22% at 36% 72%, rgba(115,138,154,.5) 0%, transparent 70%),
+    radial-gradient(18% 18% at 18% 38%, rgba(249,114,121,.3) 0%, transparent 70%),
+    radial-gradient(12% 12% at 6% 58%, rgba(42,114,163,.3) 0%, transparent 70%);
+  -webkit-mask-image:none; mask-image:none;
+  filter:blur(10px);
+}
+
+/* B · nebulosa con grano: textura de humo que se deshace */
+.neb-grano .jb-franja__banda::before{
+  right:calc(100% - 6px); top:-30%; bottom:-30%; width:52%;
+  background:
+    radial-gradient(70% 60% at 100% 50%, var(--jb-coral), transparent 75%),
+    radial-gradient(40% 45% at 45% 70%, rgba(42,114,163,.85), transparent 75%),
+    linear-gradient(90deg, rgba(115,138,154,.4), var(--jb-coral));
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.016 .035' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2.4 -0.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 100% 50% at 100% 50%, #000 35%, transparent 100%);
+  -webkit-mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.016 .035' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2.4 -0.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 100% 50% at 100% 50%, #000 35%, transparent 100%);
+  mask-size: 100% 100%, 100% 100%;
+  mask-composite: intersect;
+  filter:blur(3px);
+}
+.neb-suave .jb-franja--logo .jb-franja__banda, .neb-grano .jb-franja--logo .jb-franja__banda{overflow:visible}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="jb-base">
+<div class="ctrl jb-glass" role="group" aria-label="Modo"><button data-v="dark" aria-pressed="true">Oscuro</button><button data-v="light" aria-pressed="false">Claro</button></div>
+<div class="wrap">
+  <h1 class="jb-h2">la franja: rayas o nebulosa</h1>
+  <p class="jb-lead" style="max-width:60ch">El extremo que no llega al borde. A la izquierda, como está ahora. En el centro y a la derecha, dos maneras de que acabe en una pequeña nebulosa.</p>
+  <div class="cols">
+    <div class="col">
+      <h2 class="jb-h4">ahora · rayas</h2><p>Se deshace en líneas, como una señal.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col neb-suave">
+      <h2 class="jb-h4">A · nebulosa suave</h2><p>Manchas de coral y un toque de cobalto, desenfocadas.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+    <div class="col neb-grano">
+      <h2 class="jb-h4">B · nebulosa con grano</h2><p>Como humo: se rompe en hilos de color, parecido a la nebulosa del fondo.</p>
+      <div class="pieza jb-glass bloque jb-franja"><span class="jb-franja__banda"></span></div>
+      <figure class="pieza jb-franja jb-franja--foto foto"><img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=70" alt=""><span class="jb-franja__banda"></span></figure>
+      <div class="pieza logo-box jb-franja jb-franja--logo"><span class="jb-franja__logo">fightlab</span><span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">fightlab</span></span></span></div>
+    </div>
+  </div>
+</div>
+<script>
+document.querySelector('.ctrl').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.documentElement.dataset.theme = b.dataset.v;
+  document.querySelectorAll('.ctrl button').forEach(x => x.setAttribute('aria-pressed', x === b));
+});
+</script>
+</body>
+</html>
