@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dirección v4 · Laboratorio frío</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --niebla:#E7EEF2; --hielo:#CCDBE2; --acero:#738A9A; --pizarra:#435565; --salvia:#697773; --tinta:#161D24;
+  --coral:#F97279; --cobalto:#2A72A3;
+  --bg:var(--niebla); --surface:#F4F8FA; --fg:var(--tinta); --mute:var(--pizarra); --line:rgba(22,29,36,.12);
+  --display:"Bricolage Grotesque",sans-serif;
+}
+[data-mode="dark"]{--bg:#121820; --surface:#1A222C; --fg:#E7EEF2; --mute:#9DB0BD; --line:rgba(231,238,242,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Geist",system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalto);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+.tune{position:sticky;top:0;z-index:30;background:#0d1117;color:#cfd6dc;font:14px/1.4 system-ui,sans-serif}
+.tune .in{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tune button{font:inherit;color:#cfd6dc;background:#161c24;border:1px solid #2a323c;border-radius:999px;padding:5px 12px;cursor:pointer;min-height:32px}
+.tune button[aria-pressed="true"]{background:#e7eef2;color:#0d1117;border-color:#e7eef2}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{text-decoration:none;font-weight:600}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--mute)}
+.nav ul a:hover{color:var(--fg)}
+
+.word,.h2,.big,.prod h3,.amt,.type .a{font-family:var(--display);font-weight:800;letter-spacing:-.045em;font-variation-settings:"opsz" 96}
+
+/* hero: foto en blanco y negro con una franja coral que solo tiñe lo que cruza */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:end}
+.hero .txt{grid-column:1 / 7;padding-bottom:40px;display:flex;flex-direction:column;gap:28px}
+.hero .intro{margin:0;max-width:32ch;font-size:18px;color:var(--mute)}
+.word{font-size:clamp(72px,10.5vw,164px);line-height:.86;margin:0}
+.shot{grid-column:7 / 13;position:relative;margin:0;height:min(680px,calc(100vh - 130px));min-height:440px;overflow:hidden;background:#E9EEF1}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) contrast(1.12) brightness(1.04)}
+.shot .band{position:absolute;left:18%;right:0;top:46%;height:30%;background:var(--coral);mix-blend-mode:multiply}
+.shot .go{position:absolute;left:18%;top:calc(76% - 64px);z-index:2;background:var(--tinta);color:#F4F8FA}
+.shot figcaption{position:absolute;right:14px;top:14px;writing-mode:vertical-rl;font-size:13px;color:var(--tinta)}
+.shot .credit{position:absolute;left:12px;bottom:10px;font-size:11px;color:rgba(22,29,36,.6);text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border:0;border-radius:999px;font:500 15px/1 "Geist",sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s ease,background .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--fg);color:var(--bg)}
+.btn.acc{background:var(--coral);color:var(--tinta)}
+.btn.sec{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--fg)}
+.btn.lnk{padding:0;min-height:auto;background:none;color:var(--cobalto);text-decoration:underline;text-underline-offset:4px}
+[data-mode="dark"] .btn.lnk{color:#7FB4DA}
+.round{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--fg);color:var(--bg);text-decoration:none;transition:transform .2s ease}
+.round:hover{transform:translateY(-3px)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+section{padding:120px 0 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.h2{font-size:clamp(44px,6vw,84px);line-height:.9;margin:0}
+.head p{margin:0;max-width:40ch;color:var(--mute)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod{background:var(--surface);border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:18px;min-height:340px;text-decoration:none;transition:transform .25s ease}
+.prod:hover{transform:translateY(-4px)}
+.prod .logo{width:72px;height:72px;border-radius:50%;border:1.5px dashed var(--acero);display:grid;place-items:center;font-size:12px;color:var(--mute)}
+.prod h3{font-size:34px;line-height:.95;margin:auto 0 0}
+.prod p{margin:0;font-size:14px;color:var(--mute)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--bg);color:var(--mute)}
+
+.manif{display:grid;grid-template-columns:1fr 1fr;border-radius:32px;overflow:hidden}
+.manif .l{background:var(--fg);color:var(--bg);padding:48px}
+.manif .r{background:var(--coral);color:var(--tinta);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;align-items:flex-start}
+.manif .big{font-size:clamp(48px,6.4vw,96px);line-height:.88;margin:0}
+.manif p{margin:0;max-width:36ch;font-size:17px}
+.manif .btn.pri{background:var(--tinta);color:#F4F8FA}
+
+.kit{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px}
+.tile{background:var(--surface);padding:24px;border-radius:28px}
+.tile h4{margin:0 0 16px;font-size:14px;font-weight:500;color:var(--mute)}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sw div{aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;justify-content:end;padding:8px;font-size:12px;line-height:1.3}
+.app{max-width:280px;background:var(--bg);padding:18px;border-radius:22px}
+.amt{font-size:40px;line-height:1;margin:6px 0 14px}
+.app .r{display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-top:1px solid var(--line)}
+.type .a{font-size:64px;line-height:1}
+.type .b{font-size:16px;color:var(--mute)}
+.mini{position:relative;width:100%;max-width:220px;aspect-ratio:1;border-radius:22px;overflow:hidden;background:#E9EEF1}
+.mini img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:grayscale(1) contrast(1.12)}
+.mini .band{position:absolute;left:0;right:0;top:42%;height:28%;background:var(--coral);mix-blend-mode:multiply}
+
+footer{margin-top:120px;border-top:1px solid var(--line);padding:28px 0 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.kit{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr;min-height:0;gap:24px}
+  .hero .txt,.shot{grid-column:1}
+  .shot{height:60vh;min-height:360px}
+  .hero .txt{order:2;padding-bottom:0}
+  .grid{grid-template-columns:1fr}
+  .manif{grid-template-columns:1fr}
+  .manif .l,.manif .r{padding:28px}
+  section{padding-top:80px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="tune" aria-label="Panel de pruebas">
+  <div class="in">Modo <button data-v="light" aria-pressed="true">Claro</button><button data-v="dark" aria-pressed="false">Oscuro</button></div>
+</div>
+
+<div class="wrap">
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="#">joaquín beltrán</a>
+    <ul><li><a href="#proyectos">Proyectos</a></li><li><a href="#sobre">Sobre mí</a></li><li><a href="#piezas">Piezas</a></li></ul>
+  </nav>
+
+  <header class="hero">
+    <div class="txt">
+      <p class="intro">Desarrollador web. Hago producto de verdad: de la base de datos al último píxel.</p>
+      <h1 class="word">joaquín<br>beltrán</h1>
+      <div class="btns"><a class="btn pri" href="#proyectos">Ver proyectos</a><a class="btn sec" href="#sobre">Escríbeme</a></div>
+    </div>
+    <figure class="shot">
+      <img src="https://images.unsplash.com/photo-1536697246787-1f7ae568d89a?w=1100&q=75" alt="Astronauta de perfil sobre un fondo nevado, en blanco y negro con una franja coral">
+      <div class="band"></div>
+      <a class="round go" href="#proyectos" aria-label="Ir a proyectos"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+      <figcaption>desarrollo web y apps</figcaption>
+      <a class="credit" href="https://unsplash.com/es/fotos/astronauta-con-fondo-blanco-dBaz0xhCkPY">Foto: Adam Miller · Unsplash</a>
+    </figure>
+  </header>
+
+  <section id="proyectos">
+    <div class="head"><h2 class="h2">proyectos</h2><p>Hasta que tengas los logos, cada tarjeta deja su hueco reservado.</p></div>
+    <div class="grid">
+      <a class="prod" href="#"><span class="logo">logo</span><h3>fightlab pro</h3><p>Entrenamiento, nutrición y coach con IA para atletas de combate.</p><div class="chips"><span class="chip">PWA</span><span class="chip">IA</span></div></a>
+      <a class="prod" href="#"><span class="logo">logo</span><h3>noticia</h3><p>Un podcast de noticias que se escribe, se graba y se monta solo.</p><div class="chips"><span class="chip">Python</span><span class="chip">IA</span></div></a>
+      <a class="prod" href="#"><span class="logo">logo</span><h3>efectivo</h3><p>App Android para llevar la cuenta del dinero en mano.</p><div class="chips"><span class="chip">Kotlin</span><span class="chip">Compose</span></div></a>
+      <a class="prod" href="#"><span class="logo">logo</span><h3>team builder</h3><p>Monta y analiza equipos.</p><div class="chips"><span class="chip">Angular</span><span class="chip">Spring Boot</span></div></a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="manif">
+      <div class="l"><p class="big">nada de plantillas</p></div>
+      <div class="r"><p>Trabajo en energía y eficiencia con Next.js, Django y Odoo. En mis ratos libres construyo apps enteras, de punta a punta, para aprender haciéndolo bien.</p><a class="btn pri" href="#">Escríbeme</a></div>
+    </div>
+  </section>
+
+  <section id="piezas">
+    <div class="head"><h2 class="h2">piezas</h2><p>Lo que se repite en todos los proyectos.</p></div>
+    <div class="kit">
+      <div class="tile"><h4>Paleta</h4>
+        <div class="sw">
+          <div style="background:#E7EEF2;color:#161D24;box-shadow:inset 0 0 0 1px var(--line)">niebla<br>#E7EEF2</div>
+          <div style="background:#CCDBE2;color:#161D24">hielo<br>#CCDBE2</div>
+          <div style="background:#738A9A;color:#161D24">acero<br>#738A9A</div>
+          <div style="background:#435565;color:#E7EEF2">pizarra<br>#435565</div>
+          <div style="background:#697773;color:#E7EEF2">salvia<br>#697773</div>
+          <div style="background:#161D24;color:#E7EEF2">tinta<br>#161D24</div>
+          <div style="background:#F97279;color:#161D24">coral<br>#F97279</div>
+          <div style="background:#2A72A3;color:#F4F8FA">cobalto<br>#2A72A3</div>
+        </div></div>
+      <div class="tile"><h4>Botones</h4>
+        <div class="btns"><a class="btn pri" href="#">Ver proyecto</a><a class="btn acc" href="#">Probar la app</a><a class="btn sec" href="#">Código</a><a class="round" href="#" aria-label="Siguiente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M13 5l7 7-7 7"/></svg></a><a class="btn lnk" href="#">Leer más</a></div>
+        <h4 style="margin-top:28px">Letra</h4>
+        <div class="type"><div class="a">Aa 1.240</div><div class="b">Bricolage Grotesque gruesa para títulos. Geist para el texto.</div></div></div>
+      <div class="tile"><h4>Tamaño app (Efectivo)</h4>
+        <div class="app"><div style="font-size:13px;color:var(--mute)">Saldo en mano</div><div class="amt">1.240,50 €</div>
+          <div class="r"><span>Mercado</span><span>−32,10</span></div><div class="r"><span>Nómina</span><span>+1.100,00</span></div></div>
+        <h4 style="margin-top:28px">La franja: en blanco y negro, el coral solo tiñe lo que cruza</h4>
+        <div class="mini"><img src="https://images.unsplash.com/photo-1536697246787-1f7ae568d89a?w=500&q=70" alt=""><div class="band"></div></div></div>
+    </div>
+  </section>
+
+  <footer><span>joaquín beltrán — hecho a mano</span><span>Exploración v4 · 4 de noviembre de 2026</span></footer>
+</div>
+
+<script>
+document.querySelector('.tune').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  document.documentElement.dataset.mode = b.dataset.v;
+  document.querySelectorAll('.tune button').forEach(x => x.setAttribute('aria-pressed', x===b));
+});
+</script>
+</body>
+</html>

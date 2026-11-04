@@ -61,10 +61,33 @@ Nombre que sale en su tablero: **Joaquín Beltrán** (se usa como nombre de trab
   proyecto pasa a ser opcional (los proyectos pueden llevar su color en un detalle).
 - Propuesta resultante: `exploracion/direccion-v3.html` («Laboratorio frío»).
 
+## 2026-11-04 · Cuarta ronda (tras ver `exploracion/direccion-v3.html`)
+
+Decidido:
+
+- **Letra gruesa** (Bricolage Grotesque) para títulos.
+- **Coral** es el color protagonista.
+- **Modo claro y modo oscuro**: le gustan los dos.
+- **Botones más redondos** (cápsula).
+
+No le gusta (le parece «muy Claude», genérico):
+
+- El punto final de color en los títulos («proyectos.»).
+- La franja de color encima de cada tarjeta de proyecto.
+- Las figuras geométricas 3D (gema, rosco, moneda, cubo, esfera con visor). Pasará él los logos de sus
+  proyectos más adelante.
+
+Quiere el efecto de la foto de «lab.»: **figura en blanco y negro y una franja de color que solo tiñe la
+parte que cruza**. Se resuelve con la foto en escala de grises y una franja coral encima con
+`mix-blend-mode: multiply`.
+
+Resultado: `exploracion/direccion-v4.html`. Foto de muestra: astronauta de Adam Miller, licencia Unsplash
+(https://unsplash.com/es/fotos/astronauta-con-fondo-blanco-dBaz0xhCkPY).
+
 ## Pendiente
 
-- ¿Le vale la v3? Letra (gruesa, estrecha o de puntos), color protagonista (coral o cobalto), claro u oscuro.
-- ¿El sello del visor le representa?
-- Letras del monograma.
+- Qué más le falta a la marca (él quiere seguir revisando).
+- Logos de los proyectos y monograma: los pasará él.
+- ¿Foto propia para el hero en lugar del astronauta?
 - Pokédex 3D: ¿marca o solo edición especial del portfolio?
 - ¿Modo claro?
