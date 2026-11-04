@@ -1,0 +1,67 @@
+/*
+ * Marca personal de Joaquín Beltrán · Tailwind CSS v4
+ * Uso (globals.css):
+ *   @import "tailwindcss";
+ *   @import "./marca/tokens.css";
+ *   @import "./marca/tailwind-v4.css";
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-jb-niebla: #E7EEF2;
+  --color-jb-hielo: #CCDBE2;
+  --color-jb-acero: #738A9A;
+  --color-jb-pizarra: #435565;
+  --color-jb-salvia: #697773;
+  --color-jb-tinta: #161D24;
+  --color-jb-noche: #121820;
+  --color-jb-coral: #F97279;
+  --color-jb-cobalto: #2A72A3;
+
+  --color-bg: var(--jb-bg);
+  --color-surface: var(--jb-surface);
+  --color-surface-2: var(--jb-surface-2);
+  --color-fg: var(--jb-fg);
+  --color-fg-muted: var(--jb-fg-muted);
+  --color-fg-subtle: var(--jb-fg-subtle);
+  --color-line: var(--jb-line);
+  --color-accent: var(--jb-accent);
+  --color-on-accent: var(--jb-on-accent);
+  --color-link: var(--jb-link);
+  --color-btn: var(--jb-btn);
+  --color-on-btn: var(--jb-on-btn);
+
+  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-hero: clamp(72px, 10.5vw, 164px);
+  --text-hero--line-height: 0.86;
+  --text-hero--letter-spacing: -0.045em;
+  --text-h1: clamp(56px, 7.5vw, 112px);
+  --text-h1--line-height: 0.88;
+  --text-h1--letter-spacing: -0.045em;
+  --text-h2: clamp(44px, 6vw, 84px);
+  --text-h2--line-height: 0.9;
+  --text-h2--letter-spacing: -0.045em;
+  --text-h3: 34px;
+  --text-h3--line-height: 0.95;
+  --text-h3--letter-spacing: -0.045em;
+  --text-h4: 24px;
+  --text-h4--line-height: 1;
+  --text-h4--letter-spacing: -0.03em;
+  --text-lead: 18px;
+  --text-lead--line-height: 1.6;
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+
+  --animate-franja-entra: franja-entra 900ms cubic-bezier(.2, .8, .2, 1) 150ms both;
+}
+
+@keyframes franja-entra {
+  from { transform: translateX(110%); }
+}

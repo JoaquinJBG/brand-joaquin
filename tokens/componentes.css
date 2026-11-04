@@ -1,0 +1,128 @@
+/*
+ * Marca personal de Joaquín Beltrán · piezas base
+ * Necesita tokens.css. Clases con prefijo jb- para no chocar con las del proyecto.
+ */
+
+/* base */
+.jb-base {
+  background: var(--jb-bg);
+  color: var(--jb-fg);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+.jb-base :focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.jb-base a { color: var(--jb-link); text-underline-offset: 4px; }
+
+/* títulos: gruesos, en minúsculas, sin punto final */
+.jb-display, .jb-h1, .jb-h2, .jb-h3, .jb-h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  font-variation-settings: "opsz" 96;
+  text-transform: lowercase;
+  margin: 0;
+}
+.jb-display { font-size: var(--text-hero); line-height: .86; }
+.jb-h1 { font-size: var(--text-h1); }
+.jb-h2 { font-size: var(--text-h2); line-height: .9; }
+.jb-h3 { font-size: var(--text-h3); line-height: .95; }
+.jb-h4 { font-size: var(--text-h4); line-height: 1; letter-spacing: -.03em; }
+.jb-lead { font-size: var(--text-lead); color: var(--jb-fg-muted); max-width: 34ch; }
+.jb-muted { color: var(--jb-fg-muted); }
+
+/* botones: siempre en cápsula */
+.jb-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 48px; padding: 0 var(--space-5);
+  border: 0; border-radius: var(--radius-full);
+  font: var(--weight-medium) 15px/1 var(--font-body);
+  text-decoration: none; cursor: pointer;
+  background: var(--jb-btn); color: var(--jb-on-btn);
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+}
+.jb-btn:hover { transform: translateY(calc(var(--lift) / 2)); }
+.jb-btn:active { transform: scale(var(--press)); }
+.jb-btn--accent { background: var(--jb-accent); color: var(--jb-on-accent); }
+.jb-btn--outline { background: transparent; color: var(--jb-fg); box-shadow: inset 0 0 0 1.5px var(--jb-fg); }
+.jb-btn--round { width: 64px; min-height: 64px; padding: 0; }
+.jb-btn svg { width: 20px; height: 20px; }
+
+/* etiquetas */
+.jb-chip {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font-size: var(--text-caption); padding: var(--space-1) 10px;
+  border-radius: var(--radius-full);
+  background: var(--jb-bg); color: var(--jb-fg-muted);
+}
+
+/* tarjetas: sin borde ni sombra, la superficie las separa */
+.jb-card {
+  background: var(--jb-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+a.jb-card { color: inherit; text-decoration: none; display: block; }
+a.jb-card:hover { transform: translateY(var(--lift)); }
+
+/* campos */
+.jb-input {
+  width: 100%; min-height: 48px; padding: 0 var(--space-4);
+  border: 0; border-radius: var(--radius-full);
+  background: var(--jb-surface); color: var(--jb-fg);
+  box-shadow: inset 0 0 0 1.5px var(--jb-line);
+  font: inherit;
+}
+.jb-input:focus-visible { box-shadow: inset 0 0 0 1.5px var(--jb-fg); outline: none; }
+
+/*
+ * LA FRANJA · el sello de la marca
+ * Una franja coral entra desde la derecha, ocupa 3/5 del ancho y acaba en rayas
+ * que se desvanecen. Todo lo demás va en gris; donde cruza, tiñe.
+ *
+ * Foto:  <figure class="jb-franja jb-franja--foto"><img ...><span class="jb-franja__banda"></span></figure>
+ * Logo:  <div class="jb-franja jb-franja--logo">
+ *          <span class="jb-franja__logo">LOGO</span>
+ *          <span class="jb-franja__banda"><span class="jb-franja__clip"><span class="jb-franja__logo">LOGO</span></span></span>
+ *        </div>
+ */
+.jb-franja { position: relative; overflow: hidden; }
+.jb-franja__banda {
+  position: absolute; right: 0;
+  width: var(--franja-ancho); top: var(--franja-arriba); height: var(--franja-alto);
+  background: var(--jb-accent);
+}
+.jb-franja__banda::before {
+  content: ""; position: absolute; right: 100%; top: 0; bottom: 0;
+  width: var(--franja-rayas-ancho);
+  background: repeating-linear-gradient(90deg, transparent 0 var(--franja-raya), var(--jb-accent) var(--franja-raya) calc(var(--franja-raya) * 2));
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000);
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+/* foto: en blanco y negro; la franja multiplica, así tiñe sin tapar */
+.jb-franja--foto { margin: 0; background: #EEF2F4; border-radius: var(--radius-lg); }
+.jb-franja--foto img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(1.08);
+}
+.jb-franja--foto .jb-franja__banda { mix-blend-mode: multiply; }
+
+/* logo: gris fuera, tinta dentro; no depende de mezclas, funciona en oscuro */
+.jb-franja--logo { display: grid; place-items: center; }
+.jb-franja__logo { color: var(--jb-logo); display: grid; place-items: center; }
+.jb-franja--logo > .jb-franja__logo { position: absolute; inset: 0; }
+.jb-franja__clip { position: absolute; inset: 0; overflow: hidden; }
+/* deshace la posición de la banda (60 % de ancho, 46 % arriba, 30 % de alto) para que la copia del logo coincida */
+.jb-franja__clip > .jb-franja__logo {
+  position: absolute; color: var(--jb-logo-in-band);
+  left: calc(-100% * (100 - 60) / 60); width: calc(100% * 100 / 60);
+  top: calc(-100% * 46 / 30); height: calc(100% * 100 / 30);
+}
+
+/* entrada: el único movimiento que pasa solo, una vez al cargar */
+.jb-franja--entra .jb-franja__banda { animation: jb-franja-entra var(--dur-entrance) var(--ease-out) .15s both; }
+@keyframes jb-franja-entra { from { transform: translateX(110%); } }

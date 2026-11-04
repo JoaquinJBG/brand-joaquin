@@ -1,0 +1,144 @@
+/*
+ * Marca personal de Joaquín Beltrán · tokens
+ * Fuente de verdad de colores, letra, espacios, radios y movimiento.
+ * Uso: importa este archivo una vez en la raíz de la app. Modo oscuro con
+ * data-theme="dark" en <html>, o automático con prefers-color-scheme.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap");
+
+:root {
+  /* paleta base (no usar directamente en componentes: usar los roles de abajo) */
+  --jb-niebla: #E7EEF2;
+  --jb-hielo: #CCDBE2;
+  --jb-acero: #738A9A;
+  --jb-pizarra: #435565;
+  --jb-salvia: #697773;
+  --jb-tinta: #161D24;
+  --jb-noche: #121820;
+  --jb-coral: #F97279;
+  --jb-cobalto: #2A72A3;
+  --jb-cobalto-texto: #23648F;
+  --jb-cobalto-claro: #7FB4DA;
+
+  /* roles · modo claro */
+  --jb-bg: var(--jb-niebla);
+  --jb-surface: #F4F8FA;
+  --jb-surface-2: var(--jb-hielo);
+  --jb-fg: var(--jb-tinta);
+  --jb-fg-muted: var(--jb-pizarra);
+  --jb-fg-subtle: var(--jb-acero);
+  --jb-line: rgba(22, 29, 36, .12);
+  --jb-accent: var(--jb-coral);
+  --jb-on-accent: var(--jb-tinta);
+  --jb-link: var(--jb-cobalto-texto);
+  --jb-support: var(--jb-salvia);
+  --jb-logo: var(--jb-acero);
+  --jb-logo-in-band: var(--jb-tinta);
+  --jb-btn: var(--jb-tinta);
+  --jb-on-btn: var(--jb-niebla);
+
+  /* letra */
+  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --weight-display: 800;
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-strong: 600;
+  --tracking-display: -0.045em;
+  --leading-display: 0.88;
+  --leading-body: 1.6;
+
+  --text-hero: clamp(72px, 10.5vw, 164px);
+  --text-h1: clamp(56px, 7.5vw, 112px);
+  --text-h2: clamp(44px, 6vw, 84px);
+  --text-h3: 34px;
+  --text-h4: 24px;
+  --text-lead: 18px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-caption: 12px;
+
+  /* espacios (múltiplos de 4) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --container: 1240px;
+  --gutter: 24px;
+
+  /* esquinas */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-full: 999px;
+
+  /* sombras: no hay. La profundidad sale del color de la superficie. */
+  --shadow: none;
+  --focus-ring: 0 0 0 2px var(--jb-bg), 0 0 0 4px var(--jb-link);
+
+  /* movimiento */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 400ms;
+  --dur-entrance: 900ms;
+  --lift: -4px;
+  --press: .97;
+
+  /* la franja */
+  --franja-ancho: 60%;
+  --franja-arriba: 46%;
+  --franja-alto: 30%;
+  --franja-raya: 7px;
+  --franja-rayas-ancho: 22%;
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --jb-bg: var(--jb-noche);
+  --jb-surface: #1A222C;
+  --jb-surface-2: #243040;
+  --jb-fg: var(--jb-niebla);
+  --jb-fg-muted: #9DB0BD;
+  --jb-fg-subtle: var(--jb-acero);
+  --jb-line: rgba(231, 238, 242, .12);
+  --jb-link: var(--jb-cobalto-claro);
+  --jb-btn: var(--jb-niebla);
+  --jb-on-btn: var(--jb-tinta);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --jb-bg: var(--jb-noche);
+    --jb-surface: #1A222C;
+    --jb-surface-2: #243040;
+    --jb-fg: var(--jb-niebla);
+    --jb-fg-muted: #9DB0BD;
+    --jb-fg-subtle: var(--jb-acero);
+    --jb-line: rgba(231, 238, 242, .12);
+    --jb-link: var(--jb-cobalto-claro);
+    --jb-btn: var(--jb-niebla);
+    --jb-on-btn: var(--jb-tinta);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-entrance: 0ms;
+    --lift: 0px;
+    --press: 1;
+  }
+}
