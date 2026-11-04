@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.1 · 4 de noviembre de 2026 · Elegida por Joaquín en nueve rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.1.1 · 4 de noviembre de 2026 · Elegida por Joaquín en diez rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -415,7 +415,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.1.0`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -437,6 +437,8 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 - [ ] Pegar el bloque de [`PROMPT-MARCA.md`](PROMPT-MARCA.md) en el `CLAUDE.md` del proyecto.
 
 ## 23. Llevarla a cada tecnología
+
+Todo se instala como paquete (sección 24); la tabla dice qué pieza usa cada tecnología.
 
 | Tecnología | Qué usar |
 |---|---|
@@ -480,16 +482,25 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.1.0
+pnpm add github:JoaquinJBG/brand-joaquin#v2.1.1
 ```
+
+Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
+archivo final y el navegador lo ignora. En Next.js usa `next/font/google` (Bricolage Grotesque 800 y Geist
+400/500/600); en el resto, `@import "brand-joaquin/fuentes.css";` como **primera línea** del CSS principal, o un
+`<link>` a Google Fonts en el `<head>`.
 
 ```css
 /* globals.css (Tailwind v4) */
+@import "brand-joaquin/fuentes.css";
 @import "tailwindcss";
 @import "brand-joaquin/tokens.css";
 @import "brand-joaquin/componentes.css";
 @import "brand-joaquin/tailwind-v4.css";
 ```
+
+Con Tailwind v3, el CSS se importa en el punto de entrada (por ejemplo `import "brand-joaquin/tokens.css"` y
+`import "brand-joaquin/componentes.css"` en `layout.tsx`) y los colores van por el preset:
 
 ```js
 // tailwind.config.js (Tailwind v3)
@@ -502,5 +513,5 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 
 - Angular: los mismos `@import` en `styles.css`.
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.1.0` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.1.1` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

@@ -1,6 +1,11 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.1.0`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.1.1`) y la suben cuando quieren.
+
+## 2.1.1 · 2026-11-04
+
+- Las letras salen de `tokens.css` a `fuentes.css`: al importar la marca desde Tailwind, el `@import` de Google
+  Fonts quedaba en medio del CSS final y el navegador lo ignoraba. En Next.js, mejor `next/font/google`.
 
 ## 2.1.0 · 2026-11-04
 
