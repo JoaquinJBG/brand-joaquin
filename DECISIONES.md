@@ -49,12 +49,22 @@ Choques a resolver con él:
 
 Nombre que sale en su tablero: **Joaquín Beltrán** (se usa como nombre de trabajo hasta que lo confirme).
 
+## 2026-11-04 · Tercera ronda (tras ver `exploracion/direcciones-v2.html`)
+
+- **No le gusta ni E1 ni E2.** Quiere ir por el estilo de sus pines y de la captura que mandó: diseño
+  editorial e industrial, producto, letra gruesa.
+- Paleta: mezclar dos pines.
+  - Astronauta: https://es.pinterest.com/pin/662803270213212347/ → `#435565` `#738A9A` `#636D7D`
+    `#CCDBE2` `#697773`
+  - Flor: https://es.pinterest.com/pin/701928291965270606/ → `#C6D8E6` `#F97279` `#2A72A3`
+- Con esto queda descartado el «negro predominante» del principio y la idea de un color distinto por
+  proyecto pasa a ser opcional (los proyectos pueden llevar su color en un detalle).
+- Propuesta resultante: `exploracion/direccion-v3.html` («Laboratorio frío»).
+
 ## Pendiente
 
-- Elegir dirección estética.
-- ¿Claro, oscuro o los dos?
-- ¿Cerca o lejos del estilo de sus pines (y de la referencia)?
-- Qué le gusta exactamente de Nothing.
+- ¿Le vale la v3? Letra (gruesa, estrecha o de puntos), color protagonista (coral o cobalto), claro u oscuro.
+- ¿El sello del visor le representa?
 - Letras del monograma.
 - Pokédex 3D: ¿marca o solo edición especial del portfolio?
 - ¿Modo claro?

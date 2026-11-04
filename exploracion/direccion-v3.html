@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dirección v3 · Laboratorio frío</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Anton&family=Doto:wght@800;900&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --niebla:#E7EEF2; --hielo:#CCDBE2; --acero:#738A9A; --pizarra:#435565; --gris:#636D7D; --salvia:#697773; --tinta:#161D24;
+  --coral:#F97279; --cobalto:#2A72A3;
+  --bg:var(--niebla); --surface:#F4F8FA; --fg:var(--tinta); --mute:var(--pizarra); --line:rgba(22,29,36,.12);
+  --acc:var(--coral); --acc2:var(--cobalto); --on-acc:var(--tinta);
+  --display:"Bricolage Grotesque",sans-serif; --dw:800; --dls:-.045em; --dlh:.86;
+}
+[data-mode="dark"]{--bg:#121820; --surface:#1A222C; --fg:#E7EEF2; --mute:#9DB0BD; --line:rgba(231,238,242,.12)}
+[data-lead="cobalto"]{--acc:var(--cobalto); --acc2:var(--coral); --on-acc:#F4F8FA}
+[data-font="narrow"]{--display:"Anton",sans-serif; --dw:400; --dls:-.01em; --dlh:.9}
+[data-font="dots"]{--display:"Doto",monospace; --dw:900; --dls:-.02em; --dlh:.95}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Geist",system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* panel de pruebas (no es parte de la marca) */
+.tune{position:sticky;top:0;z-index:30;background:#0d1117;color:#cfd6dc;font:14px/1.4 system-ui,sans-serif}
+.tune .in{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.tune .g{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tune button{font:inherit;color:#cfd6dc;background:#161c24;border:1px solid #2a323c;border-radius:999px;padding:5px 12px;cursor:pointer;min-height:32px}
+.tune button[aria-pressed="true"]{background:#e7eef2;color:#0d1117;border-color:#e7eef2}
+
+/* navegación */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--mute)}
+.nav ul a:hover{color:var(--fg)}
+
+/* hero */
+.hero{position:relative;display:grid;grid-template-columns:repeat(12,1fr);min-height:600px;margin-top:8px}
+.hero .block{grid-column:6 / 13;grid-row:1;align-self:end;height:72%;background:var(--acc);position:relative}
+.hero canvas{grid-column:6 / 13;grid-row:1;align-self:center;justify-self:center;width:min(560px,100%);aspect-ratio:1;position:relative;z-index:2}
+.hero .txt{grid-column:1 / 8;grid-row:1;align-self:end;position:relative;z-index:3;padding-bottom:28px}
+.word{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);line-height:var(--dlh);font-size:clamp(76px,12.5vw,190px);margin:0;font-variation-settings:"opsz" 96}
+.word .pt{color:var(--acc2)}
+.hero .intro{grid-column:1 / 5;grid-row:1;align-self:start;margin:34px 0 0;max-width:30ch;font-size:18px;color:var(--mute)}
+.hero .vert{position:absolute;right:-6px;top:0;writing-mode:vertical-rl;font-size:14px;color:var(--mute)}
+.go{display:inline-grid;place-items:center;width:64px;height:64px;background:var(--fg);color:var(--bg);text-decoration:none;position:absolute;left:0;bottom:-64px;transition:transform .2s ease}
+.go:hover{transform:translateY(-3px)}
+.hero .block .go{left:auto;right:0;bottom:0;background:var(--tinta);color:#F4F8FA}
+
+/* proyectos */
+section{padding:120px 0 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.h2{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);line-height:var(--dlh);font-size:clamp(44px,6vw,84px);margin:0}
+.head p{margin:0;max-width:40ch;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod{background:var(--surface);position:relative;display:flex;flex-direction:column;min-height:400px;text-decoration:none;overflow:hidden;transition:transform .25s ease}
+.prod:hover{transform:translateY(-4px)}
+.prod canvas{width:100%;aspect-ratio:1;display:block}
+.prod .meta{padding:0 20px 20px;margin-top:auto}
+.prod h3{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);line-height:1;font-size:30px;margin:0 0 6px}
+.prod p{margin:0;font-size:14px;color:var(--mute)}
+.prod .stripe{position:absolute;left:0;top:0;width:100%;height:6px;background:var(--c)}
+
+/* manifiesto */
+.manif{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.manif .l{background:var(--fg);color:var(--bg);padding:48px}
+.manif .r{background:var(--acc);color:var(--on-acc);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.manif .big{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);line-height:var(--dlh);font-size:clamp(48px,6.4vw,96px);margin:0}
+.manif p{margin:0;max-width:36ch;font-size:17px}
+
+/* piezas */
+.kit{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px}
+.tile{background:var(--surface);padding:24px}
+.tile h4{margin:0 0 16px;font-size:14px;font-weight:500;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:0;font:500 15px/1 "Geist",sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s ease,background .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--fg);color:var(--bg)}
+.btn.acc{background:var(--acc);color:var(--on-acc)}
+.btn.sec{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--fg)}
+.btn.lnk{padding:0;min-height:auto;background:none;color:var(--acc2);text-decoration:underline;text-underline-offset:4px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sw div{aspect-ratio:1;display:flex;flex-direction:column;justify-content:end;padding:8px;font-size:12px;line-height:1.3}
+.app{max-width:280px;background:var(--bg);padding:18px}
+.app .amt{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);font-size:40px;line-height:1;margin:6px 0 14px}
+.app .r{display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-top:1px solid var(--line)}
+.flat{display:flex;gap:18px;align-items:end}
+.type .a{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--dls);font-size:64px;line-height:1}
+.type .b{font-size:16px;color:var(--mute)}
+
+footer{margin-top:120px;border-top:1px solid var(--line);padding:28px 0 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .kit{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .intro{grid-column:1;grid-row:1;margin-top:8px}
+  .hero .block{grid-column:1;grid-row:2;height:70%;align-self:end}
+  .hero canvas{grid-column:1;grid-row:2;width:100%}
+  .hero .txt{grid-column:1;grid-row:3;padding:20px 0 0}
+  .hero .vert{display:none}
+  .grid{grid-template-columns:1fr}
+  .manif{grid-template-columns:1fr}
+  .manif .l,.manif .r{padding:28px}
+  section{padding-top:80px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="tune" aria-label="Panel de pruebas">
+  <div class="in">
+    <div class="g">Letra <button data-k="font" data-v="heavy" aria-pressed="true">Gruesa</button><button data-k="font" data-v="narrow" aria-pressed="false">Estrecha</button><button data-k="font" data-v="dots" aria-pressed="false">De puntos</button></div>
+    <div class="g">Color protagonista <button data-k="lead" data-v="coral" aria-pressed="true">Coral</button><button data-k="lead" data-v="cobalto" aria-pressed="false">Azul cobalto</button></div>
+    <div class="g">Modo <button data-k="mode" data-v="light" aria-pressed="true">Claro</button><button data-k="mode" data-v="dark" aria-pressed="false">Oscuro</button></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="#"><span class="mono" data-flat="32"></span>joaquín beltrán</a>
+    <ul><li><a href="#proyectos">Proyectos</a></li><li><a href="#sobre">Sobre mí</a></li><li><a href="#piezas">Piezas</a></li></ul>
+  </nav>
+
+  <header class="hero">
+    <p class="intro">Desarrollador web. Hago producto de verdad: de la base de datos al último píxel.</p>
+    <div class="block"><a class="go" href="#proyectos" aria-label="Ir a proyectos"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a></div>
+    <span class="vert">desarrollo web y apps</span>
+    <canvas id="orb" role="img" aria-label="El orbe: una esfera de acero con visor, girando"></canvas>
+    <div class="txt"><h1 class="word">joaquín<br>beltrán<span class="pt">.</span></h1></div>
+  </header>
+
+  <section id="proyectos">
+    <div class="head"><h2 class="h2">proyectos<span style="color:var(--acc2)">.</span></h2><p>Cada proyecto lleva su color en la franja de arriba. Todo lo demás es igual: así se ve que son de la misma casa.</p></div>
+    <div class="grid">
+      <a class="prod" href="#" style="--c:var(--coral)"><span class="stripe"></span><canvas data-obj="gem" data-c="#F97279"></canvas><div class="meta"><h3>fightlab pro</h3><p>Entrenamiento, nutrición y coach con IA para atletas de combate.</p></div></a>
+      <a class="prod" href="#" style="--c:var(--cobalto)"><span class="stripe"></span><canvas data-obj="ring" data-c="#2A72A3"></canvas><div class="meta"><h3>noticia</h3><p>Un podcast de noticias que se escribe, se graba y se monta solo.</p></div></a>
+      <a class="prod" href="#" style="--c:var(--salvia)"><span class="stripe"></span><canvas data-obj="coin" data-c="#697773"></canvas><div class="meta"><h3>efectivo</h3><p>App Android para llevar la cuenta del dinero en mano.</p></div></a>
+      <a class="prod" href="#" style="--c:var(--acero)"><span class="stripe"></span><canvas data-obj="cube" data-c="#738A9A"></canvas><div class="meta"><h3>team builder</h3><p>Monta y analiza equipos. Angular y Spring Boot.</p></div></a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="manif">
+      <div class="l"><p class="big">nada de plantillas<span style="color:var(--acc2)">.</span></p></div>
+      <div class="r"><p>Trabajo en energía y eficiencia con Next.js, Django y Odoo. En mis ratos libres construyo apps enteras, de punta a punta, para aprender haciéndolo bien.</p><a class="btn pri" href="#">Escríbeme</a></div>
+    </div>
+  </section>
+
+  <section id="piezas">
+    <div class="head"><h2 class="h2">piezas<span style="color:var(--acc2)">.</span></h2><p>Lo que se repite en todos los proyectos.</p></div>
+    <div class="kit">
+      <div class="tile"><h4>Paleta</h4>
+        <div class="sw">
+          <div style="background:#E7EEF2;color:#161D24;box-shadow:inset 0 0 0 1px var(--line)">niebla<br>#E7EEF2</div>
+          <div style="background:#CCDBE2;color:#161D24">hielo<br>#CCDBE2</div>
+          <div style="background:#738A9A;color:#161D24">acero<br>#738A9A</div>
+          <div style="background:#435565;color:#E7EEF2">pizarra<br>#435565</div>
+          <div style="background:#697773;color:#E7EEF2">salvia<br>#697773</div>
+          <div style="background:#161D24;color:#E7EEF2">tinta<br>#161D24</div>
+          <div style="background:#F97279;color:#161D24">coral<br>#F97279</div>
+          <div style="background:#2A72A3;color:#F4F8FA">cobalto<br>#2A72A3</div>
+        </div></div>
+      <div class="tile"><h4>Botones</h4>
+        <div class="btns"><a class="btn pri" href="#">Ver proyecto</a><a class="btn acc" href="#">Probar la app</a><a class="btn sec" href="#">Código</a><a class="btn lnk" href="#">Leer más</a></div>
+        <h4 style="margin-top:28px">Letra</h4>
+        <div class="type"><div class="a">Aa 1.240</div><div class="b">Geist para el texto normal. Clara y tranquila.</div></div></div>
+      <div class="tile"><h4>Tamaño app (Efectivo)</h4>
+        <div class="app"><div style="font-size:13px;color:var(--mute)">Saldo en mano</div><div class="amt">1.240,50 €</div>
+          <div class="r"><span>Mercado</span><span>−32,10</span></div><div class="r"><span>Nómina</span><span style="color:var(--acc2)">+1.100,00</span></div></div>
+        <h4 style="margin-top:28px">Sello: el visor (64, 32, 16 px)</h4>
+        <div class="flat"><span data-flat="64"></span><span data-flat="32"></span><span data-flat="16"></span></div></div>
+    </div>
+  </section>
+
+  <footer><span>joaquín beltrán<span style="color:var(--acc2)">.</span> — hecho a mano</span><span>Exploración v3 · 4 de noviembre de 2026</span></footer>
+</div>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  const rgb = h => [1,3,5].map(i => parseInt(h.slice(i,i+2),16));
+  const mix = (a,b,t) => a.map((x,i)=>Math.round(x+(b[i]-x)*t));
+  const C = {niebla:'#E7EEF2', hielo:'#CCDBE2', acero:'#738A9A', pizarra:'#435565', tinta:'#161D24', coral:'#F97279', cobalto:'#2A72A3'};
+  const lead = () => root.dataset.lead === 'cobalto' ? C.cobalto : C.coral;
+  const second = () => root.dataset.lead === 'cobalto' ? C.coral : C.cobalto;
+
+  document.querySelector('.tune').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    root.dataset[b.dataset.k] = b.dataset.v;
+    document.querySelectorAll(`.tune [data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute('aria-pressed', x===b));
+    drawFlats();
+  });
+
+  function visor(s){
+    return `<svg width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="${C.acero}"/>
+      <path d="M2 32a30 30 0 0 1 60 0" fill="${C.hielo}"/>
+      <rect x="10" y="22" width="44" height="20" rx="10" fill="${C.tinta}"/>
+      <rect x="16" y="27" width="${s<20?14:12}" height="4" rx="2" fill="${lead()}"/></svg>`;
+  }
+  function drawFlats(){ document.querySelectorAll('[data-flat]').forEach(el => el.innerHTML = visor(+el.dataset.flat)); }
+
+  function fit(cv){ const ctx=cv.getContext('2d'); const st={W:0,H:0};
+    const size=()=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);st.W=r.width;st.H=r.height;cv.width=st.W*d;cv.height=st.H*d;ctx.setTransform(d,0,0,d,0,0);};
+    size(); addEventListener('resize',size); return [ctx,st]; }
+
+  function drawOrb(ctx,W,H,t,mx,my,R,cx,cy,glint){
+    const shadow=ctx.createRadialGradient(cx,cy+R*1.08,0,cx,cy+R*1.08,R*.9);
+    shadow.addColorStop(0,'rgba(22,29,36,.35)'); shadow.addColorStop(1,'rgba(22,29,36,0)');
+    ctx.fillStyle=shadow; ctx.beginPath(); ctx.ellipse(cx,cy+R*1.08,R*.9,R*.16,0,0,Math.PI*2); ctx.fill();
+    const g=ctx.createRadialGradient(cx-R*.4,cy-R*.45,R*.05,cx,cy,R*1.05);
+    g.addColorStop(0,'#F7FAFC'); g.addColorStop(.35,C.hielo); g.addColorStop(.75,C.acero); g.addColorStop(1,C.pizarra);
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.clip();
+    const yaw=Math.sin(t*.5)*.55+mx*1.4, pitch=my*.5+Math.sin(t*.37)*.08;
+    const vx=cx+Math.sin(yaw)*R*.42, vy=cy-R*.02+pitch*R*.5, vw=R*1.45*Math.max(.35,Math.cos(yaw)), vh=R*.62;
+    const vg=ctx.createLinearGradient(vx,vy-vh/2,vx,vy+vh/2);
+    vg.addColorStop(0,'#2B3947'); vg.addColorStop(.5,C.tinta); vg.addColorStop(1,'#0A0E12');
+    ctx.fillStyle=vg; ctx.beginPath(); ctx.roundRect(vx-vw/2,vy-vh/2,vw,vh,vh/2); ctx.fill();
+    ctx.strokeStyle='rgba(247,250,252,.55)'; ctx.lineWidth=Math.max(1,R*.012); ctx.stroke();
+    ctx.fillStyle=glint; ctx.beginPath(); ctx.roundRect(vx-vw*.36,vy-vh*.22,vw*.26,vh*.13,vh*.07); ctx.fill();
+    ctx.fillStyle='rgba(247,250,252,.35)'; ctx.beginPath(); ctx.roundRect(vx-vw*.36,vy-vh*.02,vw*.12,vh*.08,vh*.04); ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle='rgba(22,29,36,.18)'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke();
+  }
+
+  const orb=document.getElementById('orb'); const [octx,ost]=fit(orb);
+  let tx=0,ty=0,mx=0,my=0;
+  document.querySelector('.hero').addEventListener('pointermove',e=>{const r=orb.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;});
+
+  const rot=([x,y,z],ax,ay)=>{const cy=Math.cos(ay),sy=Math.sin(ay),cx=Math.cos(ax),sx=Math.sin(ax);const x1=x*cy+z*sy,z1=-x*sy+z*cy;return [x1,y*cx-z1*sx,y*sx+z1*cx];};
+  const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],norm=a=>{const l=Math.hypot(...a)||1;return a.map(v=>v/l)};
+  const L=norm([-.5,.8,-.7]);
+  function gem(){const n=8,v=[],f=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2+Math.PI/n;v.push([Math.cos(a)*.48,.52,Math.sin(a)*.48]);}
+    for(let i=0;i<n;i++){const a=i/n*Math.PI*2;v.push([Math.cos(a),.14,Math.sin(a)]);}v.push([0,-1.1,0]);f.push([...Array(n).keys()]);
+    for(let i=0;i<n;i++){const j=(i+1)%n;f.push([i,j,n+j]);f.push([i,n+j,n+i]);}for(let i=0;i<n;i++){const j=(i+1)%n;f.push([n+i,n+j,2*n]);}return {v,f};}
+  function cube(){const v=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]].map(p=>p.map(x=>x*.68));
+    return {v,f:[[0,1,2,3],[4,5,6,7],[0,1,5,4],[2,3,7,6],[1,2,6,5],[0,3,7,4]]};}
+  function lathe(prof,N=36){const v=[],f=[];prof.forEach(([r,y])=>{for(let i=0;i<N;i++){const a=i/N*Math.PI*2;v.push([Math.cos(a)*r,y,Math.sin(a)*r]);}});
+    for(let k=0;k<prof.length-1;k++)for(let i=0;i<N;i++){const j=(i+1)%N;f.push([k*N+i,k*N+j,(k+1)*N+j,(k+1)*N+i]);}return {v,f};}
+  function torus(R=.8,r=.28,N=40,M=14){const v=[],f=[];for(let i=0;i<N;i++){const u=i/N*Math.PI*2;for(let j=0;j<M;j++){const w=j/M*Math.PI*2;v.push([(R+r*Math.cos(w))*Math.cos(u),r*Math.sin(w),(R+r*Math.cos(w))*Math.sin(u)]);}}
+    for(let i=0;i<N;i++)for(let j=0;j<M;j++){const a=i*M+j,b=((i+1)%N)*M+j,c=((i+1)%N)*M+(j+1)%M,d=i*M+(j+1)%M;f.push([a,b,c,d]);}return {v,f};}
+  const MESH={gem:gem(),cube:cube(),ring:torus(),coin:lathe([[0,.18],[.92,.18],[1,.1],[1,-.1],[.92,-.18],[0,-.18]])};
+
+  function solid(ctx,W,H,mesh,t,col,k){
+    const s=Math.min(W,H)*.27, ay=t*.5+k, ax=-.45+Math.sin(t*.4+k)*.15;
+    const V=mesh.v.map(p=>rot(p,ax,ay)), proj=p=>{const q=3.4/(3.4+p[2]);return [W/2+p[0]*s*q,H/2-p[1]*s*q];};
+    ctx.fillStyle='rgba(22,29,36,.18)'; ctx.beginPath(); ctx.ellipse(W/2,H/2+s*1.3,s*.8,s*.12,0,0,Math.PI*2); ctx.fill();
+    mesh.f.map(idx=>{const pts=idx.map(i=>V[i]);let n=norm(cross(sub(pts[1],pts[0]),sub(pts[2],pts[0])));
+      const c=pts.reduce((a,p)=>[a[0]+p[0],a[1]+p[1],a[2]+p[2]],[0,0,0]).map(x=>x/pts.length);
+      if(mesh!==MESH.ring && dot(n,c)<0) n=n.map(x=>-x); return {pts,n,z:c[2]};})
+    .sort((a,b)=>b.z-a.z).forEach(fc=>{
+      if(mesh!==MESH.ring && fc.n[2]>=0) return;
+      const li=Math.abs(dot(fc.n,L)), sp=Math.pow(li,14);
+      let cl=mix(rgb(C.pizarra),rgb(col),Math.pow(li,1.4)); cl=mix(cl,[247,250,252],sp*.7);
+      ctx.beginPath(); fc.pts.forEach((p,i)=>{const q=proj(p);i?ctx.lineTo(...q):ctx.moveTo(...q)}); ctx.closePath();
+      ctx.fillStyle=`rgb(${cl})`; ctx.strokeStyle=ctx.fillStyle; ctx.lineWidth=.6; ctx.fill(); ctx.stroke();
+    });
+  }
+  const prods=[...document.querySelectorAll('canvas[data-obj]')].map((cv,i)=>{const [ctx,st]=fit(cv);let hover=0;
+    cv.closest('.prod').addEventListener('pointerenter',()=>hover=1);cv.closest('.prod').addEventListener('pointerleave',()=>hover=0);
+    return {cv,ctx,st,i,get hover(){return hover},sp:0,ang:i*1.3};});
+
+  let last=performance.now();
+  function frame(now){
+    const dt=Math.min(.05,(now-last)/1000); last=now; const t=reduce?1.5:now/1000;
+    mx+=(tx-mx)*.06; my+=(ty-my)*.06;
+    const {W,H}=ost; octx.clearRect(0,0,W,H);
+    drawOrb(octx,W,H,t,mx,my,Math.min(W,H)*.36,W/2,H/2-H*.04,lead());
+    prods.forEach(p=>{ p.sp+=((p.hover?2.2:.35)-p.sp)*.08; if(!reduce) p.ang+=p.sp*dt;
+      const {W,H}=p.st; p.ctx.clearRect(0,0,W,H); solid(p.ctx,W,H,MESH[p.cv.dataset.obj],p.ang,p.cv.dataset.c,0); });
+    requestAnimationFrame(frame);
+  }
+  drawFlats(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
