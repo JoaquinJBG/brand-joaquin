@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
@@ -32,15 +33,17 @@ fun DrawScope.dibujarFranja(f: FranjaJb, blend: BlendMode = BlendMode.SrcOver) {
     val alto = size.height * f.alto
     drawRect(f.color, Offset(izquierda, arriba), Size(ancho, alto), blendMode = blend)
 
-    val raya = f.raya.dp.toPx()
-    val zona = ancho * f.rayasAncho
-    val inicio = izquierda - zona
-    var x = inicio + raya
-    while (x < izquierda) {
-        val alfa = ((x + raya / 2 - inicio) / zona).coerceIn(0f, 1f)
-        val w = minOf(raya, izquierda - x)
-        drawRect(f.color.copy(alpha = alfa), Offset(x, arriba), Size(w, alto), blendMode = blend)
-        x += raya * 2
+    // corte de neón: capas cada vez más anchas y transparentes hacen de halo sin depender de sombras nativas
+    val corte = f.corte.dp.toPx()
+    val sobra = alto * f.corteSobra
+    for ((extra, alfa) in listOf(14.dp.toPx() to .12f, 8.dp.toPx() to .22f, 3.dp.toPx() to .45f, 0f to 1f)) {
+        drawRoundRect(
+            f.color.copy(alpha = alfa),
+            Offset(izquierda - corte - extra, arriba - sobra - extra),
+            Size(corte + 2 * extra, alto + 2 * sobra + 2 * extra),
+            CornerRadius(corte + extra),
+            blendMode = blend,
+        )
     }
 }
 

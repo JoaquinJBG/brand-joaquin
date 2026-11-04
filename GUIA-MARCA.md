@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.2 · 4 de noviembre de 2026 · Elegida por Joaquín en once rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.3 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -194,18 +194,20 @@ Va **una vez** en las piezas importantes: la foto principal, el logo, una tarjet
 
 - Entra desde el **borde derecho** de su caja y ocupa **3/5 del ancho** (60 %).
 - Va a un **46 %** de alto desde arriba y mide el **30 %** de la altura de la caja.
-- El extremo izquierdo **se deshace en rayas**: rayas verticales de 7 px con huecos de 7 px en una zona del 22 %
-  del ancho de la franja, que se desvanecen hacia la izquierda.
+- El extremo izquierdo acaba en seco con un **corte de neón**: una línea vertical coral de 4 px con las puntas
+  redondeadas, que sobresale un 14 % por arriba y por abajo, y brilla (halo de 10 y 28 px). La franja suelta un
+  brillo suave hacia la izquierda.
 - Color: coral `#F97279`, siempre.
 
 ```
 ┌──────────────────────────────────────┐
-│                                      │
-│              ▏▎▍▌▋████████████████████│  ← 46 % desde arriba
-│              ▏▎▍▌▋████████████████████│     30 % de alto
-│                                      │
+│                     ┃                │
+│                     ┃████████████████│  ← 46 % desde arriba
+│                     ┃████████████████│     30 % de alto
+│                     ┃                │
 └──────────────────────────────────────┘
-               ← 22 % →← 60 % del ancho →
+                      ↑ corte de neón (4 px, sobresale 14 %)
+                       ← 60 % del ancho →
 ```
 
 ### Cómo tiñe
@@ -359,7 +361,7 @@ con el tema de la marca; no hace falta reimplementarlos.
 Plantillas en [`plantillas/`](plantillas/) y tamaños en [`plantillas/ICONOS.md`](plantillas/ICONOS.md).
 
 - **Icono de app** (`icono-app.svg`): fondo abismo con luz de nebulosa, símbolo en acero con la franja y la parte
-  de dentro en tinta. Sin rayas. Zona segura de Android: el círculo central de 332 px (66/108).
+  de dentro en tinta. Sin corte de neón: a ese tamaño no se aprecia. Zona segura de Android: el círculo central de 332 px (66/108).
 - **Iconos pequeños** (48 px o menos, favicon): solo el símbolo, sin franja.
 - **Imagen para compartir** (`og-1200x630.svg`): nebulosa, franja, monograma, título del proyecto y una frase.
 - **Banner de README** (`banner-readme.svg`): igual, en 1280 × 320.
@@ -426,7 +428,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.2.0`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -493,7 +495,7 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.2.0
+pnpm add github:JoaquinJBG/brand-joaquin#v2.3.0
 ```
 
 Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
@@ -524,5 +526,5 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 
 - Angular: los mismos `@import` en `styles.css`.
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.2.0` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.3.0` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

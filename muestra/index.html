@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guía de marca · Joaquín Beltrán</title>
-<link rel="stylesheet" href="../tokens/fuentes.css">
-<link rel="stylesheet" href="../tokens/tokens.css">
-<link rel="stylesheet" href="../tokens/componentes.css">
+<link rel="stylesheet" href="../tokens/fuentes.css?v=2.3.0">
+<link rel="stylesheet" href="../tokens/tokens.css?v=2.3.0">
+<link rel="stylesheet" href="../tokens/componentes.css?v=2.3.0">
 <style>
 body{margin:0;overflow-x:hidden}
 .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
@@ -256,7 +256,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   </section>
 
   <section id="franja">
-    <div class="head"><span class="jb-num">06</span><h2 class="jb-h2">la franja</h2><p>El sello. Entra desde la derecha, ocupa 3/5 del ancho y se deshace en rayas. Donde cruza, tiñe.</p></div>
+    <div class="head"><span class="jb-num">06</span><h2 class="jb-h2">la franja</h2><p>El sello. Entra desde la derecha, ocupa 3/5 del ancho y acaba en seco con un corte de neón. Donde cruza, tiñe.</p></div>
     <div class="grid g2">
       <div class="jb-glass geo jb-franja">
         <span class="jb-franja__banda"></span>
@@ -264,7 +264,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
         <span class="m" style="right:8px;top:calc(46% - 22px)">46 % desde arriba</span>
         <span class="m" style="right:8px;top:calc(76% + 6px)">30 % de alto</span>
         <span class="m" style="left:40%;top:calc(46% - 22px)">60 % del ancho</span>
-        <span class="m" style="left:calc(40% - 13.2%);top:calc(76% + 6px)">rayas: 22 %</span>
+        <span class="m" style="left:calc(40% - 112px);top:calc(76% + 6px)">corte de neón</span>
       </div>
       <div class="jb-glass block jb-franja jb-franja--entra" id="bloque-franja"><span class="jb-franja__banda"></span><span class="label" style="position:absolute;left:16px;top:16px">Sola, como bloque</span></div>
     </div>
@@ -454,10 +454,10 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
   <section id="compartir">
     <div class="head"><span class="jb-num">13</span><h2 class="jb-h2">iconos y compartir</h2><p>Plantillas en plantillas/: icono de app, imagen para compartir enlaces y banner de README. Los tamaños, en plantillas/ICONOS.md.</p></div>
     <div class="grid g3">
-      <div class="jb-glass"><p class="label">Icono de app</p><img src="../plantillas/icono-app.svg" alt="Icono de app con el monograma provisional y la franja" style="width:160px;height:160px;display:block"></div>
-      <div class="jb-glass" style="grid-column:span 2"><p class="label">Imagen para compartir (1200 × 630)</p><img src="../plantillas/og-1200x630.svg" alt="Imagen para compartir de un proyecto" style="width:100%;border-radius:var(--radius-md);display:block"></div>
+      <div class="jb-glass"><p class="label">Icono de app</p><img src="../plantillas/icono-app.svg?v=2.3.0" alt="Icono de app con el monograma provisional y la franja" style="width:160px;height:160px;display:block"></div>
+      <div class="jb-glass" style="grid-column:span 2"><p class="label">Imagen para compartir (1200 × 630)</p><img src="../plantillas/og-1200x630.svg?v=2.3.0" alt="Imagen para compartir de un proyecto" style="width:100%;border-radius:var(--radius-md);display:block"></div>
     </div>
-    <div class="jb-glass" style="margin-top:var(--space-4)"><p class="label">Banner de README</p><img src="../plantillas/banner-readme.svg" alt="Banner de README de un proyecto" style="width:100%;display:block"></div>
+    <div class="jb-glass" style="margin-top:var(--space-4)"><p class="label">Banner de README</p><img src="../plantillas/banner-readme.svg?v=2.3.0" alt="Banner de README de un proyecto" style="width:100%;display:block"></div>
   </section>
 
   <section id="movimiento">
@@ -521,7 +521,7 @@ footer{margin-top:var(--space-10);border-top:1px solid var(--jb-line);padding:va
 </div>
 
 <script type="module">
-import { montarNebulosa } from "../tokens/nebulosa.js";
+import { montarNebulosa } from "../tokens/nebulosa.js?v=2.3.0";
 
 const root = document.documentElement;
 const reducir = matchMedia("(prefers-reduced-motion: reduce)").matches;

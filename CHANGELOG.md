@@ -1,6 +1,12 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.2.0`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.3.0`) y la suben cuando quieren.
+
+## 2.3.0 · 2026-11-04
+
+- **La franja acaba en un corte de neón** en vez de rayas: línea coral de 4 px que brilla y sobresale un 14 %.
+  Cambia en `componentes.css` (tokens `--franja-corte` y `--franja-corte-sobra`), en Compose (`FranjaJb.corte`,
+  `corteSobra`) y en las plantillas SVG de logo, imagen para compartir y banner.
 
 ## 2.2.0 · 2026-11-04
 

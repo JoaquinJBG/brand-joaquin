@@ -129,8 +129,8 @@
   --franja-ancho: 60%;
   --franja-arriba: 46%;
   --franja-alto: 30%;
-  --franja-raya: 7px;
-  --franja-rayas-ancho: 22%;
+  --franja-corte: 4px;
+  --franja-corte-sobra: 14%;
 
   color-scheme: light;
 }

@@ -154,13 +154,15 @@ a.jb-card:hover { transform: translateY(var(--lift)); }
   width: var(--franja-ancho); top: var(--franja-arriba); height: var(--franja-alto);
   background: var(--jb-accent);
 }
+/* corte de neón: línea que brilla en el extremo interior de la franja */
 .jb-franja__banda::before {
-  content: ""; position: absolute; right: 100%; top: 0; bottom: 0;
-  width: var(--franja-rayas-ancho);
-  background: repeating-linear-gradient(90deg, transparent 0 var(--franja-raya), var(--jb-accent) var(--franja-raya) calc(var(--franja-raya) * 2));
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000);
-  mask-image: linear-gradient(90deg, transparent, #000);
+  content: ""; position: absolute; right: 100%;
+  top: calc(var(--franja-corte-sobra) * -1); bottom: calc(var(--franja-corte-sobra) * -1);
+  width: var(--franja-corte); border-radius: var(--franja-corte);
+  background: var(--jb-coral);
+  box-shadow: 0 0 10px 1px rgba(249, 114, 121, .9), 0 0 28px 4px rgba(249, 114, 121, .5);
 }
+.jb-franja__banda { box-shadow: -18px 0 30px -14px rgba(249, 114, 121, .8); }
 
 .jb-franja--foto { margin: 0; background: #EEF2F4; border-radius: var(--radius-lg); }
 .jb-franja--foto img {
