@@ -113,8 +113,18 @@ Decisiones que tomé yo (Claude) para completar el sistema, a revisar por Joaqu�
 - El coral es el mismo en todos los proyectos; los colores propios de un proyecto, fríos y apagados.
 - Monograma provisional «jb» en texto.
 
+## 2026-11-04 · Séptima ronda (tras ver la guía v1)
+
+- **Secciones numeradas: sí** («queda muy bien»). Se hacen a nuestra manera: número en una cápsula coral,
+  no entre paréntesis ni en letra de máquina como la referencia.
+- **3D: sí, para las landings.** Referencias que le gustan: bruno-simon.com, lusion.co, niccolomiranda.com,
+  richardmattka.com (escenas 3D a pantalla completa, interacción con ratón y scroll, materiales metálicos).
+- Prototipo: `exploracion/landing-3d-v6.html` (metal líquido gris que la franja tiñe).
+- Su Windows tiene activado «reducir movimiento»: el prototipo trae un botón para ver el movimiento igualmente.
+
 ## Pendiente
 
+- Que valide el prototipo 3D y la numeración; después, pasarlo a la guía, los tokens, el prompt y la muestra.
 - Logos de los proyectos y monograma definitivo: los pasará Joaquín. La regla ya está (gris + franja).
 - Compilar `tokens/compose/` dentro de Efectivo (está escrito pero no compilado).
 - Si quiere, una foto propia o de sus proyectos en lugar de la foto de muestra de Unsplash.
