@@ -1,6 +1,6 @@
 # Guía de marca · Joaquín Beltrán
 
-Versión 2.4.1 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
+Versión 2.4.2 · 4 de noviembre de 2026 · Elegida por Joaquín en doce rondas (ver [DECISIONES.md](DECISIONES.md)).
 
 Esta guía sirve para que todos los proyectos personales de Joaquín se reconozcan como suyos aunque no sean
 iguales: misma paleta, misma letra, mismo fondo de nebulosa, mismo cristal con luz, mismo sello (la franja) y
@@ -442,7 +442,7 @@ Joaquín habla como un desarrollador que sabe lo que hace y no necesita adornarl
 
 ## 22. Cómo aplicarla a un proyecto nuevo
 
-- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.4.1`) e importar `tokens.css` y `componentes.css` (sección 24).
+- [ ] Instalar la marca (`pnpm add github:JoaquinJBG/brand-joaquin#v2.4.2`) e importar `tokens.css` y `componentes.css` (sección 24).
 - [ ] Tailwind: preset v3 (`tailwind.preset.cjs`) o import v4 (`tailwind-v4.css`).
 - [ ] Android: copiar `tokens/compose/` y envolver la app en `MarcaTheme { … }`.
 - [ ] Cargar Bricolage Grotesque (800) y Geist (400/500/600).
@@ -509,7 +509,7 @@ La marca es un paquete instalable desde GitHub, con versiones. Cada proyecto fij
 quiere; los cambios están en [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-pnpm add github:JoaquinJBG/brand-joaquin#v2.4.1
+pnpm add github:JoaquinJBG/brand-joaquin#v2.4.2
 ```
 
 Las letras van aparte (`fuentes.css`) porque un `@import` de Google Fonts dentro de otro CSS acaba en medio del
@@ -563,5 +563,5 @@ import { montarNebulosa } from "brand-joaquin/nebulosa";
 - Para que Claude lo haga todo solo: la skill [`skill/marca-personal`](skill/marca-personal/SKILL.md). Cópiala a
   `~/.claude/skills/marca-personal/` y di en cualquier proyecto «aplica mi branding personal».
 - Android (Compose): copiar `tokens/compose/` al módulo de UI y anotar en el proyecto qué versión de la marca es.
-- Para actualizar: cambiar `#v2.4.1` por la versión nueva y repasar el CHANGELOG.
+- Para actualizar: cambiar `#v2.4.2` por la versión nueva y repasar el CHANGELOG.
 - Las plantillas y los logos también vienen en el paquete: `brand-joaquin/plantillas/…`, `brand-joaquin/logos/…`.

@@ -1,6 +1,11 @@
 # Cambios
 
-Versiones de la marca. Los proyectos instalan una versión fija (`#v2.4.1`) y la suben cuando quieren.
+Versiones de la marca. Los proyectos instalan una versión fija (`#v2.4.2`) y la suben cuando quieren.
+
+## 2.4.2 · 2026-11-05
+
+- Monograma más limpio: la J tiene un solo corte en el pico, la cuña acaba en punta y el rizo en corte recto.
+  También en el icono de app y la imagen para compartir.
 
 ## 2.4.1 · 2026-11-04
 
