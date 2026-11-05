@@ -7,7 +7,6 @@ import re
 from pathlib import Path
 
 raiz = Path(__file__).resolve().parent.parent
-muestra = (raiz / "muestra" / "index.html").read_text(encoding="utf-8")
 
 
 def leer(ruta):
@@ -19,13 +18,14 @@ def svg_en_linea(ruta):
     return f"data:image/svg+xml;base64,{datos}"
 
 
-html = muestra
-html = re.sub(r'<link rel="stylesheet" href="\.\./tokens/fuentes\.css[^"]*">',
-              "<style>" + leer("tokens/fuentes.css") + "</style>", html)
-html = re.sub(r'<link rel="stylesheet" href="\.\./tokens/tokens\.css[^"]*">',
-              lambda _: "<style>" + leer("tokens/tokens.css") + "</style>", html)
-html = re.sub(r'<link rel="stylesheet" href="\.\./tokens/componentes\.css[^"]*">',
-              lambda _: "<style>" + leer("tokens/componentes.css") + "</style>", html)
+def incrustar_css(html, nombre):
+    patron = rf'<link rel="stylesheet" href="\.\./tokens/{nombre}\.css[^"]*">'
+    return re.sub(patron, lambda _: "<style>" + leer(f"tokens/{nombre}.css") + "</style>", html)
+
+
+html = leer("muestra/index.html")
+for nombre in ("fuentes", "tokens", "componentes"):
+    html = incrustar_css(html, nombre)
 
 nebulosa = leer("tokens/nebulosa.js").replace("export function montarNebulosa", "function montarNebulosa")
 html = re.sub(r'import \{ montarNebulosa \} from "\.\./tokens/nebulosa\.js[^"]*";', lambda _: nebulosa, html)
@@ -33,7 +33,7 @@ html = re.sub(r'import \{ montarNebulosa \} from "\.\./tokens/nebulosa\.js[^"]*"
 html = re.sub(r'src="\.\./(logos|plantillas)/([^"?$]+\.svg)(\?[^"]*)?"',
               lambda m: f'src="{svg_en_linea(m.group(1) + "/" + m.group(2))}"', html)
 
-# la rejilla de logos monta las rutas en JS, así que se le pasa un mapa con los SVG ya incrustados
+# La rejilla de logos monta las rutas en JS, así que necesita un mapa con los SVG ya incrustados.
 logos = sorted(p.parent.name for p in (raiz / "logos").glob("*/logo-franja.svg"))
 mapa = "{" + ",".join(f'"{c}":"{svg_en_linea(f"logos/{c}/logo-franja.svg")}"' for c in logos) + "}"
 html = html.replace("const logos = [", f"const LOGOS_SVG = {mapa};\nconst logos = [", 1)
